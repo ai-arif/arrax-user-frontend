@@ -10,11 +10,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  analytics.page();
   return (
     <html lang="en">
       <body className={`${inter.className} text-sm md:text-base`}>
-        <main className="md:min-h-[50vh]">{children}</main>
+        <main>{children}</main>
         <Toaster />
       </body>
     </html>
