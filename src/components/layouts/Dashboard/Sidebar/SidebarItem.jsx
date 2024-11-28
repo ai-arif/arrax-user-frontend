@@ -11,11 +11,7 @@ const SidebarItem = ({ item, setSidebarOpen }) => {
   };
 
   const isActive = (item) => {
-    if (
-      pathname === item.path ||
-      (item.path !== "/dashboard" && pathname.startsWith(item.path))
-    )
-      return true;
+    if (pathname === item.path) return true;
 
     if (item.children) {
       return item.children.some((child) => isActive(child));
@@ -32,7 +28,7 @@ const SidebarItem = ({ item, setSidebarOpen }) => {
         <Link
           href={item.path}
           onClick={handleClick}
-          className={`${isItemActive ? "text-sts-secondary bg-[#e3eeff]" : "text-gray-800"} group relative flex items-center gap-2.5 px-4 py-2 font-semibold transition-all duration-75 hover:bg-[#e3eeff]`}
+          className={`${isItemActive ? "bg-zinc-700 text-white" : "text-gray-800"} group relative flex items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:bg-zinc-700/90`}
         >
           {item.icon}
           {item.label}

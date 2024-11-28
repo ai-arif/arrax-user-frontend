@@ -41,7 +41,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   return (
     <aside
       ref={sidebar}
-      className={`border-stroke absolute left-0 top-0 flex h-screen w-64 flex-col overflow-y-hidden border-r bg-white duration-300 ease-linear lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 flex h-screen w-64 flex-col overflow-y-hidden border-r border-zinc-700 duration-300 ease-linear lg:static lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -85,7 +85,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             ))}
             <li
               // onClick={handleLogout}
-              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-gray-800 transition-all duration-75 hover:bg-[#e3eeff]"
+              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:bg-zinc-700/90"
             >
               <CgLogOut className="text-lg" /> <span>Logout</span>
             </li>

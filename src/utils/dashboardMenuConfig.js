@@ -27,7 +27,7 @@ export const dashboardMenuConfig = [
         />
       </svg>
     ),
-    label: "Booking",
+    label: "Dashboard",
     path: "/dashboard",
   },
   {
