@@ -1,4 +1,5 @@
 import React from "react";
+import ArraxPrograms from "./_components/ArraxPrograms";
 import HexagonTrophy from "./_components/HexagonTrophy";
 import TeamStats from "./_components/TeamStats";
 
@@ -12,6 +13,7 @@ const DashboardHomePage = async () => {
     <div className="lg:space-y-7.5 space-y-4 sm:space-y-6 2xl:space-y-10">
       <TeamStats />
       <HexagonTrophy />
+      <ArraxPrograms />
     </div>
   );
 };

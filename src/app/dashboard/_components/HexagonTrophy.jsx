@@ -21,7 +21,7 @@ const HexagonTrophy = () => {
         <span className="text-sm text-zinc-300 group-hover:text-zinc-200">
           Show all
         </span>
-        <div className="hexagon-shape relative flex h-6 w-6 items-center justify-center overflow-hidden bg-[#416AFF]">
+        <div className="hexagon-shape relative flex h-6 w-6 items-center justify-center overflow-hidden bg-arx-blue-5">
           <FaChevronRight className="text-xs text-white" />
         </div>
       </button>

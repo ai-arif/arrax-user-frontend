@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-arx-primary text-sm text-white md:text-base`}
+        className={`${inter.className} bg-arx-primary text-sm text-white antialiased md:text-base`}
       >
         <main>{children}</main>
         <Toaster />
