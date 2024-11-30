@@ -1,4 +1,5 @@
 import React from "react";
+import HexagonTrophy from "./_components/HexagonTrophy";
 import TeamStats from "./_components/TeamStats";
 
 export const metadata = {
@@ -8,8 +9,9 @@ export const metadata = {
 
 const DashboardHomePage = async () => {
   return (
-    <div>
+    <div className="lg:space-y-7.5 space-y-4 sm:space-y-6 2xl:space-y-10">
       <TeamStats />
+      <HexagonTrophy />
     </div>
   );
 };

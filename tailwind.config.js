@@ -8,9 +8,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        7.5: "1.875rem", // 30px
+      },
       colors: {
         "arx-primary": "#18191A",
-        "arx-secondary": "#340385",
+        "arx-primary-light": "#242526",
+        // "arx-secondary": "#340385",
+        // "arx-blue-5": "#416AFF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
