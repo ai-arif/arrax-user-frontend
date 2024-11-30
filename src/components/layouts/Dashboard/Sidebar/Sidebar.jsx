@@ -1,7 +1,5 @@
-import Logo from "@/components/ui/Logo";
 import { dashboardMenuConfig } from "@/utils/dashboardMenuConfig";
 import React, { useEffect, useRef } from "react";
-import { CgLogOut } from "react-icons/cg";
 import SidebarItem from "./SidebarItem";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -41,20 +39,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 flex h-screen w-64 flex-col overflow-y-hidden border-r border-zinc-700 duration-300 ease-linear lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-30 flex h-screen w-[60%] flex-col overflow-y-hidden border-r border-zinc-700 bg-arx-primary duration-300 ease-linear sm:w-64 lg:static lg:translate-x-0 2xl:w-72 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      {/* <!-- SIDEBAR HEADER --> */}
-      <div className="mb-3 flex items-center justify-between gap-2 px-4 lg:px-5">
-        <Logo />
-
+      {/* SIDEBAR HEADER */}
+      <div className="flex justify-end px-4 pt-3 sm:px-5 lg:hidden">
         <button
           ref={trigger}
           onClick={() => setSidebarOpen(!sidebarOpen)}
           aria-controls="sidebar"
           aria-expanded={sidebarOpen}
-          className="block lg:hidden"
         >
           <svg
             className="fill-current"
@@ -71,27 +66,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </svg>
         </button>
       </div>
-      {/* <!-- SIDEBAR HEADER --> */}
-      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
-        {/* <!-- Sidebar Menu --> */}
-        <nav className="px-4 py-4 lg:px-5">
+      <div className="no-scrollbar flex flex-col overflow-y-auto pt-3 duration-300 ease-linear">
+        {/* SIDEBAR MENU */}
+        <nav className="px-4 lg:px-5">
           <ul className="flex flex-col gap-2.5">
-            {dashboardMenuConfig?.map((menuItem, menuIndex) => (
+            {dashboardMenuConfig?.map((menuItem, idx) => (
               <SidebarItem
-                key={menuIndex}
-                item={menuItem}
+                key={idx}
+                menuItem={menuItem}
                 setSidebarOpen={setSidebarOpen}
               />
             ))}
-            <li
-              // onClick={handleLogout}
-              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:bg-zinc-700/90"
-            >
-              <CgLogOut className="text-lg" /> <span>Logout</span>
-            </li>
           </ul>
         </nav>
-        {/* <!-- Sidebar Menu --> */}
       </div>
     </aside>
   );
