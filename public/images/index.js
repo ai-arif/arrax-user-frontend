@@ -1,7 +1,10 @@
+import mainBanner from "../images/hero/main_banner.jpg";
 import logo from "../images/logo/logo.png";
 
 const assets = {
-  images: {},
+  images: {
+    mainBanner,
+  },
 
   svgs: {
     logo,
