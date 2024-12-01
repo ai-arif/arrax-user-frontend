@@ -5,7 +5,7 @@ export default function MainLayout({ children }) {
   return (
     <>
       <Navbar />
-      <div>{children}</div>
+      <div className="md:min-h-[50vh]">{children}</div>
       <Footer />
     </>
   );

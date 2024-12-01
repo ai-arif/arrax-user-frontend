@@ -8,7 +8,7 @@ export const metadata = {
 
 const HomePage = () => {
   return (
-    <div className="">
+    <div>
       <ParticlesBackground />
       <h2 className="my-10 text-center text-2xl font-semibold">Home Page</h2>
     </div>

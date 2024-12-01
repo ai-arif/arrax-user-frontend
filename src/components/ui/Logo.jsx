@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import assets from "../../../public/images";
 
-const LogoBlack = ({ className }) => {
+const Logo = ({ className }) => {
   return (
     <Link href="/">
       <Image
@@ -15,4 +15,4 @@ const LogoBlack = ({ className }) => {
   );
 };
 
-export default LogoBlack;
+export default Logo;
