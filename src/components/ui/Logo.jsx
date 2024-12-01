@@ -1,12 +1,18 @@
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import assets from "../../../public/images";
 
-const Logo = () => {
+const LogoBlack = ({ className }) => {
   return (
     <Link href="/">
-      <h3 className="text-xl font-bold tracking-wide">Logo</h3>
+      <Image
+        className={cn("h-auto w-[110px] object-cover md:w-[140px]", className)}
+        src={assets?.svgs?.logo}
+        alt="Arrax"
+      />
     </Link>
   );
 };
 
-export default Logo;
+export default LogoBlack;

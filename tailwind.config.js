@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       spacing: {
         7.5: "1.875rem", // 30px
+        9.5: "2.5rem", // 40px
       },
       colors: {
         "arx-primary": "#18191A",

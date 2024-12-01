@@ -59,6 +59,10 @@
 }
 
 @layer components {
+  /* Navbar container */
+  .navbar-container {
+    @apply mx-auto w-full max-w-7xl px-4 py-3 md:px-6 md:py-6 lg:px-9 xl:px-16;
+  }
 }
 
 @layer utilities {
