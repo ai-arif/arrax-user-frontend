@@ -10,8 +10,20 @@ module.exports = {
     extend: {
       spacing: {
         7.5: "1.875rem", // 30px
-        9.5: "2.5rem", // 40px
       },
+      // --medium-purple: #896fdf;
+      // --gray-suit: #c8c5cf;
+      // --wistful: #b3a6d1;
+      // --chetwode-blue: #918dde;
+      // --medium-purple: #9253d8;
+      // --cold-purple: #ac93d5;
+      // --lilac-bush: #9d7ed8;
+      // --lavender-gray: #c4b4d4;
+      // --wisteria: #9375ba;
+      // --portage: #857cf4;
+
+      // "arx-primary": "#974edd",
+      // "arx-primary": "#974edd",
       colors: {
         "arx-primary": "#18191A",
         "arx-primary-light": "#242526",
@@ -68,6 +80,28 @@ module.exports = {
         "gradient-x4": "linear-gradient(to right, #4b0082, #0d47a1)", // Indigo to Blue
         "gradient-xXx": "linear-gradient(to right, #0d47a1, #ff007f)", // Blue to Pink
         "gradient-xGold": "linear-gradient(to right, #ff8c00, #ffcc00)", // Orange to Yellow
+      },
+      keyframes: {
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },

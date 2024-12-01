@@ -15,4 +15,3 @@ const Container = ({ className, children }) => {
 };
 
 export default Container;
-// mx-auto w-full max-w-7xl px-4 py-6 md:px-5 md:py-8 lg:px-6 lg:py-10 xl:px-4 xl:py-[60px]
