@@ -7,26 +7,38 @@ import assets from "../../../../public/images";
 const HeroSection = () => {
   return (
     <Container>
-      <div className="flex flex-col gap-6 md:flex-row">
-        <div className="w-full space-y-3 md:w-1/2">
-          <p className="font-medium">Easy Secure Fast</p>
-          <h1 className="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-2xl font-bold text-transparent md:text-4xl lg:text-[40px] lg:leading-[55px] xl:text-[55px] xl:leading-tight">
+      <div className="flex flex-col justify-between gap-7.5 md:items-center md:gap-10 lg:flex-row">
+        {/* hero content */}
+        <div className="w-full space-y-3 text-center md:w-1/2 md:space-y-5 md:text-left">
+          <p className="text-base font-medium text-stroke md:text-lg md:font-semibold">
+            Easy Secure Fast
+          </p>
+          <h1 className="text-custom-style text-2xl font-bold md:text-4xl lg:text-[40px] lg:leading-[55px] xl:text-[55px] xl:leading-tight">
             Arrax Space: The Heart of MetaDynamics
           </h1>
-          <p>
-            Arrax Space is the native cryptocurrency powering MetaDynamis.
-            Designed with ethical tokenomics in mind, Tiger Pro Space
-            prioritizes fairness, stability, and scalability. The coin&apos;s
-            robust architecture ensures seamless transactions, low fees, and
-            enhanced security.
+          <p className="text-zinc-300 md:leading-7">
+            Arrax Space is the native cryptocurrency powering MetaDynamics.
+            Designed with ethical tokenomics in mind, Arrax Space prioritizes
+            fairness, stability, and scalability. The coin&apos;s robust
+            architecture ensures seamless transactions, low fees, and enhanced
+            security.
           </p>
-          <div className="space-x-3">
-            <Button>Login</Button>
-            <Button variant="secondary">Register</Button>
+          <div className="space-x-3 md:space-x-4">
+            <Button size="lg" className="rounded-full">
+              Login
+            </Button>
+            <Button variant="secondary" size="lg" className="rounded-full">
+              Register
+            </Button>
           </div>
         </div>
+        {/* hero image */}
         <div className="w-full md:w-1/2">
-          <Image className="" src={assets?.images?.mainBanner} alt="Arrax" />
+          <Image
+            className="h-auto w-full rounded-md object-cover"
+            src={assets?.images?.mainBanner}
+            alt="Arrax Space"
+          />
         </div>
       </div>
     </Container>

@@ -27,6 +27,9 @@ module.exports = {
         "arx-black-5": "#18191A",
         "arx-black-4": "#242526",
         "arx-blue-5": "#416AFF",
+        stroke: "#E2E8F0",
+        // lite: "#f7f9fa",
+        // "gray-1": "#EFF4FB",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

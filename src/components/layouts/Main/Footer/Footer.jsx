@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           <Button>Smart Contact Info</Button>
           <div className="pb-3 md:pb-5">
-            <h4 className="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text pb-4 text-center text-2xl font-bold text-transparent">
+            <h4 className="text-custom-style pb-4 text-center text-2xl font-bold">
               Social Media
             </h4>
             <ul className="flex flex-wrap gap-3 md:gap-5">
@@ -28,7 +28,7 @@ const Footer = () => {
                 <Link
                   href="https://t.me/Arraxspace"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
                 >
                   <PiTelegramLogo />
                 </Link>
@@ -37,7 +37,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
                 >
                   <FaWhatsapp />
                 </Link>
@@ -46,7 +46,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
                 >
                   <FaInstagram />
                 </Link>
@@ -55,7 +55,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
                 >
                   <SlSocialFacebook />
                 </Link>
@@ -64,7 +64,7 @@ const Footer = () => {
                 <Link
                   href="https://www.youtube.com/@ArraxSpace"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
                 >
                   <SlSocialYoutube />
                 </Link>
@@ -73,7 +73,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
                 >
                   <RiTwitterXFill />
                 </Link>
