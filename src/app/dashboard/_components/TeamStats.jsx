@@ -21,7 +21,7 @@ const TeamStats = () => {
     <div className="flex flex-col gap-3 md:flex-row">
       <div className="flex w-full gap-3 md:w-1/2">
         {/* partners stats */}
-        <div className="bg-arx-primary-light w-full space-y-2.5 rounded-lg p-3">
+        <div className="bg-arx-black-4 w-full space-y-2.5 rounded-lg p-3">
           <p className="text-sm text-zinc-400">Partners</p>
           <p className="text-lg font-bold md:text-xl">29</p>
           <div className="flex justify-between rounded-full bg-[#464747] p-1.5 text-sm font-medium">
@@ -32,7 +32,7 @@ const TeamStats = () => {
           </div>
         </div>
         {/* team stats */}
-        <div className="bg-arx-primary-light w-full space-y-2.5 rounded-lg p-3">
+        <div className="bg-arx-black-4 w-full space-y-2.5 rounded-lg p-3">
           <p className="text-sm text-zinc-400">Team</p>
           <p className="text-lg font-bold md:text-xl">1002</p>
           <div className="flex justify-between rounded-full bg-[#464747] p-1.5 text-sm font-medium">
@@ -43,7 +43,7 @@ const TeamStats = () => {
           </div>
         </div>
         {/* partners stats */}
-        <div className="bg-arx-primary-light w-full space-y-2.5 rounded-lg p-3">
+        <div className="bg-arx-black-4 w-full space-y-2.5 rounded-lg p-3">
           <p className="text-sm text-zinc-400">Ratio</p>
           <p className="text-lg font-bold md:text-xl">915%</p>
           <div className="flex justify-between rounded-full bg-[#464747] p-1.5 text-sm font-medium">
@@ -55,7 +55,7 @@ const TeamStats = () => {
         </div>
       </div>
       {/* profits stats */}
-      <div className="bg-arx-primary-light w-full space-y-2.5 rounded-lg p-3 md:w-1/2">
+      <div className="bg-arx-black-4 w-full space-y-2.5 rounded-lg p-3 md:w-1/2">
         <p className="text-sm text-zinc-400">Profits</p>
         <div className="flex items-center justify-between gap-2 text-sm">
           <p className="text-lg font-bold md:text-xl">1336.7 BUSD</p>

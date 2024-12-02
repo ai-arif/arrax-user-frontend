@@ -23,11 +23,9 @@ module.exports = {
       // --portage: #857cf4;
 
       // "arx-primary": "#974edd",
-      // "arx-primary": "#974edd",
       colors: {
-        "arx-primary": "#18191A",
-        "arx-primary-light": "#242526",
-        // "arx-secondary": "#340385",
+        "arx-black-5": "#18191A",
+        "arx-black-4": "#242526",
         "arx-blue-5": "#416AFF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

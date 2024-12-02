@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa6";
 
 const HexagonTrophy = () => {
   return (
-    <div className="bg-arx-primary-light flex items-center justify-between rounded-lg p-5 shadow-lg">
+    <div className="bg-arx-black-4 flex items-center justify-between rounded-lg p-5 shadow-lg">
       {/* hexagon trophy */}
       <div className="flex flex-grow justify-around gap-4">
         {[1, 2, 3, 4].map((_, index) => (

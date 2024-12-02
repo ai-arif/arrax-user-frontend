@@ -7,7 +7,7 @@ export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-arx-black-5">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       {/* Content Area */}
@@ -43,7 +43,7 @@ export default function DashboardLayout({ children }) {
           </button>
         </div>
         {/* Main Dashboard Content */}
-        <section className="lg:p-7.5 mx-auto w-full max-w-screen-2xl p-4 sm:p-6 2xl:p-10">
+        <section className="mx-auto w-full max-w-screen-2xl p-4 sm:p-6 lg:p-7.5 2xl:p-10">
           {children}
         </section>
       </div>

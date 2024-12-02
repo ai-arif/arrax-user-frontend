@@ -17,7 +17,7 @@ const HomeFaq = () => {
         type="single"
         defaultValue="item-1"
         collapsible
-        className="mx-auto w-full bg-arx-primary md:w-[90%]"
+        className="mx-auto w-full bg-arx-black-5 md:w-[90%]"
       >
         {homeFaqs?.map((faq, index) => (
           <AccordionItem

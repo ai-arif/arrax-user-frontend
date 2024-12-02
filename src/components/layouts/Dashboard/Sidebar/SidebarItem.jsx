@@ -29,7 +29,7 @@ const SidebarItem = ({ menuItem, setSidebarOpen }) => {
       <Link
         href={menuItem.path}
         onClick={handleClick}
-        className={`${isItemActive ? "bg-arx-primary-light rounded-md text-white" : "text-zinc-400"} group relative flex items-center gap-2.5 px-4 py-2 font-semibold transition-all duration-75`}
+        className={`${isItemActive ? "bg-arx-black-4 rounded-md text-white" : "text-zinc-400"} group relative flex items-center gap-2.5 px-4 py-2 font-semibold transition-all duration-75`}
       >
         {menuItem.icon}
         {menuItem.label}
