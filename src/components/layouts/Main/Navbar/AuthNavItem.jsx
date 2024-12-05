@@ -1,24 +1,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { AuthContext } from "@/contexts/AuthProvider";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
-const AuthNavItem = () => {
-  // const { loggedInUser } = useContext(AuthContext);
-  // TODO: removed it just for testing
-  const loggedInUser = true;
+const AuthNavItem = ({ setOpen }) => {
+  const { loggedInUser } = useContext(AuthContext);
 
   return (
-    <Button
-      asChild
-      size="lg"
-      // className="rounded-full text-base font-semibold tracking-wide"
-    >
+    <Button onClick={() => setOpen(false)} asChild variant="secondary">
       {loggedInUser ? (
-        <Link href="/dashboard">Dashboard</Link>
+        <Link href="/dashboard">Profile</Link>
       ) : (
-        <Link href="/auth/login">Login</Link>
+        <Link href="/login">Register</Link>
       )}
     </Button>
   );

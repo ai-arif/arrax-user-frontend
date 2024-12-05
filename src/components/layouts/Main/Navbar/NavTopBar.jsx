@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Logo from "@/components/ui/Logo";
 import {
   Sheet,
@@ -8,11 +10,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Link from "next/link";
 import { useState } from "react";
+import { LuSearch } from "react-icons/lu";
+import AuthNavItem from "./AuthNavItem";
 
 const NavTopBar = () => {
   const [open, setOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -40,62 +44,48 @@ const NavTopBar = () => {
       </SheetTrigger>
       <SheetContent
         side="top"
-        className="h-[60%] border-b-0 bg-arx-black-5 p-5 sm:h-[50%] md:h-[40%] lg:p-8"
+        className="h-[60%] border-b-0 bg-arx-black-5 p-5 sm:h-[50%] md:h-[40%] lg:p-10"
       >
         <SheetHeader>
           <SheetTitle></SheetTitle>
         </SheetHeader>
 
         {/* Navbar Content */}
-        <div className="space-y-4">
-          {/* Wallet Connect */}
-          <button className="rounded-md bg-purple-500 px-4 py-2 text-white">
-            Wallet Connect
-          </button>
+        <div className="top-container">
+          <div className="space-y-4 md:space-y-8">
+            {/* search & logo part */}
+            <div className="flex w-full justify-between gap-3 md:gap-8 lg:gap-16">
+              <Logo />
+              <form className="flex w-full gap-2">
+                <Input type="search" placeholder="Search..." required />
+                <Button type="submit">
+                  Search <LuSearch />
+                </Button>
+              </form>
+            </div>
+            {/* Wallet Connect & Generation */}
+            <div className="flex justify-between gap-4">
+              <div className="flex gap-4">
+                <button className="rounded-md bg-purple-500 px-4 py-2 text-white">
+                  Wallet Connect
+                </button>
 
-          {/* Generation */}
-          <button className="rounded-md bg-green-500 px-4 py-2 text-white">
-            Generation
-          </button>
-
-          {/* Search Bar */}
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 text-white"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M8 16l4-4-4-4m5 0h7m0 0v7m0-7l-7 7"
-                />
-              </svg>
-            </button>
-            {searchOpen && (
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full rounded-lg bg-gray-700 p-2 text-white"
-              />
-            )}
-          </div>
-
-          {/* Register & Profile */}
-          <div className="flex items-center justify-between">
-            <button className="rounded-md bg-blue-500 px-4 py-2 text-white">
-              Register
-            </button>
-            <button className="rounded-md bg-gray-500 px-4 py-2 text-white">
-              Profile
-            </button>
+                <button className="rounded-md bg-green-500 px-4 py-2 text-white">
+                  Generation
+                </button>
+              </div>
+              {/* auth buttons (register/profile) */}
+              <AuthNavItem setOpen={setOpen} />
+              {/* <div>
+                <Button
+                  onClick={() => setOpen(false)}
+                  asChild
+                  className="rounded-md !bg-blue-500"
+                >
+                  <Link href="/login">Register</Link>
+                </Button>
+              </div> */}
+            </div>
           </div>
         </div>
       </SheetContent>
