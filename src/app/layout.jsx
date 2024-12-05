@@ -1,3 +1,4 @@
+import AuthProvider from "@/contexts/AuthProvider";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
@@ -15,7 +16,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.className} bg-black text-sm text-white antialiased md:text-base`}
       >
-        <main>{children}</main>
+        <AuthProvider>
+          <main>{children}</main>
+        </AuthProvider>
         <Toaster />
       </body>
     </html>
