@@ -21,15 +21,17 @@ module.exports = {
       // --lavender-gray: #c4b4d4;
       // --wisteria: #9375ba;
       // --portage: #857cf4;
-
       // "arx-primary": "#974edd",
+
       colors: {
+        "arx-primary": "#cd45ff",
+        "arx-secondary": "#7368ff",
         "arx-black-5": "#18191A",
         "arx-black-4": "#242526",
-        "arx-blue-5": "#416AFF",
         stroke: "#E2E8F0",
         // lite: "#f7f9fa",
         // "gray-1": "#EFF4FB",
+        "arx-blue-5": "#416AFF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
