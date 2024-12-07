@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import EditProfile from "./EditProfile";
 
 const ProfileHeader = ({
   image,
@@ -9,6 +10,7 @@ const ProfileHeader = ({
   walletAddress,
   referredBy,
   joiningDate,
+  isOwner,
 }) => {
   return (
     <div className="dashboard-bottom-spacing">
@@ -20,9 +22,7 @@ const ProfileHeader = ({
             <AvatarFallback>User</AvatarFallback>
           </Avatar>
           <h1 className="mb-2 text-xl font-bold md:text-2xl">{fullName}</h1>
-          <Button size="sm" variant="secondary">
-            Edit Profile
-          </Button>
+          {isOwner && <EditProfile fullName={fullName} image={image} />}
         </div>
         {/* profile info part */}
         <div className="text-sm text-zinc-300">

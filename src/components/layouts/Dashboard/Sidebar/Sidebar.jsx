@@ -1,8 +1,11 @@
+import { AuthContext } from "@/contexts/AuthProvider";
 import { dashboardMenuConfig } from "@/utils/dashboardMenuConfig";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { CgLogOut } from "react-icons/cg";
 import SidebarItem from "./SidebarItem";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+  const { handleLogout } = useContext(AuthContext);
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
@@ -39,7 +42,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   return (
     <aside
       ref={sidebar}
-      className={`bg-arx-black-5 absolute left-0 top-0 z-30 flex h-screen w-[60%] flex-col overflow-y-hidden border-r border-zinc-700 duration-300 ease-linear sm:w-64 lg:static lg:translate-x-0 2xl:w-72 ${
+      className={`absolute left-0 top-0 z-30 flex h-screen w-[60%] flex-col overflow-y-hidden border-r border-zinc-700 bg-arx-black-5 duration-300 ease-linear sm:w-64 lg:static lg:translate-x-0 2xl:w-72 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -77,6 +80,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 setSidebarOpen={setSidebarOpen}
               />
             ))}
+            <li
+              onClick={handleLogout}
+              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:bg-zinc-800 hover:text-white"
+            >
+              <CgLogOut /> Logout
+            </li>
           </ul>
         </nav>
       </div>
