@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { AuthContext } from "@/contexts/AuthProvider";
 import axiosInstance from "@/utils/axiosInstance";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { LuLoader2 } from "react-icons/lu";
@@ -19,6 +21,7 @@ export const loginSchema = z.object({
 });
 
 const AutomaticLoginForm = () => {
+  const { fetchUser } = useContext(AuthContext);
   const router = useRouter();
 
   const {
@@ -34,7 +37,9 @@ const AutomaticLoginForm = () => {
     try {
       const response = await axiosInstance.get(`/users/user/${data.userId}`);
       if (response?.data?.success) {
+        Cookies.set("arx_user_id", response.data?.data?.userId);
         reset();
+        await fetchUser();
         router.push("/dashboard");
         toast.success(response.data.message);
       } else {
