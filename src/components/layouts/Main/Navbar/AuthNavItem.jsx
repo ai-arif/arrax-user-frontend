@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { AuthContext } from "@/contexts/AuthProvider";
 import Link from "next/link";
@@ -11,7 +9,7 @@ const AuthNavItem = ({ setOpen }) => {
   return (
     <Button onClick={() => setOpen(false)} asChild variant="secondary">
       {loggedInUser ? (
-        <Link href="/dashboard">Profile</Link>
+        <Link href="/dashboard/profile">Profile</Link>
       ) : (
         <Link href="/login">Register</Link>
       )}

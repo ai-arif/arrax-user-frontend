@@ -50,7 +50,7 @@ const ProfileHeader = ({
         <div className="mt-4 space-y-2 text-sm text-zinc-300">
           <p className="font-semibold text-white">Your Referral Link:</p>
           <div className="flex items-center justify-center gap-2">
-            <Input type="text" value={referLink} readOnly className="w-fit" />
+            <Input type="text" value={referLink} readOnly />
             <Button
               onClick={handleCopyUrl}
               className="flex items-center gap-1 bg-gray-800 hover:bg-gray-700"

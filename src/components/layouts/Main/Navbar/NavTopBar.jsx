@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState } from "react";
 import { LuSearch } from "react-icons/lu";
@@ -17,6 +18,7 @@ import AuthNavItem from "./AuthNavItem";
 
 const NavTopBar = () => {
   const [open, setOpen] = useState(false);
+  const userId = Cookies.get("arx_user_id");
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -44,7 +46,7 @@ const NavTopBar = () => {
       </SheetTrigger>
       <SheetContent
         side="top"
-        className="h-[60%] border-b-0 bg-arx-black-5 p-5 sm:h-[50%] md:h-[40%] lg:p-10"
+        className="h-[45%] border-b-0 bg-arx-black-5 p-5 sm:h-[50%] md:h-[50%] lg:p-10"
       >
         <SheetHeader>
           <SheetTitle></SheetTitle>
@@ -64,27 +66,21 @@ const NavTopBar = () => {
               </form>
             </div>
             {/* Wallet Connect & Generation */}
-            <div className="flex justify-between gap-4">
-              <div className="flex gap-4">
-                <button className="rounded-md bg-purple-500 px-4 py-2 text-white">
-                  Wallet Connect
-                </button>
+            <div className="mx-auto flex w-full flex-col gap-4 sm:w-[80%] md:w-[60%] lg:w-[50%]">
+              <button className="rounded-md bg-purple-500 px-4 py-2 text-white">
+                Wallet Connect
+              </button>
 
-                <button className="rounded-md bg-green-500 px-4 py-2 text-white">
+              <button
+                onClick={() => setOpen(false)}
+                className="rounded-md bg-green-500 px-4 py-2 text-white"
+              >
+                <Link href={userId ? "/dashboard/team" : "/login"}>
                   Generation
-                </button>
-              </div>
+                </Link>
+              </button>
               {/* auth buttons (register/profile) */}
               <AuthNavItem setOpen={setOpen} />
-              {/* <div>
-                <Button
-                  onClick={() => setOpen(false)}
-                  asChild
-                  className="rounded-md !bg-blue-500"
-                >
-                  <Link href="/login">Register</Link>
-                </Button>
-              </div> */}
             </div>
           </div>
         </div>
