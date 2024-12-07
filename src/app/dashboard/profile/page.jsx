@@ -8,7 +8,7 @@ import ProfileStats from "./_components/ProfileStats";
 
 const ProfilePage = () => {
   const { loggedInUser, loading } = useContext(AuthContext);
-  console.log(loggedInUser);
+  console.log(loggedInUser.referLink);
 
   if (loading) {
     return <p className="py-10 text-center text-2xl font-medium">Loading...</p>;
@@ -25,6 +25,9 @@ const ProfilePage = () => {
         referredBy={loggedInUser?.referredBy}
         joiningDate={new Date(loggedInUser?.createdAt).toLocaleDateString()}
         isOwner={loading?.isOwner}
+        referLink={
+          loggedInUser?.referLink || "https://arrax.space/login?ref=12"
+        }
       />
 
       {/* Income Section */}

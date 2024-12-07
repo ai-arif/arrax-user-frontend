@@ -1,6 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import React from "react";
+import toast from "react-hot-toast";
+import { FiCopy } from "react-icons/fi";
 import EditProfile from "./EditProfile";
 
 const ProfileHeader = ({
@@ -11,7 +14,19 @@ const ProfileHeader = ({
   referredBy,
   joiningDate,
   isOwner,
+  referLink,
 }) => {
+  const handleCopyUrl = (url) => {
+    navigator.clipboard.writeText(url).then(
+      () => {
+        toast.success("Link copied!");
+      },
+      (err) => {
+        console.error("Could not copy text: ", err);
+      },
+    );
+  };
+
   return (
     <div className="dashboard-bottom-spacing">
       <div className="space-y-4 rounded-lg bg-arx-black-4 p-5 text-center shadow-lg md:space-y-5 md:p-6">
@@ -30,6 +45,22 @@ const ProfileHeader = ({
           <p>Invited By: {referredBy}</p>
           <p>Wallet: {walletAddress}</p>
           <p>Joined: {joiningDate}</p>
+        </div>
+        {/* Referral link section */}
+        <div className="mt-4 space-y-2 text-sm text-zinc-300">
+          <p className="font-semibold text-white">Your Referral Link:</p>
+          <div className="flex items-center justify-center gap-2">
+            <Input type="text" value={referLink} readOnly className="w-fit" />
+            <Button
+              onClick={handleCopyUrl}
+              className="flex items-center gap-1 bg-gray-800 hover:bg-gray-700"
+              variant="outline"
+              size="sm"
+            >
+              <FiCopy className="text-white" />
+              Copy
+            </Button>
+          </div>
         </div>
       </div>
     </div>
