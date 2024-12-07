@@ -18,7 +18,7 @@ import { z } from "zod";
 // register schema
 export const registerSchema = z.object({
   referredBy: z.string().trim().min(1, "Inviter ID is required"),
-  walletAddress: z.string().trim().min(1, "Wallet address is required"),
+  // walletAddress: z.string().trim().min(1, "Wallet address is required"),
   fullName: z.string().trim().min(1, "Full name is required"),
 });
 
@@ -37,7 +37,7 @@ const RegisterForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post("/connect-wallet", data);
+      const response = await axiosInstance.post("/users/connect-wallet", data);
       if (response?.data?.success) {
         Cookies.set("arx_auth_token", response.data?.data?.token);
         Cookies.set("arx_user_id", response.data?.data?.user?.userId);
@@ -70,7 +70,7 @@ const RegisterForm = () => {
         />
         <ErrorMessage>{errors.referredBy?.message}</ErrorMessage>
       </div>
-      <div>
+      {/* <div>
         <Label htmlFor="wallet-address" className="sr-only">
           Wallet Address
         </Label>
@@ -81,7 +81,7 @@ const RegisterForm = () => {
           placeholder="Enter Wallet Address"
         />
         <ErrorMessage>{errors.walletAddress?.message}</ErrorMessage>
-      </div>
+      </div> */}
       <div>
         <Label htmlFor="full-name" className="sr-only">
           Full Name
@@ -94,15 +94,10 @@ const RegisterForm = () => {
         />
         <ErrorMessage>{errors.fullName?.message}</ErrorMessage>
       </div>
-      {/* <div className="mb-4 text-sm text-gray-400">
-        <p>
-          BNB Payment: <span className="text-green-400">0.10 USD</span>
-        </p>
-      </div> */}
       <Button disabled={isSubmitting} type="submit" className="w-full">
         {isSubmitting ? (
           <>
-            <LuLoader2 className="animate-spin-fast mr-1 inline text-lg" />
+            <LuLoader2 className="mr-1 inline animate-spin-fast text-lg" />
             <span className="text-base">Please Wait</span>
           </>
         ) : (

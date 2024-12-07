@@ -12,49 +12,54 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const router = useRouter();
-  const userId = Cookies.get("arx_user_id");
-  // const token = Cookies.get("arx_auth_token");
 
+  //  Fetch logged-in user details
   const fetchUser = async () => {
-    setLoading(true);
+    const userId = Cookies.get("arx_user_id");
+    if (!userId) {
+      setLoggedInUser(null);
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await axiosInstance.get(`/user/${userId}`);
+      setLoading(true);
+      const response = await axiosInstance.get(`/users/user/${userId}`);
       if (response?.data?.success) {
-        setLoggedInUser(response?.data?.data);
+        setLoggedInUser(response.data.data);
       } else {
         setLoggedInUser(null);
       }
     } catch (error) {
-      console.error("Failed to fetch user:", error);
       setLoggedInUser(null);
+      console.log("Failed to fetch user:", error);
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    if (userId) {
-      fetchUser();
-    }
-  }, [userId]);
-
-  // Logout
-  const handleLogout = async () => {
+  //  Clear cookies and log out the user.
+  const handleLogout = () => {
     try {
       Cookies.remove("arx_user_id");
       Cookies.remove("arx_auth_token");
       setLoggedInUser(null);
-      toast.success("Logout Successfully");
       router.push("/");
+      toast.success("Logout successfully.");
     } catch (error) {
       console.log(error);
     }
   };
 
+  // Automatically fetch user
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   const authInfo = {
     loading,
-    fetchUser,
     loggedInUser,
+    fetchUser,
     setLoggedInUser,
     handleLogout,
   };

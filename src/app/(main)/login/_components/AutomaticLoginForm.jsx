@@ -4,12 +4,10 @@ import { Button } from "@/components/ui/button";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { AuthContext } from "@/contexts/AuthProvider";
 import axiosInstance from "@/utils/axiosInstance";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import React, { useContext } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { LuLoader2 } from "react-icons/lu";
@@ -17,11 +15,10 @@ import { z } from "zod";
 
 // register schema
 export const loginSchema = z.object({
-  walletAddress: z.string().trim().min(1, "Wallet address is required"),
+  userId: z.string().trim().min(1, "Wallet address is required"),
 });
 
 const AutomaticLoginForm = () => {
-  const { fetchUser } = useContext(AuthContext);
   const router = useRouter();
 
   const {
@@ -35,12 +32,9 @@ const AutomaticLoginForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post("/connect-wallet", data);
+      const response = await axiosInstance.get(`/users/user/${data.userId}`);
       if (response?.data?.success) {
-        Cookies.set("arx_auth_token", response.data?.data?.token);
-        Cookies.set("arx_user_id", response.data?.data?.user?.userId);
         reset();
-        await fetchUser();
         router.push("/dashboard");
         toast.success(response.data.message);
       } else {
@@ -57,25 +51,25 @@ const AutomaticLoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 md:space-y-5">
       <div>
-        <Label htmlFor="wallet-address" className="sr-only">
-          Wallet Address
+        <Label htmlFor="user-id" className="sr-only">
+          Enter User ID
         </Label>
         <Input
-          {...register("walletAddress")}
-          id="wallet-address"
+          {...register("userId")}
+          id="user-id"
           type="text"
-          placeholder="Enter Wallet Address"
+          placeholder="Enter User ID"
         />
-        <ErrorMessage>{errors.walletAddress?.message}</ErrorMessage>
+        <ErrorMessage>{errors.userId?.message}</ErrorMessage>
       </div>
       <Button disabled={isSubmitting} type="submit" className="w-full">
         {isSubmitting ? (
           <>
-            <LuLoader2 className="animate-spin-fast mr-1 inline text-lg" />
+            <LuLoader2 className="mr-1 inline animate-spin-fast text-lg" />
             <span className="text-base">Please Wait</span>
           </>
         ) : (
-          "Automatic Login"
+          "View"
         )}
       </Button>
     </form>
