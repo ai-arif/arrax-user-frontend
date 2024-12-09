@@ -7,12 +7,7 @@ const AuthNavItem = ({ setOpen }) => {
   const { loggedInUser } = useContext(AuthContext);
 
   return (
-    <Button
-      onClick={() => setOpen(false)}
-      asChild
-      variant="outline"
-      className="border-2"
-    >
+    <Button onClick={() => setOpen(false)} asChild variant="outline">
       {loggedInUser ? (
         <Link href="/dashboard/profile">Profile</Link>
       ) : (

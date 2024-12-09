@@ -53,17 +53,10 @@ const NavTopBar = () => {
               </form>
             </div>
             {/* Wallet Connect & Generation */}
-            <div className="mx-auto flex w-full flex-col gap-3 sm:w-[80%] md:w-[60%] md:gap-5 lg:w-[50%]">
-              <Button variant="outline" className="border-2">
-                Wallet Connect
-              </Button>
+            <div className="mx-auto flex w-full flex-col gap-3 sm:w-[80%] md:w-[60%] md:gap-4 lg:w-[50%]">
+              <Button variant="outline">Wallet Connect</Button>
 
-              <Button
-                onClick={() => setOpen(false)}
-                variant="outline"
-                className="border-2"
-                asChild
-              >
+              <Button onClick={() => setOpen(false)} variant="outline" asChild>
                 <Link href={userId ? "/dashboard/team" : "/login"}>
                   Generation
                 </Link>

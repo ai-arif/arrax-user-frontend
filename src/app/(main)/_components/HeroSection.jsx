@@ -7,9 +7,9 @@ import assets from "../../../../public/images";
 const HeroSection = () => {
   return (
     <Container>
-      <div className="flex flex-col justify-between gap-7.5 md:items-center md:gap-10 lg:flex-row">
+      <div className="flex flex-col justify-between gap-8 md:items-center md:gap-10 lg:flex-row">
         {/* hero content */}
-        <div className="w-full space-y-3 text-center md:w-1/2 md:space-y-5 md:text-left">
+        <div className="w-full space-y-3 text-center md:space-y-5 lg:w-1/2 lg:text-left">
           <p className="text-base font-medium text-stroke md:text-lg md:font-semibold">
             Easy Secure Fast
           </p>
@@ -27,13 +27,13 @@ const HeroSection = () => {
             <Button size="lg" className="rounded-full">
               Login
             </Button>
-            <Button variant="secondary" size="lg" className="rounded-full">
+            <Button variant="outline" size="lg" className="rounded-full">
               Register
             </Button>
           </div>
         </div>
         {/* hero image */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-[70%] lg:w-1/2">
           <Image
             className="h-auto w-full rounded-md object-cover"
             src={assets?.images?.mainBanner}
