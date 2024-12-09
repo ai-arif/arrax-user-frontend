@@ -2,6 +2,7 @@ import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import React from "react";
 import HeroSection from "./_components/HeroSection";
 import HomeFaq from "./_components/HomeFaq";
+import HomeStats from "./_components/HomeStats";
 
 export const metadata = {
   title: "Home - Arrax Space",
@@ -14,6 +15,7 @@ const HomePage = () => {
       {/* particles background chain animation */}
       <ParticlesBackground />
       <HeroSection />
+      <HomeStats />
       <HomeFaq />
     </div>
   );
