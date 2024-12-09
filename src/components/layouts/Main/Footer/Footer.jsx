@@ -28,7 +28,7 @@ const Footer = () => {
                 <Link
                   href="https://t.me/Arraxspace"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
                 >
                   <PiTelegramLogo />
                 </Link>
@@ -37,7 +37,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
                 >
                   <FaWhatsapp />
                 </Link>
@@ -46,7 +46,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
                 >
                   <FaInstagram />
                 </Link>
@@ -55,7 +55,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
                 >
                   <SlSocialFacebook />
                 </Link>
@@ -64,7 +64,7 @@ const Footer = () => {
                 <Link
                   href="https://www.youtube.com/@ArraxSpace"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
                 >
                   <SlSocialYoutube />
                 </Link>
@@ -73,7 +73,7 @@ const Footer = () => {
                 <Link
                   href="/"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-purple-400"
+                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
                 >
                   <RiTwitterXFill />
                 </Link>
@@ -82,7 +82,9 @@ const Footer = () => {
           </div>
           <hr className="w-full border-gray-900" />
           <p className="text-center text-sm text-slate-300">
-            © {currentYear} Arrax Space. All Rights Reserved.
+            © {currentYear}{" "}
+            <span className="text-arx-primary">Arrax Space</span>. All Rights
+            Reserved.
           </p>
         </div>
       </Container>

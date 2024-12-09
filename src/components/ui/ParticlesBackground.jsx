@@ -30,36 +30,22 @@ const ParticlesBackground = () => {
       interactivity: {
         events: {
           onClick: {
-            enable: false,
+            enable: true,
             mode: "push",
           },
           onHover: {
-            enable: false,
-            mode: "grab",
+            enable: true,
+            mode: "repulse",
           },
-          resize: false,
+          resize: true,
         },
         modes: {
-          grab: {
-            distance: 100,
-            links: {
-              opacity: 1,
-            },
-          },
-          bubble: {
-            distance: 200,
-            size: 80,
-            duration: 0.4,
+          push: {
+            quantity: 4,
           },
           repulse: {
             distance: 200,
             duration: 0.4,
-          },
-          push: {
-            particles_nb: 4,
-          },
-          remove: {
-            particles_nb: 2,
           },
         },
       },
@@ -71,36 +57,41 @@ const ParticlesBackground = () => {
           enable: true,
           distance: 100,
           color: "#ffffff",
-          opacity: 0.3,
+          opacity: 0.2,
           width: 1,
         },
         move: {
-          enable: true,
-          speed: 2,
           direction: "none",
-          random: false,
-          straight: false,
+          enable: true,
           outModes: {
             default: "out",
           },
+          random: false,
+          speed: 2,
+          straight: false,
           bounce: false,
         },
         number: {
+          value: 300,
           density: {
             enable: true,
             area: 800,
           },
-          value: 300,
         },
         opacity: {
-          value: 0.5,
-          random: true,
+          value: 0.4,
         },
         shape: {
           type: "circle",
         },
         size: {
           value: { min: 1, max: 5 },
+          random: { enable: true },
+          animation: {
+            enable: false,
+            speed: 20,
+            sync: false,
+          },
         },
       },
       detectRetina: true,

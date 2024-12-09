@@ -3,7 +3,7 @@ import React from "react";
 
 const SectionTitle = ({ children, className }) => {
   return (
-    <div className={cn("pb-7 md:pb-10", className)}>
+    <div className={cn("pb-6 md:pb-10", className)}>
       <h4 className="text-custom-style text-center text-xl font-semibold uppercase md:text-3xl md:font-bold">
         {children}
       </h4>
