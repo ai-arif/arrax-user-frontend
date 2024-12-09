@@ -7,7 +7,7 @@ const Logo = ({ className }) => {
   return (
     <Link href="/">
       <Image
-        className={cn("h-auto w-[110px] object-cover md:w-[140px]", className)}
+        className={cn("h-auto w-[100px] object-cover md:w-[140px]", className)}
         src={assets?.svgs?.logo}
         alt="Arrax"
       />

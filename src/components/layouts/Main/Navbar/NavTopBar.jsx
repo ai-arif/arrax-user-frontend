@@ -14,6 +14,7 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState } from "react";
 import { LuSearch } from "react-icons/lu";
+import { RxHamburgerMenu } from "react-icons/rx";
 import AuthNavItem from "./AuthNavItem";
 
 const NavTopBar = () => {
@@ -23,30 +24,11 @@ const NavTopBar = () => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <button className="">
-          <svg
-            fill="#ffffff"
-            width="44px"
-            height="44px"
-            viewBox="0 0 28 28"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="#ffffff"
-          >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <path d="M3.5,7 C3.22385763,7 3,6.77614237 3,6.5 C3,6.22385763 3.22385763,6 3.5,6 L20.5,6 C20.7761424,6 21,6.22385763 21,6.5 C21,6.77614237 20.7761424,7 20.5,7 L3.5,7 Z M3.5,12 C3.22385763,12 3,11.7761424 3,11.5 C3,11.2238576 3.22385763,11 3.5,11 L20.5,11 C20.7761424,11 21,11.2238576 21,11.5 C21,11.7761424 20.7761424,12 20.5,12 L3.5,12 Z M3.5,17 C3.22385763,17 3,16.7761424 3,16.5 C3,16.2238576 3.22385763,16 3.5,16 L20.5,16 C20.7761424,16 21,16.2238576 21,16.5 C21,16.7761424 20.7761424,17 20.5,17 L3.5,17 Z"></path>
-            </g>
-          </svg>
-        </button>
+        <RxHamburgerMenu className="cursor-pointer text-3xl" />
       </SheetTrigger>
       <SheetContent
         side="top"
-        className="h-[45%] border-b-0 bg-arx-black-5 p-5 sm:h-[50%] md:h-[50%] lg:p-10"
+        className="h-max min-h-[40%] border-b-0 bg-arx-black-5 p-5 sm:p-8"
       >
         <SheetHeader>
           <SheetTitle></SheetTitle>
@@ -54,31 +36,38 @@ const NavTopBar = () => {
 
         {/* Navbar Content */}
         <div className="top-container">
-          <div className="space-y-4 md:space-y-8">
+          <div className="space-y-4 md:space-y-6">
             {/* search & logo part */}
-            <div className="flex w-full justify-between gap-3 md:gap-8 lg:gap-16">
+            <div className="flex w-full flex-col items-center justify-between gap-3 md:flex-row md:gap-8 lg:gap-16">
               <Logo />
-              <form className="flex w-full gap-2">
-                <Input type="search" placeholder="Search..." required />
-                <Button type="submit">
+              <form className="mx-auto flex w-full sm:w-[80%] md:w-full">
+                <Input
+                  type="search"
+                  placeholder="Search..."
+                  required
+                  className="rounded-r-none"
+                />
+                <Button type="submit" className="rounded-l-none">
                   Search <LuSearch />
                 </Button>
               </form>
             </div>
             {/* Wallet Connect & Generation */}
-            <div className="mx-auto flex w-full flex-col gap-4 sm:w-[80%] md:w-[60%] lg:w-[50%]">
-              <button className="rounded-md bg-purple-500 px-4 py-2 text-white">
+            <div className="mx-auto flex w-full flex-col gap-3 sm:w-[80%] md:w-[60%] md:gap-5 lg:w-[50%]">
+              <Button variant="outline" className="border-2">
                 Wallet Connect
-              </button>
+              </Button>
 
-              <button
+              <Button
                 onClick={() => setOpen(false)}
-                className="rounded-md bg-green-500 px-4 py-2 text-white"
+                variant="outline"
+                className="border-2"
+                asChild
               >
                 <Link href={userId ? "/dashboard/team" : "/login"}>
                   Generation
                 </Link>
-              </button>
+              </Button>
               {/* auth buttons (register/profile) */}
               <AuthNavItem setOpen={setOpen} />
             </div>
