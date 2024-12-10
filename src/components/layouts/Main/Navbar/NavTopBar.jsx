@@ -57,7 +57,6 @@ const NavTopBar = () => {
             {/* Wallet Connect & Generation */}
             <div className="mx-auto flex w-full flex-col gap-3 sm:w-[70%] md:w-[50%] md:gap-4 lg:w-[45%]">
               <Button variant="secondary">
-                {" "}
                 <FaWallet /> Connect Wallet
               </Button>
 

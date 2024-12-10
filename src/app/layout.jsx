@@ -19,7 +19,14 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <main>{children}</main>
         </AuthProvider>
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "#7368ff",
+              color: "#ffff",
+            },
+          }}
+        />
       </body>
     </html>
   );
