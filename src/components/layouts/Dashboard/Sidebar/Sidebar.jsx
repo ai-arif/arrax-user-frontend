@@ -4,6 +4,7 @@ import { dashboardMenuConfig } from "@/utils/dashboardMenuConfig";
 import React, { useContext, useEffect, useRef } from "react";
 import { CgLogOut } from "react-icons/cg";
 import { RxArrowLeft } from "react-icons/rx";
+import SidebarFooter from "./SidebarFooter";
 import SidebarItem from "./SidebarItem";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -76,11 +77,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               onClick={handleLogout}
               className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:bg-zinc-800 hover:text-white"
             >
-              <CgLogOut /> Logout
+              <CgLogOut className="text-lg md:text-xl" /> Logout
             </li>
           </ul>
         </nav>
       </div>
+      {/* SIDEBAR FOOTER */}
+      <SidebarFooter />
     </aside>
   );
 };

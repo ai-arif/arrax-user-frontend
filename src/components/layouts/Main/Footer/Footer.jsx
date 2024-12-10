@@ -44,35 +44,23 @@ const Footer = () => {
                 <Link
                   href="https://t.me/Arraxspace"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
+                  className="social-link-style"
                 >
                   <PiTelegramLogo />
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/"
-                  target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
-                >
+                <Link href="/" target="_blank" className="social-link-style">
                   <FaWhatsapp />
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/"
-                  target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
-                >
+                <Link href="/" target="_blank" className="social-link-style">
                   <FaInstagram />
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/"
-                  target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
-                >
+                <Link href="/" target="_blank" className="social-link-style">
                   <SlSocialFacebook />
                 </Link>
               </li>
@@ -80,17 +68,13 @@ const Footer = () => {
                 <Link
                   href="https://www.youtube.com/@ArraxSpace"
                   target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
+                  className="social-link-style"
                 >
                   <SlSocialYoutube />
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/"
-                  target="_blank"
-                  className="block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary"
-                >
+                <Link href="/" target="_blank" className="social-link-style">
                   <RiTwitterXFill />
                 </Link>
               </li>

@@ -73,6 +73,16 @@
   .text-custom-style {
     @apply bg-gradient-to-r from-arx-primary to-arx-secondary bg-clip-text text-transparent;
   }
+  /* social links style */
+  .social-link-style {
+    @apply block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary;
+  }
+  .dashboard-social-link-style {
+    @apply block rounded-full bg-zinc-800 p-2.5 text-lg transition-colors hover:bg-zinc-700;
+  }
+}
+
+@layer utilities {
   /* navbar background blur */
   .custom-bg-blur::after {
     content: "";
@@ -84,9 +94,6 @@
     z-index: -1;
     border-bottom: 1px solid rgba(227, 232, 252, 0.11);
   }
-}
-
-@layer utilities {
   /* scrollbar styles */
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
