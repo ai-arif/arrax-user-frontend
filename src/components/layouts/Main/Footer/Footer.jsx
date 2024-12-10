@@ -1,20 +1,34 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
+import "animate.css";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { PiTelegramLogo } from "react-icons/pi";
 import { RiTwitterXFill } from "react-icons/ri";
 import { SlSocialFacebook, SlSocialYoutube } from "react-icons/sl";
+const WOW = typeof window !== "undefined" ? require("wowjs") : null;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  useEffect(() => {
+    if (WOW) {
+      new WOW.WOW().init();
+    }
+  }, []);
+
   return (
     <footer className="bg-black">
       <Container>
-        <div className="flex flex-col items-center space-y-5 md:space-y-7">
+        <div
+          className="wow animate__animated animate__fadeInLeft mb-5 flex flex-col items-center space-y-5 md:mb-7 md:space-y-7"
+          data-wow-delay="0.2s"
+          data-wow-duration="1s"
+        >
           <div>
             <Logo />
           </div>
@@ -80,13 +94,12 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <hr className="w-full border-gray-900" />
-          <p className="text-center text-sm text-slate-300">
-            © {currentYear}{" "}
-            <span className="text-arx-primary">Arrax Space</span>. All Rights
-            Reserved.
-          </p>
         </div>
+        <hr className="w-full border-gray-900" />
+        <p className="mt-5 text-center text-sm text-slate-300 md:mt-7">
+          © {currentYear} <span className="text-arx-primary">Arrax Space</span>
+          . All Rights Reserved.
+        </p>
       </Container>
     </footer>
   );
