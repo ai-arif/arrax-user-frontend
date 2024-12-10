@@ -11,17 +11,17 @@ export const metadata = {
 
 const LoginPage = () => {
   return (
-    <div className="flex min-h-[90vh] items-center justify-between bg-gradient-to-br from-gray-800 to-black">
+    <div className="flex min-h-[90vh] items-center justify-between bg-arx-black-5">
       <Container>
-        <div className="mx-auto flex w-full flex-col shadow-lg md:flex-row">
+        <div className="mx-auto flex w-full flex-col rounded-lg border border-zinc-700 md:flex-row">
           {/* Registration Section */}
-          <div className="w-full rounded-l-lg bg-[#1a1a1a] p-7 md:w-1/2 md:p-9">
+          <div className="w-full border-b border-zinc-700 p-6 md:w-1/2 md:border-r md:p-9">
             <h2 className="text-custom-style mb-4 text-lg font-semibold md:mb-5 md:text-2xl md:font-bold">
               Get Started with Arrax Space
             </h2>
-            {/* <p className="mb-6 text-sm">
-              Please double-check the Inviter&apos;s ID before registering.
-            </p> */}
+            <p className="mb-4 text-xs md:mb-5 md:text-sm">
+              Please check the inviter&apos;s ID before registering.
+            </p>
             <div className="mb-3 md:mb-5">
               <Button variant="secondary" className="w-full">
                 Connect Wallet
@@ -32,16 +32,13 @@ const LoginPage = () => {
           </div>
 
           {/* Login Section */}
-          <div className="w-full rounded-r-lg bg-slate-900 p-7 md:w-1/2 md:p-9">
+          <div className="w-full p-6 md:w-1/2 md:p-9">
             <h2 className="text-custom-style mb-4 text-lg font-semibold md:mb-5 md:text-2xl md:font-bold">
               Login to Your Personal Account
             </h2>
             {/* login form */}
             <AutomaticLoginForm />
-            {/* <p className="mt-4 text-xs text-gray-400">
-              To access all the functions of your personal account, use
-              auto-login.
-            </p> */}
+            <p className="mt-4 text-xs md:text-sm">Already have an account?</p>
           </div>
         </div>
       </Container>

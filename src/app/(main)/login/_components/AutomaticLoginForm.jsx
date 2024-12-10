@@ -17,7 +17,7 @@ import { z } from "zod";
 
 // register schema
 export const loginSchema = z.object({
-  userId: z.string().trim().min(1, "Wallet address is required"),
+  userId: z.string().trim().min(1, "User ID is required"),
 });
 
 const AutomaticLoginForm = () => {
