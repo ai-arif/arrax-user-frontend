@@ -13,6 +13,8 @@ import {
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useState } from "react";
+import { FaWallet } from "react-icons/fa6";
+import { IoWalletOutline } from "react-icons/io5";
 import { LuSearch } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
 import AuthNavItem from "./AuthNavItem";
@@ -40,7 +42,7 @@ const NavTopBar = () => {
             {/* search & logo part */}
             <div className="flex w-full flex-col items-center justify-between gap-3 md:flex-row md:gap-8 lg:gap-16">
               <Logo />
-              <form className="mx-auto flex w-full sm:w-[80%] md:w-full">
+              <form className="mx-auto flex w-full sm:w-[70%] md:w-full">
                 <Input
                   type="search"
                   placeholder="Search..."
@@ -53,10 +55,18 @@ const NavTopBar = () => {
               </form>
             </div>
             {/* Wallet Connect & Generation */}
-            <div className="mx-auto flex w-full flex-col gap-3 sm:w-[80%] md:w-[60%] md:gap-4 lg:w-[50%]">
-              <Button variant="outline">Wallet Connect</Button>
+            <div className="mx-auto flex w-full flex-col gap-3 sm:w-[70%] md:w-[50%] md:gap-4 lg:w-[45%]">
+              <Button variant="secondary">
+                {" "}
+                <FaWallet /> Connect Wallet
+              </Button>
 
-              <Button onClick={() => setOpen(false)} variant="outline" asChild>
+              <Button
+                onClick={() => setOpen(false)}
+                variant="secondary"
+                className="bg-teal-600"
+                asChild
+              >
                 <Link href={userId ? "/dashboard/team" : "/login"}>
                   Generation
                 </Link>

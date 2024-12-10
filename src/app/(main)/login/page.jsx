@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import React from "react";
+import { FaWallet } from "react-icons/fa6";
 import AutomaticLoginForm from "./_components/AutomaticLoginForm";
 import RegisterForm from "./_components/RegisterForm";
 
@@ -24,7 +25,7 @@ const LoginPage = () => {
             </p>
             <div className="mb-3 md:mb-5">
               <Button variant="secondary" className="w-full">
-                Connect Wallet
+                <FaWallet /> Connect Wallet
               </Button>
             </div>
             {/* register form */}

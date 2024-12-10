@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default:
           "text-white bg-gradient-to-r from-arx-primary to-arx-secondary hover:from-arx-secondary hover:to-arx-primary",
-        secondary: "text-white bg-arx-blue-5 hover:bg-arx-blue-5/85",
+        secondary: "text-white bg-arx-blue-5 hover:bg-opacity-85",
         outline:
           "border border-zinc-300 text-zinc-200 hover:border-arx-primary hover:bg-arx-primary hover:text-white",
         destructive:

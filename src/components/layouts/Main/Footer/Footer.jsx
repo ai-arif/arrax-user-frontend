@@ -30,9 +30,11 @@ const Footer = () => {
           data-wow-duration="1s"
         >
           <div>
-            <Logo />
+            <Logo className="w-[130px] md:w-[160px]" />
           </div>
-          <Button>Smart Contact Info</Button>
+          <Button size="sm" className="text-xs">
+            Smart Contact Info
+          </Button>
           <div className="pb-3 md:pb-5">
             <h4 className="text-custom-style pb-4 text-center text-2xl font-bold">
               Social Media
