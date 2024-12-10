@@ -4,7 +4,6 @@ import axiosInstance from "@/utils/axiosInstance";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { createContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 export const AuthContext = createContext();
 
@@ -45,7 +44,6 @@ const AuthProvider = ({ children }) => {
       Cookies.remove("arx_auth_token");
       setLoggedInUser(null);
       router.push("/");
-      toast.success("Logout successfully.");
     } catch (error) {
       console.log(error);
     }
