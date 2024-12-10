@@ -27,7 +27,7 @@ const SidebarFooter = () => {
             <FaWhatsapp />
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             href="/"
             target="_blank"
@@ -35,7 +35,7 @@ const SidebarFooter = () => {
           >
             <FaInstagram />
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             href="/"
@@ -54,7 +54,7 @@ const SidebarFooter = () => {
             <SlSocialYoutube />
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             href="/"
             target="_blank"
@@ -62,7 +62,7 @@ const SidebarFooter = () => {
           >
             <RiTwitterXFill />
           </Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
