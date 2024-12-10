@@ -1,10 +1,20 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
+import "animate.css";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import assets from "../../../../public/images";
+const WOW = typeof window !== "undefined" ? require("wowjs") : null;
 
 const HeroSection = () => {
+  useEffect(() => {
+    if (WOW) {
+      new WOW.WOW().init();
+    }
+  }, []);
+
   return (
     <Container>
       <div className="flex flex-col justify-between gap-8 md:items-center md:gap-10 lg:flex-row">
@@ -24,10 +34,19 @@ const HeroSection = () => {
             security.
           </p>
           <div className="space-x-3 md:space-x-4">
-            <Button size="lg" className="rounded-full">
+            <Button
+              size="lg"
+              className="wow animate__animated animate__bounceIn rounded-full"
+              data-wow-delay="0.4s"
+            >
               Login
             </Button>
-            <Button variant="outline" size="lg" className="rounded-full">
+            <Button
+              variant="outline"
+              size="lg"
+              className="wow animate__animated animate__bounceIn rounded-full"
+              data-wow-delay="0.6s"
+            >
               Register
             </Button>
           </div>
