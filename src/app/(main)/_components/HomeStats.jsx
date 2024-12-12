@@ -4,11 +4,13 @@ import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import "animate.css";
 import React, { useEffect } from "react";
+import { FaArrowUp } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa6";
 const WOW = typeof window !== "undefined" ? require("wowjs") : null;
 
 const HomeStats = () => {
-  const totalUsersToday = 123;
-  const totalIncomeToday = 4567.89;
+  const totalUsers = 123;
+  const totalIncome = 4567;
 
   useEffect(() => {
     if (WOW) {
@@ -18,32 +20,42 @@ const HomeStats = () => {
 
   return (
     <Container>
-      <SectionTitle>Today&apos;s Summary</SectionTitle>
+      <SectionTitle>Key Metrics Overview</SectionTitle>
       <div className="grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-8">
-        {/* Total Users Today */}
+        {/* Total Users */}
         <div
-          className="wow animate__animated animate__fadeInUp rounded border border-arx-secondary p-5 md:rounded-lg md:p-6"
+          className="wow animate__animated animate__fadeInUp space-y-2 rounded border border-arx-secondary p-5 md:rounded-lg md:p-6"
           data-wow-delay="0.2s"
           data-wow-duration="1s"
         >
-          <h3 className="mb-2 text-base font-medium md:text-lg md:font-semibold">
-            Total Users (Today)
-          </h3>
-          <p className="text-xl font-semibold md:text-3xl md:font-bold">
-            {totalUsersToday}
+          <div className="flex items-center justify-center gap-3 md:gap-4">
+            <h4 className="flex items-center gap-2 text-xl font-semibold md:text-3xl md:font-bold">
+              <FaUsers /> {totalUsers}
+            </h4>
+            <p className="flex items-center gap-0.5 text-xs font-medium text-green-500 md:text-sm">
+              <FaArrowUp /> 12
+            </p>
+          </div>
+          <p className="mb-2 text-base font-medium md:text-lg md:font-semibold">
+            Total Users
           </p>
         </div>
-        {/* Total Income Today */}
+        {/* Total Income */}
         <div
-          className="wow animate__animated animate__fadeInUp rounded border border-arx-secondary p-5 md:rounded-lg md:p-6"
+          className="wow animate__animated animate__fadeInUp space-y-2 rounded border border-arx-secondary p-5 md:rounded-lg md:p-6"
           data-wow-delay="0.2s"
           data-wow-duration="1s"
         >
-          <h3 className="mb-2 text-base font-medium md:text-lg md:font-semibold">
-            Total Income (Today)
-          </h3>
-          <p className="text-xl font-semibold md:text-3xl md:font-bold">
-            ${totalIncomeToday.toFixed(2)}
+          <div className="flex items-center justify-center gap-3 md:gap-4">
+            <h4 className="text-xl font-semibold md:text-3xl md:font-bold">
+              $ {totalIncome}
+            </h4>
+            <p className="flex items-center gap-0.5 text-xs font-medium text-green-500 md:text-sm">
+              <FaArrowUp /> 210
+            </p>
+          </div>
+          <p className="mb-2 text-base font-medium md:text-lg md:font-semibold">
+            Total Income
           </p>
         </div>
       </div>
