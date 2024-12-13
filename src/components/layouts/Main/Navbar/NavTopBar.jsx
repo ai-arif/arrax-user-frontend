@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Logo from "@/components/ui/Logo";
 import {
   Sheet,
@@ -10,18 +9,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Cookies from "js-cookie";
+import { AuthContext } from "@/contexts/AuthProvider";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaWallet } from "react-icons/fa6";
-import { IoWalletOutline } from "react-icons/io5";
-import { LuSearch } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
-import AuthNavItem from "./AuthNavItem";
 
 const NavTopBar = () => {
   const [open, setOpen] = useState(false);
-  const userId = Cookies.get("arx_user_id");
+  const { loggedInUser } = useContext(AuthContext);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -38,41 +34,23 @@ const NavTopBar = () => {
 
         {/* Navbar Content */}
         <div className="top-container">
-          <div className="space-y-4 md:space-y-6">
-            {/* search & logo part */}
-            <div className="flex w-full flex-col items-center justify-between gap-3 md:flex-row md:gap-8 lg:gap-16">
-              <Logo />
-              <form className="mx-auto flex w-full sm:w-[70%] md:w-full">
-                <Input
-                  type="search"
-                  placeholder="Search..."
-                  required
-                  className="rounded-r-none"
-                />
-                <Button type="submit" className="rounded-l-none">
-                  Search <LuSearch />
-                </Button>
-              </form>
+          <div className="mx-auto flex w-full flex-col justify-start gap-3 sm:w-[70%] sm:justify-center md:w-[50%] md:gap-4 lg:w-[45%]">
+            {/* logo */}
+            <div className="">
+              <Logo className="mx-auto" />
             </div>
-            {/* Wallet Connect & Generation */}
-            <div className="mx-auto flex w-full flex-col gap-3 sm:w-[70%] md:w-[50%] md:gap-4 lg:w-[45%]">
-              <Button variant="secondary">
-                <FaWallet /> Connect Wallet
-              </Button>
-
-              <Button
-                onClick={() => setOpen(false)}
-                variant="secondary"
-                className="bg-teal-600"
-                asChild
-              >
-                <Link href={userId ? "/dashboard/team" : "/login"}>
-                  Generation
-                </Link>
-              </Button>
-              {/* auth buttons (register/profile) */}
-              <AuthNavItem setOpen={setOpen} />
-            </div>
+            {/* connect wallet button */}
+            <Button variant="secondary">
+              <FaWallet /> Connect Wallet
+            </Button>
+            {/* register or dashboard button based on logged in user */}
+            <Button onClick={() => setOpen(false)} asChild>
+              {loggedInUser ? (
+                <Link href="/dashboard">Dashboard</Link>
+              ) : (
+                <Link href="/login">Register</Link>
+              )}
+            </Button>
           </div>
         </div>
       </SheetContent>

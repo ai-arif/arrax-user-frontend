@@ -5,24 +5,24 @@ const ArraxPrograms = () => {
   const programs = [
     {
       title: "x3",
-      amount: "26 770 BUSD",
+      amount: "26 770 USDT",
       gradient: "bg-gradient-x3",
     },
     {
       title: "x4",
-      amount: "74 315 BUSD",
+      amount: "74 315 USDT",
       gradient: "bg-gradient-x4",
     },
-    {
-      title: "xXx",
-      amount: "34 024.2 BUSD",
-      gradient: "bg-gradient-xXx",
-    },
-    {
-      title: "xGold",
-      amount: "72 296 BUSD",
-      gradient: "bg-gradient-xGold",
-    },
+    // {
+    //   title: "xXx",
+    //   amount: "34 024.2 BUSD",
+    //   gradient: "bg-gradient-xXx",
+    // },
+    // {
+    //   title: "xGold",
+    //   amount: "72 296 BUSD",
+    //   gradient: "bg-gradient-xGold",
+    // },
   ];
 
   return (

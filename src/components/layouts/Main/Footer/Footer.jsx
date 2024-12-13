@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { PiTelegramLogo } from "react-icons/pi";
 import { RiTwitterXFill } from "react-icons/ri";
-import { SlSocialFacebook, SlSocialYoutube } from "react-icons/sl";
+import { SlEnvolope, SlSocialFacebook, SlSocialYoutube } from "react-icons/sl";
 const WOW = typeof window !== "undefined" ? require("wowjs") : null;
 
 const Footer = () => {
@@ -25,7 +25,7 @@ const Footer = () => {
     <footer className="bg-black">
       <Container>
         <div
-          className="wow animate__animated animate__fadeInLeft mb-5 flex flex-col items-center space-y-5 md:mb-7 md:space-y-7"
+          className="wow animate__animated animate__fadeInLeft mb-3 flex flex-col items-center space-y-5 md:mb-5 md:space-y-7"
           data-wow-delay="0.2s"
           data-wow-duration="1s"
         >
@@ -50,18 +50,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/" target="_blank" className="social-link-style">
-                  <FaWhatsapp />
-                </Link>
-              </li>
-              <li>
-                <Link href="/" target="_blank" className="social-link-style">
-                  <FaInstagram />
-                </Link>
-              </li>
-              <li>
-                <Link href="/" target="_blank" className="social-link-style">
-                  <SlSocialFacebook />
+                <Link
+                  href="mailto:arraxspace@gmail.com"
+                  target="_blank"
+                  className="social-link-style"
+                >
+                  <SlEnvolope />
                 </Link>
               </li>
               <li>
@@ -73,11 +67,26 @@ const Footer = () => {
                   <SlSocialYoutube />
                 </Link>
               </li>
-              <li>
+              {/* <li>
+                <Link href="/" target="_blank" className="social-link-style">
+                  <FaWhatsapp />
+                </Link>
+              </li> */}
+              {/* <li>
+                <Link href="/" target="_blank" className="social-link-style">
+                  <FaInstagram />
+                </Link>
+              </li> */}
+              {/* <li>
+                <Link href="/" target="_blank" className="social-link-style">
+                  <SlSocialFacebook />
+                </Link>
+              </li> */}
+              {/* <li>
                 <Link href="/" target="_blank" className="social-link-style">
                   <RiTwitterXFill />
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

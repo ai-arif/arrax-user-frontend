@@ -50,7 +50,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       }`}
     >
       {/* SIDEBAR HEADER */}
-      <div className="flex justify-between px-4 py-4 sm:px-5 lg:justify-center">
+      <div className="flex justify-between px-4 py-4 sm:px-5 md:py-5 lg:justify-center">
         <Logo />
         <button
           ref={trigger}

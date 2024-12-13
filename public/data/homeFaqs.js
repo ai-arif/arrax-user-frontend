@@ -2,7 +2,8 @@ export const homeFaqs = [
   {
     id: 1,
     question: "Why is Arrax the best alternative to trading?",
-    answer: "",
+    answer:
+      "The cryptocurrency rate has no effect on the sustainability of the rewards. The minimum entry threshold is equal to just a couple of cups of coffee. There is no need to wait for payouts funds come instantly to your wallet. Rewards always depend only on the actions of the participant.The participant can receive the reward indefinitely, as long as they expand their team",
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ export const homeFaqs = [
   {
     id: 4,
     question: "What do I need to get started in Arrax USDT?",
-    answer: "",
+    answer:
+      "No special knowledge is required. Every participant must have their own smartphone or laptop. with an installed app (Trust Wallet, Token Pocket, or MetaMask), which has a personal Smart Chain (BEP20 Chain) cryptocurrency wallet set up. To register, you need to have at least a minimum amount - 4 Usdt , and some BEP20 for a blockchain fee",
   },
   {
     id: 5,

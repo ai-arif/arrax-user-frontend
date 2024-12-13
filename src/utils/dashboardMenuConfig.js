@@ -7,11 +7,11 @@ export const dashboardMenuConfig = [
     label: "Dashboard",
     path: "/dashboard",
   },
-  {
-    icon: <FaRegUser />,
-    label: "Profile",
-    path: "/dashboard/profile",
-  },
+  // {
+  //   icon: <FaRegUser />,
+  //   label: "Profile",
+  //   path: "/dashboard/profile",
+  // },
   {
     icon: <FaUsers />,
     label: "Team",

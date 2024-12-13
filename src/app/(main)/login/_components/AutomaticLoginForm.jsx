@@ -74,7 +74,7 @@ const AutomaticLoginForm = () => {
             <span className="text-base">Please Wait</span>
           </>
         ) : (
-          "View"
+          "Automatic Login"
         )}
       </Button>
     </form>
