@@ -46,7 +46,7 @@ const NavTopBar = () => {
             {/* register or dashboard button based on logged in user */}
             <Button onClick={() => setOpen(false)} asChild>
               {loggedInUser ? (
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/dashboard">Profile</Link>
               ) : (
                 <Link href="/login">Register</Link>
               )}

@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { formatDateAndTime } from "@/utils/format-date";
 import React from "react";
 import toast from "react-hot-toast";
 import { FiCopy } from "react-icons/fi";
@@ -44,12 +45,14 @@ const ProfileHeader = ({
           <p>ID: {userId}</p>
           <p>Invited By: {referredBy}</p>
           <p>Wallet: {walletAddress}</p>
-          <p>Joined: {joiningDate}</p>
+          <p>Joined: {formatDateAndTime(joiningDate)}</p>
         </div>
         {/* Referral link section */}
-        <div className="mt-4 space-y-2 text-sm text-zinc-300">
-          <p className="font-semibold text-white">Your Referral Link:</p>
-          <div className="flex items-center justify-center">
+        <div className="mt-4 space-y-2 text-zinc-300">
+          <p className="text-sm font-semibold text-white">
+            Your Referral Link:
+          </p>
+          <div className="mx-auto flex w-full items-center justify-center md:w-[70%]">
             <Input
               type="text"
               value={referLink}
