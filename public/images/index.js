@@ -1,9 +1,9 @@
-import mainBanner from "../images/hero/main_banner.jpg";
+import dragon from "../images/hero/dragon.png";
 import logo from "../images/logo/logo.png";
 
 const assets = {
   images: {
-    mainBanner,
+    dragon,
   },
 
   svgs: {
