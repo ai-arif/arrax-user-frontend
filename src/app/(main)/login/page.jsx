@@ -34,12 +34,7 @@ const LoginPage = () => {
 
           {/* Login Section */}
           <div className="w-full p-6 md:w-1/2 md:p-9">
-            <h2 className="text-custom-style mb-4 text-lg font-semibold md:mb-5 md:text-2xl md:font-bold">
-              Login to Your Personal Account
-            </h2>
-            {/* login form */}
             <AutomaticLoginForm />
-            <p className="mt-4 text-xs md:text-sm">Already have an account?</p>
           </div>
         </div>
       </Container>

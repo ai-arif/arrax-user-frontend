@@ -1,24 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import ErrorMessage from "@/components/ui/ErrorMessage";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { AuthContext } from "@/contexts/AuthProvider";
 import axiosInstance from "@/utils/axiosInstance";
-import { zodResolver } from "@hookform/resolvers/zod";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { LuLoader2 } from "react-icons/lu";
-import { z } from "zod";
-
-// register schema
-export const loginSchema = z.object({
-  userId: z.string().trim().min(1, "User ID is required"),
-});
 
 const AutomaticLoginForm = () => {
   const { fetchUser } = useContext(AuthContext);
@@ -29,9 +19,7 @@ const AutomaticLoginForm = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm({
-    resolver: zodResolver(loginSchema),
-  });
+  } = useForm();
 
   const onSubmit = async (data) => {
     try {
@@ -54,30 +42,40 @@ const AutomaticLoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 md:space-y-5">
-      <div>
-        <Label htmlFor="user-id" className="sr-only">
+    <div>
+      <h2 className="text-custom-style mb-4 text-lg font-semibold md:mb-5 md:text-2xl md:font-bold">
+        Login to Your Personal Account
+      </h2>
+      <p className="mb-4 text-xs md:mb-5 md:text-sm">
+        Please connect the wallet before login.
+      </p>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="">
+        <div>
+          {/* <Label htmlFor="user-id" className="sr-only">
           Enter User ID
-        </Label>
-        <Input
+        </Label> */}
+          {/* <Input
           {...register("userId")}
           id="user-id"
           type="text"
           placeholder="Enter User ID"
-        />
-        <ErrorMessage>{errors.userId?.message}</ErrorMessage>
-      </div>
-      <Button disabled={isSubmitting} type="submit" className="w-full">
-        {isSubmitting ? (
-          <>
-            <LuLoader2 className="mr-1 inline animate-spin-fast text-lg" />
-            <span className="text-base">Please Wait</span>
-          </>
-        ) : (
-          "Automatic Login"
-        )}
-      </Button>
-    </form>
+        /> */}
+          {/* <ErrorMessage>{errors.userId?.message}</ErrorMessage> */}
+        </div>
+        <Button disabled={isSubmitting} type="submit" className="w-full">
+          {isSubmitting ? (
+            <>
+              <LuLoader2 className="mr-1 inline animate-spin-fast text-lg" />
+              <span className="text-base">Please Wait</span>
+            </>
+          ) : (
+            "Automatic Login"
+          )}
+        </Button>
+      </form>
+      <p className="mt-4 text-xs md:text-sm">Already have an account?</p>
+    </div>
   );
 };
 
