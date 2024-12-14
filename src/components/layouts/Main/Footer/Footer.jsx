@@ -1,34 +1,20 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
-import "animate.css";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { PiTelegramLogo } from "react-icons/pi";
 import { RiTwitterXFill } from "react-icons/ri";
 import { SlEnvolope, SlSocialFacebook, SlSocialYoutube } from "react-icons/sl";
-const WOW = typeof window !== "undefined" ? require("wowjs") : null;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  useEffect(() => {
-    if (WOW) {
-      new WOW.WOW().init();
-    }
-  }, []);
-
   return (
     <footer className="bg-black">
       <Container>
-        <div
-          className="wow animate__animated animate__fadeInLeft mb-3 flex flex-col items-center space-y-5 md:mb-5 md:space-y-7"
-          data-wow-delay="0.2s"
-          data-wow-duration="1s"
-        >
+        <div className="mb-3 flex flex-col items-center space-y-5 md:mb-5 md:space-y-7">
           <div>
             <Logo className="w-[130px] md:w-[160px]" />
           </div>

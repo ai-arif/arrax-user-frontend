@@ -26,7 +26,7 @@ const NavTopBar = () => {
       </SheetTrigger>
       <SheetContent
         side="top"
-        className="h-max min-h-[40%] border-b-0 bg-arx-black-5 p-5 sm:p-8"
+        className="h-max min-h-[20%] border-b-0 bg-arx-black-5 p-5 sm:p-8"
       >
         <SheetHeader>
           <SheetTitle></SheetTitle>
@@ -36,9 +36,7 @@ const NavTopBar = () => {
         <div className="top-container">
           <div className="mx-auto flex w-full flex-col justify-start gap-3 sm:w-[70%] sm:justify-center md:w-[50%] md:gap-4 lg:w-[45%]">
             {/* logo */}
-            <div className="">
-              <Logo className="mx-auto" />
-            </div>
+            <Logo className="mx-auto pb-2" />
             {/* connect wallet button */}
             <Button variant="secondary">
               <FaWallet /> Connect Wallet

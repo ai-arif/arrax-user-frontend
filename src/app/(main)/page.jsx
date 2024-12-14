@@ -1,4 +1,3 @@
-import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import React from "react";
 import HeroSection from "./_components/HeroSection";
 import HomeFaq from "./_components/HomeFaq";
@@ -11,13 +10,11 @@ export const metadata = {
 
 const HomePage = () => {
   return (
-    <div>
-      {/* particles background chain animation */}
-      <ParticlesBackground />
+    <>
       <HeroSection />
       <HomeStats />
       <HomeFaq />
-    </div>
+    </>
   );
 };
 

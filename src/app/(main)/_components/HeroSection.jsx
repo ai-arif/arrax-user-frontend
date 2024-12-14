@@ -1,61 +1,48 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
-import "animate.css";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
+import { SiPolygon } from "react-icons/si";
 import assets from "../../../../public/images";
-const WOW = typeof window !== "undefined" ? require("wowjs") : null;
 
 const HeroSection = () => {
-  useEffect(() => {
-    if (WOW) {
-      new WOW.WOW().init();
-    }
-  }, []);
-
   return (
     <Container>
-      <div className="flex flex-col-reverse justify-between gap-8 md:items-center md:gap-10 lg:flex-row">
+      <div className="flex flex-col-reverse justify-between gap-6 md:items-center md:gap-10 lg:flex-row">
         {/* hero content */}
         <div className="w-full space-y-3 text-center md:space-y-5 lg:w-1/2 lg:text-left">
-          <p className="text-base font-medium text-stroke md:text-lg md:font-semibold">
-            Easy Secure Fast
-          </p>
-          <h1 className="text-custom-style text-2xl font-bold md:text-4xl lg:text-[40px] lg:leading-[55px] xl:text-[55px] xl:leading-tight">
-            Arrax Space: The Heart of MetaDynamics
+          <h1 className="text-custom-style text-2xl font-bold md:text-4xl lg:text-[40px] lg:leading-[55px] xl:text-[50px] xl:leading-tight">
+            Welcome to Arrax Safe, Secure, and Unlimited, Earning Opportunities!
           </h1>
           <p className="text-zinc-300">
-            Arrax Space is the native cryptocurrency powering MetaDynamics.
-            Designed with ethical tokenomics in mind, Arrax Space prioritizes
-            fairness, stability, and scalability. The coin&apos;s robust
-            architecture ensures seamless transactions, low fees, and enhanced
-            security.
+            Unlock a world of financial freedom with the power of blockchain
+            technology. Join a global!
           </p>
           <div className="space-x-3 md:space-x-4 md:pt-3">
-            <Button
-              size="lg"
-              className="wow animate__animated animate__bounceIn rounded-full"
-              data-wow-delay="0.4s"
-            >
+            <Button size="lg" className="rounded-full">
               Login
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="wow animate__animated animate__bounceIn rounded-full"
-              data-wow-delay="0.6s"
-            >
+            <Button variant="outline" size="lg" className="rounded-full">
               Register
             </Button>
           </div>
+          <div className="pt-3">
+            <div className="flex w-full justify-center gap-3 rounded-md border border-arx-primary px-5 py-2 text-center md:px-8 md:py-5 lg:w-[80%]">
+              <div className="flex size-8 items-center justify-center rounded-full bg-gradient-to-r from-arx-primary to-arx-secondary">
+                <SiPolygon />
+              </div>
+              <p className="text-lg font-semibold uppercase text-arx-primary md:text-xl">
+                Powered by bnb <br /> blockchain
+              </p>
+            </div>
+          </div>
         </div>
+
         {/* hero image */}
         <div className="w-full md:w-[70%] lg:w-1/2">
           <Image
-            className="hero-dragon-anim w-full"
-            src={assets?.images?.dragon}
+            className="animate-float mx-auto h-auto w-[50%] object-cover md:w-[55%] lg:ml-auto lg:w-[70%]"
+            src={assets?.images?.banner}
             alt="Arrax Space"
           />
         </div>
