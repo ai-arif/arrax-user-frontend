@@ -1,5 +1,6 @@
 import React from "react";
 import HeroSection from "./_components/HeroSection";
+import HomeAbout from "./_components/HomeAbout";
 import HomeFaq from "./_components/HomeFaq";
 import HomeStats from "./_components/HomeStats";
 
@@ -12,6 +13,7 @@ const HomePage = () => {
   return (
     <>
       <HeroSection />
+      <HomeAbout />
       <HomeStats />
       <HomeFaq />
     </>
