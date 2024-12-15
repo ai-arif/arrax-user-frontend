@@ -8,9 +8,6 @@ const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
         {/* logo */}
         <Logo />
 
-        <div>
-          <button onClick={() => setSidebarOpen(!sidebarOpen)}>hello</button>
-        </div>
         {/* Hamburger button */}
         <button
           ref={trigger}
@@ -19,7 +16,7 @@ const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
             e.stopPropagation();
             setSidebarOpen(!sidebarOpen);
           }}
-          className="rounded-sm border border-[#e2e8f0] p-1.5 shadow-sm"
+          className="rounded-sm border border-zinc-500 p-1.5 shadow-sm"
         >
           <span className="relative block size-[22px] cursor-pointer">
             <span className="du-block absolute right-0 h-full w-full">

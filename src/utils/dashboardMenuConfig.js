@@ -1,5 +1,7 @@
 import { BsGridFill, BsTable } from "react-icons/bs";
-import { FaRegUser, FaUsers } from "react-icons/fa";
+import { FaHeadset, FaRegUser } from "react-icons/fa";
+import { TbReportMoney, TbUsersGroup } from "react-icons/tb";
+import { VscPreview } from "react-icons/vsc";
 
 export const dashboardMenuConfig = [
   {
@@ -15,25 +17,25 @@ export const dashboardMenuConfig = [
     enabled: true,
   },
   {
-    icon: <FaUsers />,
+    icon: <TbUsersGroup className="text-lg md:text-xl" />,
     label: "Generation",
     path: "/dashboard/generation",
     enabled: true,
   },
   {
-    icon: <FaUsers />,
+    icon: <VscPreview />,
     label: "Review ID",
     path: "/dashboard/review-id",
     enabled: true,
   },
   {
-    icon: <FaUsers />,
+    icon: <TbReportMoney className="text-lg md:text-xl" />,
     label: "Salary",
     path: "#",
     enabled: false,
   },
   {
-    icon: <FaUsers />,
+    icon: <FaHeadset />,
     label: "Support",
     path: "#",
     enabled: false,
