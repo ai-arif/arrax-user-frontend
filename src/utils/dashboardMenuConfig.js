@@ -6,79 +6,56 @@ export const dashboardMenuConfig = [
     icon: <BsGridFill />,
     label: "Dashboard",
     path: "/dashboard",
+    enabled: true,
   },
-  // {
-  //   icon: <FaRegUser />,
-  //   label: "Profile",
-  //   path: "/dashboard/profile",
-  // },
+  {
+    icon: <FaRegUser />,
+    label: "Profile",
+    path: "/dashboard/profile",
+    enabled: true,
+  },
   {
     icon: <FaUsers />,
-    label: "Team",
-    path: "/dashboard/team",
+    label: "Generation",
+    path: "/dashboard/generation",
+    enabled: true,
+  },
+  {
+    icon: <FaUsers />,
+    label: "Review ID",
+    path: "/dashboard/review-id",
+    enabled: true,
+  },
+  {
+    icon: <FaUsers />,
+    label: "Salary",
+    path: "#",
+    enabled: false,
+  },
+  {
+    icon: <FaUsers />,
+    label: "Support",
+    path: "#",
+    enabled: false,
   },
   {
     icon: <BsTable />,
     label: "AX Ultra Matrix",
     path: "/dashboard/matrix",
+    enabled: true,
   },
   // {
   //   icon: <FaUsers />,
   //   label: "Team",
   //   path: "#",
+  //   enabled: true,
   //   children: [
   //     {
   //       icon: <LuUsers />,
   //       label: "Partners",
   //       path: "/dashboard/team/partners",
-  //     },
-  //     {
-  //       icon: <LiaUserEditSolid />,
-  //       label: "Links",
-  //       path: "/dashboard/team/links",
-  //     },
-  //     {
-  //       icon: <BsGridFill />,
-  //       label: "Stats",
-  //       path: "/dashboard/team/stats",
+  //       enabled: true,
   //     },
   //   ],
-  // },
-  // {
-  //   icon: <BsGridFill />,
-  //   label: "Marathon",
-  //   path: "/dashboard/marathon",
-  // },
-  // {
-  //   icon: <BsGridFill />,
-  //   label: "Social",
-  //   path: "/dashboard/social",
-  // },
-  // {
-  //   icon: <BsGridFill />,
-  //   label: "NFTs",
-  //   path: "/dashboard/nfts",
-  // },
-  // {
-  //   icon: <BsGridFill />,
-  //   label: "Information",
-  //   path: "#",
-  //   children: [
-  //     {
-  //       icon: <BsGridFill />,
-  //       label: "Booking",
-  //       path: "/dashboard/information/booking",
-  //     },
-  //     {
-  //       icon: <BsGridFill />,
-  //       label: "Blockchain",
-  //       path: "/dashboard/information/blockchain",
-  //     },
-  //   ],
-  // },
-  // {
-  //   icon: <BsGridFill />,
-  //   label: "Promo & PDFs",
-  //   path: "/dashboard/promo-pdf",
   // },
 ];

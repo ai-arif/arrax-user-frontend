@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { SiPolygon } from "react-icons/si";
 import assets from "../../../../public/images";
@@ -19,11 +20,16 @@ const HeroSection = () => {
             technology. Join a global!
           </p>
           <div className="space-x-3 md:space-x-4 md:pt-3">
-            <Button size="lg" className="rounded-full">
-              Login
+            <Button size="lg" className="rounded-full" asChild>
+              <Link href="/login">Login</Link>
             </Button>
-            <Button variant="outline" size="lg" className="rounded-full">
-              Register
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full"
+              asChild
+            >
+              <Link href="/login">Register</Link>
             </Button>
           </div>
           <div className="pt-3">

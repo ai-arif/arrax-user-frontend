@@ -12,7 +12,7 @@ import axiosInstance from "@/utils/axiosInstance";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 
-const TeamPage = () => {
+const GenerationPage = () => {
   const [levels, setLevels] = useState([]);
   const [loading, setLoading] = useState(false);
   const userId = Cookies.get("arx_user_id");
@@ -70,4 +70,4 @@ const TeamPage = () => {
   );
 };
 
-export default TeamPage;
+export default GenerationPage;

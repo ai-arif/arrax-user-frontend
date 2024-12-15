@@ -30,10 +30,10 @@ const HomeAbout = () => {
             },
           }}
           freeMode={true}
-          // autoplay={{
-          //   delay: 4000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
           modules={[Autoplay, FreeMode]}
         >
           {homeAboutContents?.map((content) => {

@@ -1,44 +1,58 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { AuthContext } from "@/contexts/AuthProvider";
-import React, { useContext } from "react";
-import { FaWallet } from "react-icons/fa6";
-import { RxHamburgerMenu } from "react-icons/rx";
+import Logo from "@/components/ui/Logo";
+import React from "react";
 
-const Header = ({ sidebarOpen, setSidebarOpen }) => {
-  const { loggedInUser } = useContext(AuthContext);
-
+const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
   return (
     <header className="sticky top-0 z-30 border-b border-zinc-700 bg-arx-black-5 drop-shadow-sm">
-      <div className="flex items-center justify-between px-4 py-2 sm:px-6 lg:px-7.5 2xl:p-10">
+      <div className="flex items-center justify-between px-4 py-2 sm:px-6 lg:hidden lg:px-7.5 2xl:p-10">
+        {/* logo */}
+        <Logo />
+
+        <div>
+          <button onClick={() => setSidebarOpen(!sidebarOpen)}>hello</button>
+        </div>
         {/* Hamburger button */}
-        <div>
-          <button
-            aria-controls="sidebar"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSidebarOpen(!sidebarOpen);
-            }}
-            className="block text-3xl lg:hidden"
-          >
-            <RxHamburgerMenu />
-          </button>
-        </div>
-
-        {/* Connect Wallet button */}
-        <Button variant="secondary" className="rounded-full" size="sm">
-          <FaWallet /> Connect Wallet
-        </Button>
-
-        {/* User profile */}
-        <div>
-          <Avatar className="mx-auto h-8 w-8 md:h-10 md:w-10">
-            <AvatarImage
-              src={loggedInUser?.image || "/images/dashboard/avatar.png"}
-            />
-            <AvatarFallback>User</AvatarFallback>
-          </Avatar>
-        </div>
+        <button
+          ref={trigger}
+          aria-controls="sidebar"
+          onClick={(e) => {
+            e.stopPropagation();
+            setSidebarOpen(!sidebarOpen);
+          }}
+          className="rounded-sm border border-[#e2e8f0] p-1.5 shadow-sm"
+        >
+          <span className="relative block size-[22px] cursor-pointer">
+            <span className="du-block absolute right-0 h-full w-full">
+              <span
+                className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-white delay-0 duration-200 ease-in-out ${
+                  !sidebarOpen && "!w-full delay-300"
+                }`}
+              ></span>
+              <span
+                className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-white delay-150 duration-200 ease-in-out ${
+                  !sidebarOpen && "delay-400 !w-full"
+                }`}
+              ></span>
+              <span
+                className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-white delay-200 duration-200 ease-in-out ${
+                  !sidebarOpen && "!w-full delay-500"
+                }`}
+              ></span>
+            </span>
+            <span className="absolute right-0 h-full w-full rotate-45">
+              <span
+                className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-white delay-300 duration-200 ease-in-out ${
+                  !sidebarOpen && "!h-0 !delay-0"
+                }`}
+              ></span>
+              <span
+                className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-white duration-200 ease-in-out ${
+                  !sidebarOpen && "!h-0 !delay-200"
+                }`}
+              ></span>
+            </span>
+          </span>
+        </button>
       </div>
     </header>
   );
