@@ -41,7 +41,7 @@ const HeroSection = () => {
         {/* hero image */}
         <div className="w-full md:w-[70%] lg:w-1/2">
           <Image
-            className="animate-float mx-auto h-auto w-[50%] object-cover md:w-[55%] lg:ml-auto lg:w-[70%]"
+            className="animate-floa mx-auto h-auto w-[50%] object-cover md:w-[55%] lg:ml-auto lg:w-[70%]"
             src={assets?.images?.banner}
             alt="Arrax Space"
           />
