@@ -4,8 +4,8 @@ import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
 import ArraxPrograms from "./ArraxPrograms";
 import DashboardProfileHeader from "./DashboardProfileHeader";
+import DashboardProfileIncome from "./DashboardProfileIncome";
 import HexagonTrophy from "./HexagonTrophy";
-import ProfileIncome from "./ProfileIncome";
 import ProfileStats from "./ProfileStats";
 import TeamStats from "./TeamStats";
 
@@ -34,7 +34,7 @@ const DashboardOverview = () => {
       />
 
       {/* Income Section */}
-      <ProfileIncome income={loggedInUser?.income} />
+      <DashboardProfileIncome income={loggedInUser?.income} />
 
       {/* Stats Section */}
       <ProfileStats
