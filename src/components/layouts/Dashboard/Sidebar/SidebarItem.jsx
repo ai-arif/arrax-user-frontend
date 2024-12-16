@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import { HiOutlineNoSymbol } from "react-icons/hi2";
 import SidebarDropdown from "./SidebarDropdown";
 
 const SidebarItem = ({ menuItem, setSidebarOpen }) => {
@@ -33,6 +34,7 @@ const SidebarItem = ({ menuItem, setSidebarOpen }) => {
       >
         {menuItem.icon}
         {menuItem.label}
+        {!menuItem.enabled && <HiOutlineNoSymbol className="text-red-700" />}
         {menuItem.children && (
           <svg
             className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${groupOpen && "rotate-180"}`}

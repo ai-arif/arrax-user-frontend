@@ -18,7 +18,7 @@ const DashboardProfileHeader = ({
 }) => {
   return (
     <div className="dashboard-bottom-spacing">
-      <div className="flex items-center gap-4 md:gap-7">
+      <div className="flex items-center gap-4 md:flex-col md:gap-7">
         {/* profile info part */}
         <div>
           <Avatar className="h-[85px] w-[85px] md:h-28 md:w-28">
@@ -26,12 +26,12 @@ const DashboardProfileHeader = ({
             <AvatarFallback>User</AvatarFallback>
           </Avatar>
         </div>
-        <div className="space-y-1 text-xs text-zinc-200 md:space-y-1.5 md:text-sm">
+        <div className="space-y-1 text-xs text-zinc-200 md:space-y-1.5 md:text-center md:text-sm">
           <p>
             {fullName} ID: {userId}
           </p>
           <p>Invited By: {referredBy}</p>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 md:justify-center">
             <p>Adds: {formatAddress(walletAddress)}</p>
             <button
               onClick={() => handleCopy(walletAddress)}
@@ -45,7 +45,7 @@ const DashboardProfileHeader = ({
       </div>
 
       {/* Referral link section */}
-      <div className="mt-6 flex w-full items-center justify-center md:mt-8 md:w-[50%]">
+      <div className="mx-auto mt-6 flex w-full items-center justify-center md:mt-8 md:w-[50%]">
         <Input
           type="text"
           value={referLink}

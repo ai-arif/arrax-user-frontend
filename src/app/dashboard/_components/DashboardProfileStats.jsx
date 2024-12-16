@@ -9,7 +9,7 @@ const DashboardProfileStats = ({ totalTeam, activeTeam, directReferrals }) => {
       </h2>
 
       <div className="grid grid-cols-3 gap-3 md:gap-6">
-        <div className="space-y-1.5 rounded-lg bg-arx-black-4 p-4 text-center shadow md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 text-center md:space-y-2.5 md:p-5">
           <h6 className="text-base font-semibold md:text-lg">Partner</h6>
           <p className="text-xl font-bold text-arx-primary md:text-2xl">
             {directReferrals}
@@ -21,7 +21,7 @@ const DashboardProfileStats = ({ totalTeam, activeTeam, directReferrals }) => {
           </div>
         </div>
 
-        <div className="space-y-1.5 rounded-lg bg-arx-black-4 p-4 text-center shadow md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 text-center md:space-y-2.5 md:p-5">
           <h6 className="text-base font-semibold md:text-lg">Team</h6>
           <p className="text-xl font-bold text-arx-primary md:text-2xl">
             {totalTeam}
@@ -33,7 +33,7 @@ const DashboardProfileStats = ({ totalTeam, activeTeam, directReferrals }) => {
           </div>
         </div>
 
-        <div className="space-y-1.5 rounded-lg bg-arx-black-4 p-4 text-center shadow md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 text-center md:space-y-2.5 md:p-5">
           <h6 className="text-base font-semibold md:text-lg">Active</h6>
           <p className="text-xl font-bold text-arx-primary md:text-2xl">
             {activeTeam}

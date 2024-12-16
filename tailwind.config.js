@@ -78,12 +78,6 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      backgroundImage: {
-        "gradient-x3": "linear-gradient(to right, #0d47a1, #4b0082)", // Blue to Indigo
-        "gradient-x4": "linear-gradient(to right, #4b0082, #0d47a1)", // Indigo to Blue
-        "gradient-xXx": "linear-gradient(to right, #0d47a1, #ff007f)", // Blue to Pink
-        "gradient-xGold": "linear-gradient(to right, #ff8c00, #ffcc00)", // Orange to Yellow
-      },
       keyframes: {
         "accordion-down": {
           from: {

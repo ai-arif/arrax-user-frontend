@@ -3,7 +3,6 @@ import { AuthContext } from "@/contexts/AuthProvider";
 import { dashboardMenuConfig } from "@/utils/dashboardMenuConfig";
 import React, { useContext, useEffect, useRef } from "react";
 import { CgLogOut } from "react-icons/cg";
-import { RxArrowLeft } from "react-icons/rx";
 import SidebarFooter from "./SidebarFooter";
 import SidebarItem from "./SidebarItem";
 
@@ -74,15 +73,6 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
             />
           </svg>
         </button>
-        {/* <button
-          ref={trigger}
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          aria-controls="sidebar"
-          aria-expanded={sidebarOpen}
-          className="block text-3xl lg:hidden"
-        >
-          <RxArrowLeft />
-        </button> */}
       </div>
       <div className="no-scrollbar overflow-y-auto">
         {/* SIDEBAR MENU */}

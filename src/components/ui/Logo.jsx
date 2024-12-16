@@ -10,6 +10,7 @@ const Logo = ({ className }) => {
         className={cn("h-auto w-[100px] object-cover md:w-[140px]", className)}
         src={assets?.svgs?.logo}
         alt="Arrax"
+        priority
       />
     </Link>
   );
