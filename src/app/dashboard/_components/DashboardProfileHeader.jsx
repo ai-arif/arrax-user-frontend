@@ -21,7 +21,9 @@ const DashboardProfileHeader = ({
       <div className="flex items-center gap-4 md:flex-col md:gap-7">
         {/* profile info part */}
         <div>
-          <Avatar className="h-[85px] w-[85px] md:h-28 md:w-28">
+          <Avatar
+            className={`size-[85px] md:size-28 ${image && "border-2 border-arx-primary"}`}
+          >
             <AvatarImage src={image || "/images/dashboard/avatar.png"} />
             <AvatarFallback>User</AvatarFallback>
           </Avatar>

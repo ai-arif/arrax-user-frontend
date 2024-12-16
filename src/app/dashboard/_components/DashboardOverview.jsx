@@ -17,7 +17,7 @@ const DashboardOverview = () => {
   }
 
   return (
-    <div className="">
+    <>
       {/* Profile info section */}
       <DashboardProfileHeader
         image={loggedInUser?.image}
@@ -48,7 +48,7 @@ const DashboardOverview = () => {
       {/* <HexagonTrophy /> */}
 
       <ArraxPrograms />
-    </div>
+    </>
   );
 };
 

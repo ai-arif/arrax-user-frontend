@@ -8,9 +8,9 @@ export const metadata = {
 
 const DashboardHomePage = () => {
   return (
-    <>
+    <div>
       <DashboardOverview />
-    </>
+    </div>
   );
 };
 
