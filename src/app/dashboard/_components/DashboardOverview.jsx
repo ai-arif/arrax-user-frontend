@@ -5,8 +5,8 @@ import React, { useContext } from "react";
 import ArraxPrograms from "./ArraxPrograms";
 import DashboardProfileHeader from "./DashboardProfileHeader";
 import DashboardProfileIncome from "./DashboardProfileIncome";
+import DashboardProfileStats from "./DashboardProfileStats";
 import HexagonTrophy from "./HexagonTrophy";
-import ProfileStats from "./ProfileStats";
 import TeamStats from "./TeamStats";
 
 const DashboardOverview = () => {
@@ -19,7 +19,7 @@ const DashboardOverview = () => {
 
   return (
     <div className="space-y-4 sm:space-y-6 lg:space-y-7.5 2xl:space-y-10">
-      {/* Profile Header */}
+      {/* Profile info section */}
       <DashboardProfileHeader
         image={loggedInUser?.image}
         fullName={loggedInUser?.fullName}
@@ -27,7 +27,7 @@ const DashboardOverview = () => {
         referredBy={loggedInUser?.referredBy}
         walletAddress={loggedInUser?.walletAddress}
         joiningDate={loggedInUser?.createdAt}
-        // TODO: removed it just for testing
+        // TODO: Add dynamic data
         referLink={
           loggedInUser?.referLink || "https://arrax.space/login?ref=12"
         }
@@ -37,14 +37,17 @@ const DashboardOverview = () => {
       <DashboardProfileIncome income={loggedInUser?.income} />
 
       {/* Stats Section */}
-      <ProfileStats
+      <DashboardProfileStats
         totalTeam={loggedInUser?.totalTeam}
         activeTeam={loggedInUser?.activeTeam}
+        // TODO: checking
         directReferrals={loggedInUser?.directReferrals?.length}
       />
-      {/* team stats */}
-      <TeamStats />
+
+      {/* <TeamStats /> */}
+
       {/* <HexagonTrophy /> */}
+
       <ArraxPrograms />
     </div>
   );

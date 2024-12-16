@@ -1,5 +1,5 @@
 import React from "react";
-import { IoMdArrowUp } from "react-icons/io";
+import { HiMiniArrowUp } from "react-icons/hi2";
 
 const DashboardProfileIncome = ({ income }) => {
   return (
@@ -8,39 +8,42 @@ const DashboardProfileIncome = ({ income }) => {
         Profit
       </h2>
       <div className="w-full space-y-2.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 shadow md:w-1/2 md:space-y-3.5 md:p-5">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between gap-2.5">
           <h3 className="text-lg font-semibold md:text-xl">
             Total profit:{" "}
             <span className="text-arx-primary">{income?.total}$ USDT</span>
           </h3>
-          <div className="flex items-center text-xs text-green-500 md:text-sm">
-            <IoMdArrowUp className="inline-block" />
+          {/* TODO: Add dynamic data */}
+          <div className="flex items-center justify-end text-xs text-green-500 md:text-sm">
+            <HiMiniArrowUp />
             <span>6$</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between gap-2.5">
           <h3 className="text-lg font-semibold md:text-xl">
             Direct profit:{" "}
             <span className="text-arx-primary">
               {income?.directIncome}$ USDT
             </span>
           </h3>
+          {/* TODO: Add dynamic data */}
           <div className="flex items-center text-xs text-green-500 md:text-sm">
-            <IoMdArrowUp className="inline-block" />
+            <HiMiniArrowUp />
             <span>2$</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between gap-2.5">
           <h3 className="text-lg font-semibold md:text-xl">
             Level profit:{" "}
             <span className="text-arx-primary">
               {income?.levelIncome}$ USDT
             </span>
           </h3>
+          {/* TODO: Add dynamic data */}
           <div className="flex items-center text-xs text-green-500 md:text-sm">
-            <IoMdArrowUp className="inline-block" />
+            <HiMiniArrowUp />
             <span>4$</span>
           </div>
         </div>
