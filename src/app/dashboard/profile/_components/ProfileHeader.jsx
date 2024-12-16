@@ -6,8 +6,9 @@ import { formatAddress } from "@/utils/format-address";
 import { formatDateAndTime } from "@/utils/format-date";
 import React from "react";
 import { PiCopyThin } from "react-icons/pi";
+import EditProfile from "./EditProfile";
 
-const DashboardProfileHeader = ({
+const ProfileHeader = ({
   image,
   fullName,
   userId,
@@ -27,8 +28,12 @@ const DashboardProfileHeader = ({
             <AvatarImage src={image || "/images/dashboard/avatar.png"} />
             <AvatarFallback>User</AvatarFallback>
           </Avatar>
+          {/* <div className="flex">
+            <EditProfile />
+          </div> */}
         </div>
-        <div className="space-y-1 text-xs text-zinc-200 md:space-y-1.5 md:text-center md:text-sm">
+
+        <div className="flex-grow space-y-1 text-xs text-zinc-200 md:space-y-1.5 md:text-center md:text-sm">
           <p>
             {fullName} ID: {userId}
           </p>
@@ -43,6 +48,10 @@ const DashboardProfileHeader = ({
             </button>
           </div>
           <p>Joined on: {formatDateAndTime(joiningDate)}</p>
+        </div>
+        {/* Profile edit modal */}
+        <div className="self-start md:self-center">
+          <EditProfile fullName={fullName} image={image} />
         </div>
       </div>
 
@@ -68,4 +77,4 @@ const DashboardProfileHeader = ({
   );
 };
 
-export default DashboardProfileHeader;
+export default ProfileHeader;

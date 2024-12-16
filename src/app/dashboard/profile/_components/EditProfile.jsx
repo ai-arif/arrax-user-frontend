@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -18,6 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { FiEdit } from "react-icons/fi";
 import { LuLoader2 } from "react-icons/lu";
 import { z } from "zod";
 
@@ -70,11 +70,11 @@ const EditProfile = ({ fullName, image }) => {
     <div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button size="sm" variant="secondary">
-            Edit Profile
-          </Button>
+          <button className="rounded-[3px] bg-gradient-to-r from-arx-primary to-arx-secondary p-1 transition-colors hover:from-arx-secondary hover:to-arx-primary">
+            <FiEdit className="text-base md:text-xl" />
+          </button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="max-w-[85%] sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit your profile</DialogTitle>
             <DialogDescription></DialogDescription>
