@@ -22,7 +22,7 @@ const HomeStats = () => {
               <FaArrowUp /> 12
             </p>
           </div>
-          <p className="mb-2 text-base font-medium md:text-lg md:font-semibold">
+          <p className="mb-2 text-base font-medium text-zinc-300 md:text-lg md:font-semibold">
             Total Users
           </p>
         </div>
@@ -36,7 +36,7 @@ const HomeStats = () => {
               <FaArrowUp /> 210
             </p>
           </div>
-          <p className="mb-2 text-base font-medium md:text-lg md:font-semibold">
+          <p className="mb-2 text-base font-medium text-zinc-300 md:text-lg md:font-semibold">
             Total Income
           </p>
         </div>

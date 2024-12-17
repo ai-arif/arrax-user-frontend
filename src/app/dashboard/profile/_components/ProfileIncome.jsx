@@ -4,7 +4,7 @@ import { HiMiniArrowUp } from "react-icons/hi2";
 const ProfileIncome = ({ income }) => {
   return (
     <div className="dashboard-bottom-spacing">
-      <h2 className="mb-3 text-base tracking-wide text-zinc-200 md:mb-4 md:text-lg">
+      <h2 className="mb-3 text-base text-zinc-200 md:mb-4 md:text-lg">
         Profit
       </h2>
       <div className="space-y-2.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 md:space-y-3.5 md:p-5">
