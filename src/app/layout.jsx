@@ -2,6 +2,7 @@ import AuthProvider from "@/contexts/AuthProvider";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import { Web3Provider } from "@/components/walletconnect/web3provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
         className={`${inter.className} bg-black text-sm text-white antialiased md:text-base`}
       >
         <AuthProvider>
-          <main>{children}</main>
+          <main>
+            <Web3Provider> {children}</Web3Provider>
+          </main>
         </AuthProvider>
         <Toaster
           toastOptions={{

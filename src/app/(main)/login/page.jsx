@@ -4,6 +4,9 @@ import React from "react";
 import { FaWallet } from "react-icons/fa6";
 import AutomaticLoginForm from "./_components/AutomaticLoginForm";
 import RegisterForm from "./_components/RegisterForm";
+// import { WalletConnect } from "@/components/walletconnect/WalletConnect";
+import { WalletConnect } from "@/components/walletconnect/WalletConnect";
+import AuthButtons from "./_components/AuthButtons";
 
 export const metadata = {
   title: "Login - Arrax Space",
@@ -23,13 +26,7 @@ const LoginPage = () => {
             <p className="mb-4 text-xs md:mb-5 md:text-sm">
               Please check the inviter&apos;s ID before registering.
             </p>
-            <div className="mb-3 md:mb-5">
-              <Button variant="secondary" className="w-full">
-                <FaWallet /> Connect Wallet
-              </Button>
-            </div>
-            {/* register form */}
-            <RegisterForm />
+            <AuthButtons />
           </div>
 
           {/* Login Section */}
