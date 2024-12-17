@@ -1,8 +1,7 @@
-// TODO: removed it, created for dashboard pages skeleton design
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
-const page = () => {
+const MatrixSkeleton = () => {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {[...Array(6)].map((_, index) => (
@@ -43,4 +42,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default MatrixSkeleton;

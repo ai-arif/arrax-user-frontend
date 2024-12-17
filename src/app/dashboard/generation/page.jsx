@@ -21,35 +21,42 @@ const GenerationPage = async () => {
   const userId = cookies().get("arx_user_id")?.value;
 
   // Fetch generations by user id
-  const assignments = await fetchGenerations(userId);
+  const generations = await fetchGenerations(userId);
 
   return (
     <Suspense fallback={<GenerationSkeleton />}>
-      <h2 className="mb-3 text-lg font-semibold md:mb-4 md:text-xl">
-        Generation
-      </h2>
-      <Table className="rounded-lg bg-arx-black-4 shadow-lg">
-        <TableHeader>
-          <TableRow className="hover:bg-transparent">
-            <TableHead className="text-center text-zinc-300">Level</TableHead>
-            <TableHead className="text-center text-zinc-300">Total</TableHead>
-            <TableHead className="text-center text-zinc-300">Active</TableHead>
-            <TableHead className="text-center text-zinc-300">
-              Inactive
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {assignments?.levels?.map((level, index) => (
-            <TableRow key={index} className="text-center hover:bg-transparent">
-              <TableCell>{level?.level}</TableCell>
-              <TableCell>{level?.total || 20}</TableCell>
-              <TableCell>{level?.active || 20}</TableCell>
-              <TableCell>{level?.inactive || 20}</TableCell>
+      <div>
+        <h2 className="mb-3 text-lg font-semibold md:mb-4 md:text-xl">
+          Generation
+        </h2>
+        <Table className="rounded-lg bg-arx-black-4 shadow-lg">
+          <TableHeader>
+            <TableRow className="hover:bg-transparent">
+              <TableHead className="text-center text-zinc-300">Level</TableHead>
+              <TableHead className="text-center text-zinc-300">Total</TableHead>
+              <TableHead className="text-center text-zinc-300">
+                Active
+              </TableHead>
+              <TableHead className="text-center text-zinc-300">
+                Inactive
+              </TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {generations?.levels?.map((level, index) => (
+              <TableRow
+                key={index}
+                className="text-center hover:bg-transparent"
+              >
+                <TableCell>{level?.level}</TableCell>
+                <TableCell>{level?.total || 20}</TableCell>
+                <TableCell>{level?.active || 20}</TableCell>
+                <TableCell>{level?.inactive || 20}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </Suspense>
   );
 };

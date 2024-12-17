@@ -7,7 +7,7 @@ const GenerationSkeleton = () => {
       <Skeleton className="mb-5 h-6 w-[25%] rounded-none md:w-[15%]" />
 
       <div className="divide-y divide-zinc-700 rounded-lg bg-arx-black-4">
-        {[1, 2, 3, 4, 5].map((index) => (
+        {[...Array(5)].map((_, index) => (
           <div
             key={index}
             className="flex items-center justify-between gap-3 p-4"
