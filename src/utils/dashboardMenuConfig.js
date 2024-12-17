@@ -40,12 +40,12 @@ export const dashboardMenuConfig = [
     path: "#",
     enabled: false,
   },
-  {
-    icon: <BsTable />,
-    label: "AX Ultra Matrix",
-    path: "/dashboard/matrix",
-    enabled: true,
-  },
+  // {
+  //   icon: <BsTable />,
+  //   label: "AX Ultra Matrix",
+  //   path: "/dashboard/matrix",
+  //   enabled: true,
+  // },
   // {
   //   icon: <FaUsers />,
   //   label: "Team",

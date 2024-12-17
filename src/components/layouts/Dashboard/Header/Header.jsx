@@ -1,10 +1,45 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Logo from "@/components/ui/Logo";
-import React from "react";
+import { AuthContext } from "@/contexts/AuthProvider";
+import React, { useContext } from "react";
+import { LuSearch } from "react-icons/lu";
 
 const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
+  const { loggedInUser } = useContext(AuthContext);
+
   return (
     <header className="sticky top-0 z-30 border-b border-zinc-700 bg-arx-black-5 drop-shadow-sm">
-      <div className="flex items-center justify-between px-4 py-2 sm:px-6 lg:hidden lg:px-7.5 2xl:p-10">
+      {/* for large screen */}
+      <div className="hidden items-center justify-between px-4 py-2 sm:px-6 lg:flex lg:px-7.5 lg:py-3 2xl:p-10">
+        {/* input search */}
+        <form className="flex w-[40%]">
+          <Input
+            type="search"
+            placeholder="Search..."
+            required
+            className="h-8 rounded-r-none"
+          />
+          <Button type="submit" className="rounded-l-none" size="sm">
+            Search <LuSearch />
+          </Button>
+        </form>
+        {/* User profile */}
+        <div>
+          <Avatar
+            className={`h-10 w-10 ${loggedInUser?.image && "border border-arx-primary"}`}
+          >
+            <AvatarImage
+              src={loggedInUser?.image || "/images/dashboard/avatar.png"}
+            />
+            <AvatarFallback>User</AvatarFallback>
+          </Avatar>
+        </div>
+      </div>
+
+      {/* for small screen */}
+      <div className="flex items-center justify-between px-4 py-2 sm:px-6 lg:hidden lg:px-7.5 lg:py-3 2xl:p-10">
         {/* logo */}
         <Logo />
 
