@@ -4,9 +4,11 @@ import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
 import { FaWallet } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useConnect } from "wagmi";
 
 const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const { loggedInUser } = useContext(AuthContext);
+  const { connect } = useConnect();
 
   return (
     <header className="sticky top-0 z-30 border-b border-zinc-700 bg-arx-black-5 drop-shadow-sm">
@@ -26,8 +28,13 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
         </div>
 
         {/* Connect Wallet button */}
-        <Button variant="secondary" className="rounded-full" size="sm">
-          <FaWallet /> Connect Wallet
+        <Button
+          variant="secondary"
+          className="rounded-full"
+          size="sm"
+          onClick={connect}
+        >
+          <FaWallet /> Connect Wallettt
         </Button>
 
         {/* User profile */}
