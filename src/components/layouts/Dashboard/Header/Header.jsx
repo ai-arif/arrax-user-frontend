@@ -1,63 +1,25 @@
+import Search from "@/components/search/Search";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Logo from "@/components/ui/Logo";
 import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
-import { FaWallet } from "react-icons/fa6";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { useConnect } from "wagmi";
 
 const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
   const { loggedInUser } = useContext(AuthContext);
-  const { connect } = useConnect();
 
   return (
     <header className="sticky top-0 z-30 border-b border-zinc-700 bg-arx-black-5 drop-shadow-sm">
-      <div className="flex items-center justify-between px-4 py-2 sm:px-6 lg:px-7.5 2xl:p-10">
-        {/* Hamburger button */}
-        <div>
-          <button
-            aria-controls="sidebar"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSidebarOpen(!sidebarOpen);
-            }}
-            className="block text-3xl lg:hidden"
-          >
-            <RxHamburgerMenu />
-          </button>
+      <div className="flex w-full items-center justify-between px-4 py-2 sm:px-6 lg:px-7.5 lg:py-3 2xl:p-10">
+        {/* logo only for small screen */}
+        <div className="block lg:hidden">
+          <Logo />
+        </div>
+        {/* Search for large screen */}
+        <div className="hidden flex-grow lg:block">
+          <Search className="w-[40%]" />
         </div>
 
-        {/* Connect Wallet button */}
-        <Button
-          variant="secondary"
-          className="rounded-full"
-          size="sm"
-          onClick={connect}
-        >
-          <FaWallet /> Connect Wallettt
-        </Button>
-
-        {/* User profile */}
-        <div>
-          <Avatar
-            className={`h-10 w-10 ${loggedInUser?.image && "border border-arx-primary"}`}
-          >
-            <AvatarImage
-              src={loggedInUser?.image || "/images/dashboard/avatar.png"}
-            />
-            <AvatarFallback>User</AvatarFallback>
-          </Avatar>
-        </div>
-      </div>
-
-      {/* for small screen */}
-      <div className="flex items-center justify-between px-4 py-2 sm:px-6 lg:hidden lg:px-7.5 lg:py-3 2xl:p-10">
-        {/* logo */}
-        <Logo />
-
-        {/* Hamburger button */}
+        {/* Hamburger button only for small screen */}
         <button
           ref={trigger}
           aria-controls="sidebar"
@@ -65,7 +27,7 @@ const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
             e.stopPropagation();
             setSidebarOpen(!sidebarOpen);
           }}
-          className="rounded-sm border border-zinc-500 p-1.5 shadow-sm"
+          className="block rounded-sm border border-zinc-500 p-1.5 shadow-sm lg:hidden"
         >
           <span className="relative block size-[22px] cursor-pointer">
             <span className="du-block absolute right-0 h-full w-full">
@@ -99,6 +61,18 @@ const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
             </span>
           </span>
         </button>
+
+        {/* User profile only for large screen */}
+        <div className="hidden lg:block">
+          <Avatar
+            className={`h-10 w-10 ${loggedInUser?.image && "border border-arx-primary"}`}
+          >
+            <AvatarImage
+              src={loggedInUser?.image || "/images/dashboard/avatar.png"}
+            />
+            <AvatarFallback>User</AvatarFallback>
+          </Avatar>
+        </div>
       </div>
     </header>
   );
