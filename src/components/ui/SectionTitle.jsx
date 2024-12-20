@@ -1,13 +1,15 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-const SectionTitle = ({ children, className }) => {
+const SectionTitle = ({ title, description, className }) => {
   return (
-    <div className={cn("pb-6 md:pb-10", className)}>
-      <h4 className="text-custom-style text-center text-xl font-semibold uppercase md:text-3xl md:font-bold">
-        {children}
+    <div className={cn("pb-6 text-center md:pb-10", className)}>
+      <h4 className="text-custom-style text-xl font-semibold uppercase md:text-3xl md:font-bold">
+        {title}
       </h4>
-      <hr className="mx-auto mt-2 w-[70px] border border-purple-400 md:mt-3.5" />
+      <p className="pt-2.5 text-xs text-zinc-200 md:pt-4 md:text-sm">
+        {description}
+      </p>
     </div>
   );
 };

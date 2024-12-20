@@ -10,7 +10,10 @@ const HomeStats = () => {
 
   return (
     <Container>
-      <SectionTitle>Key Metrics Overview</SectionTitle>
+      <SectionTitle
+        title="Key Metrics Overview"
+        description="An overview of key stats like total users and income with growth trends"
+      />
       <div className="grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-8">
         {/* Total Users */}
         <div className="space-y-2 rounded border border-arx-secondary p-5 md:rounded-lg md:p-6">

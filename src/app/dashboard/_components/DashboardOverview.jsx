@@ -26,7 +26,6 @@ const DashboardOverview = () => {
         referredBy={loggedInUser?.referredBy}
         walletAddress={loggedInUser?.walletAddress}
         joiningDate={loggedInUser?.createdAt}
-        // TODO: Add dynamic data
         referLink={`${process.env.FRONTEND_URL}/login?ref=${loggedInUser?.userId}`}
       />
 

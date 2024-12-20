@@ -23,10 +23,7 @@ const ProfileOverview = () => {
         referredBy={loggedInUser?.referredBy}
         walletAddress={loggedInUser?.walletAddress}
         joiningDate={loggedInUser?.createdAt}
-        // TODO: Add dynamic data
-        referLink={
-          loggedInUser?.referLink || "https://arrax.space/login?ref=12"
-        }
+        referLink={`${process.env.FRONTEND_URL}/login?ref=${loggedInUser?.userId}`}
       />
 
       {/* Income Section */}
