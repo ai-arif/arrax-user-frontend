@@ -13,19 +13,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AuthContext } from "@/contexts/AuthProvider";
 import axiosInstance from "@/utils/axiosInstance";
-import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FiEdit } from "react-icons/fi";
 import { LuLoader2 } from "react-icons/lu";
-import { z } from "zod";
-
-// edit profile schema
-export const profileSchema = z.object({
-  fullName: z.string().trim().min(1, "Full name is required"),
-  image: z.any().optional(),
-});
 
 const EditProfile = ({ fullName, image }) => {
   const { fetchUser } = useContext(AuthContext);
@@ -36,7 +28,6 @@ const EditProfile = ({ fullName, image }) => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(profileSchema),
     values: { fullName, image },
   });
 
@@ -52,6 +43,7 @@ const EditProfile = ({ fullName, image }) => {
         "/users/update-picture",
         formData,
       );
+      console.log(response);
       if (response?.data?.success) {
         toast.success(response.data.message);
         await fetchUser();
@@ -70,7 +62,7 @@ const EditProfile = ({ fullName, image }) => {
     <div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <button className="rounded-[3px] bg-gradient-to-r from-arx-primary to-arx-secondary p-1 transition-colors hover:from-arx-secondary hover:to-arx-primary">
+          <button className="rounded-[3px] bg-gradient-to-r from-arx-primary to-arx-secondary px-1.5 py-1 transition-colors hover:from-arx-secondary hover:to-arx-primary">
             <FiEdit className="text-base md:text-xl" />
           </button>
         </DialogTrigger>
@@ -85,7 +77,7 @@ const EditProfile = ({ fullName, image }) => {
                 Full Name
               </Label>
               <Input
-                {...register("fullName")}
+                {...register("fullName", { required: "Full name is required" })}
                 id="full-name"
                 type="text"
                 placeholder="Enter Full Name"
@@ -113,7 +105,7 @@ const EditProfile = ({ fullName, image }) => {
                     <span className="text-base">Please Wait</span>
                   </>
                 ) : (
-                  "Save"
+                  "Save Changes"
                 )}
               </Button>
             </DialogFooter>

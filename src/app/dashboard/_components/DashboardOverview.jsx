@@ -20,7 +20,7 @@ const DashboardOverview = () => {
     <>
       {/* Profile info section */}
       <DashboardProfileHeader
-        image={otherUser?.image || loggedInUser?.image}
+        image={otherUser?.image}
         fullName={otherUser?.fullName || loggedInUser?.fullName}
         userId={otherUser?.userId || loggedInUser?.userId}
         referredBy={otherUser?.referredBy || loggedInUser?.referredBy}
