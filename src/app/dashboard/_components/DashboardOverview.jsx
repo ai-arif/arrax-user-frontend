@@ -10,7 +10,7 @@ import HexagonTrophy from "./HexagonTrophy";
 import TeamStats from "./TeamStats";
 
 const DashboardOverview = () => {
-  const { loggedInUser, loading } = useContext(AuthContext);
+  const { loggedInUser, otherUser, loading } = useContext(AuthContext);
 
   if (loading) {
     return <p className="py-10 text-center text-2xl font-medium">Loading...</p>;
@@ -20,24 +20,29 @@ const DashboardOverview = () => {
     <>
       {/* Profile info section */}
       <DashboardProfileHeader
-        image={loggedInUser?.image}
-        fullName={loggedInUser?.fullName}
-        userId={loggedInUser?.userId}
-        referredBy={loggedInUser?.referredBy}
-        walletAddress={loggedInUser?.walletAddress}
-        joiningDate={loggedInUser?.createdAt}
-        referLink={`${process.env.FRONTEND_URL}/login?ref=${loggedInUser?.userId}`}
+        image={otherUser?.image || loggedInUser?.image}
+        fullName={otherUser?.fullName || loggedInUser?.fullName}
+        userId={otherUser?.userId || loggedInUser?.userId}
+        referredBy={otherUser?.referredBy || loggedInUser?.referredBy}
+        walletAddress={otherUser?.walletAddress || loggedInUser?.walletAddress}
+        joiningDate={otherUser?.createdAt || loggedInUser?.createdAt}
+        referLink={`${process.env.FRONTEND_URL}/login?ref=${otherUser?.userId || loggedInUser?.userId}`}
       />
 
       {/* Income Section */}
-      <DashboardProfileIncome income={loggedInUser?.income} />
+      <DashboardProfileIncome
+        income={otherUser?.income || loggedInUser?.income}
+      />
 
       {/* Stats Section */}
       <DashboardProfileStats
-        totalTeam={loggedInUser?.totalTeam}
-        activeTeam={loggedInUser?.activeTeam}
+        totalTeam={otherUser?.totalTeam || loggedInUser?.totalTeam}
+        activeTeam={otherUser?.activeTeam || loggedInUser?.activeTeam}
         // TODO: checking
-        directReferrals={loggedInUser?.directReferrals?.length}
+        directReferrals={
+          otherUser?.directReferrals?.length ||
+          loggedInUser?.directReferrals?.length
+        }
       />
 
       {/* <TeamStats /> */}
