@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { SiPolygon } from "react-icons/si";
+import { SiBinance } from "react-icons/si";
 import assets from "../../../../public/images";
 
 const HeroSection = () => {
@@ -35,7 +35,7 @@ const HeroSection = () => {
           <div className="pt-3">
             <div className="flex w-full justify-center gap-3 rounded-md border border-arx-secondary px-5 py-2 text-center md:px-8 md:py-5 lg:w-[80%]">
               <div className="flex size-8 items-center justify-center rounded-full bg-gradient-to-r from-arx-primary to-arx-secondary">
-                <SiPolygon />
+                <SiBinance />
               </div>
               <p className="text-lg font-semibold uppercase text-arx-primary md:text-xl">
                 Powered by bnb <br /> blockchain

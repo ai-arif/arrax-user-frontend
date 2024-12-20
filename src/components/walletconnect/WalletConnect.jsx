@@ -1,8 +1,7 @@
 "use client";
 
-import { ConnectKitButton } from "connectkit";
-// import { Button } from "@/components/ui/button";
 import { Button } from "@/components/ui/button";
+import { ConnectKitButton } from "connectkit";
 import { FaWallet } from "react-icons/fa6";
 
 export const WalletConnect = () => {
