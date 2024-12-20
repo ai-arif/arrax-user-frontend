@@ -5,7 +5,7 @@ import { homeIncomes } from "../../../../public/data/homeIncomes";
 const HomeIncome = () => {
   return (
     <Container>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {homeIncomes?.map((income) => (
           <div key={income.id} className="flex gap-3 md:gap-4">
             <div>{income.icon}</div>

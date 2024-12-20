@@ -3,13 +3,13 @@ export const homeIncomes = [
     id: 1,
     icon: (
       <svg
-        fill="#ffffff"
+        fill="#974edd"
         version="1.1"
         id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        width="64px"
-        height="64px"
+        width="60px"
+        height="60px"
         viewBox="0 0 800 800"
         xmlSpace="preserve"
       >
@@ -34,9 +34,9 @@ export const homeIncomes = [
     id: 2,
     icon: (
       <svg
-        fill="#ffffff"
-        height="64px"
-        width="64px"
+        fill="#974edd"
+        height="60px"
+        width="60px"
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
@@ -65,19 +65,19 @@ export const homeIncomes = [
     ),
     title: "Level Income",
     description:
-      "Gain passive income from your team’s performance, up to [blank] levels deep.",
+      "Gain passive income from your team’s performance, up to 10 levels deep.",
   },
   {
     id: 3,
     icon: (
       <svg
-        fill="#ffffff"
+        fill="#974edd"
         version="1.1"
         id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        width="64px"
-        height="64px"
+        width="60px"
+        height="60px"
         viewBox="0 0 520.071 520.07"
         xmlSpace="preserve"
       >
