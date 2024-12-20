@@ -18,7 +18,7 @@ export const metadata = {
 
 const GenerationPage = async () => {
   // Get the token from the cookies
-  const userId = cookies().get("arx_user_id")?.value;
+  const userId = cookies().get("arx_own_id")?.value;
 
   // Fetch generations by user id
   const generations = await fetchGenerations(userId);

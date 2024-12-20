@@ -18,7 +18,7 @@ const ArraxPrograms = () => {
             <p className="pb-2 text-lg font-semibold md:pb-3 md:text-xl">
               {program.programName}
             </p>
-            <div className="flex h-full flex-col rounded-lg bg-gradient-to-r from-[#231525] to-[#241d25] p-4 shadow-lg md:p-5">
+            <div className="flex h-full flex-col rounded-lg border-2 border-purple-600 bg-gradient-to-r from-[#231525] to-[#241d25] p-4 shadow-lg shadow-purple-600 md:p-5">
               {/* title & button */}
               <div className="flex items-center justify-between gap-2 pb-4 md:pb-5">
                 <p className="">{program.title}</p>

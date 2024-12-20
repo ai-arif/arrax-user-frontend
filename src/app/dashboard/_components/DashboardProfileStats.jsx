@@ -10,7 +10,7 @@ const DashboardProfileStats = ({ totalTeam, activeTeam, directReferrals }) => {
       </h2>
 
       <div className="grid grid-cols-3 gap-3 md:gap-6">
-        <div className="space-y-1.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 text-center md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 rounded-lg border-2 border-purple-600 p-4 text-center shadow-md shadow-purple-600 md:space-y-2.5 md:p-5">
           <h6 className="flex items-center justify-center gap-1.5 text-base font-semibold md:text-lg">
             <FaUserFriends /> Partner
           </h6>
@@ -24,7 +24,7 @@ const DashboardProfileStats = ({ totalTeam, activeTeam, directReferrals }) => {
           </div>
         </div>
 
-        <div className="space-y-1.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 text-center md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 rounded-lg border-2 border-purple-600 p-4 text-center shadow-md shadow-purple-600 md:space-y-2.5 md:p-5">
           <h6 className="flex items-center justify-center gap-1.5 text-base font-semibold md:text-lg">
             <FaUsers /> Team
           </h6>
@@ -38,7 +38,7 @@ const DashboardProfileStats = ({ totalTeam, activeTeam, directReferrals }) => {
           </div>
         </div>
 
-        <div className="space-y-1.5 rounded-lg border border-arx-primary bg-arx-black-4 p-4 text-center md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 rounded-lg border-2 border-purple-600 p-4 text-center shadow-md shadow-purple-600 md:space-y-2.5 md:p-5">
           <h6 className="flex items-center justify-center gap-1.5 text-base font-semibold md:text-lg">
             <FaUserShield /> Active
           </h6>

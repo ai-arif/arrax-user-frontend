@@ -11,7 +11,7 @@ export const metadata = {
 
 const MatrixPage = async () => {
   // Get the token from the cookies
-  const userId = cookies().get("arx_user_id")?.value;
+  const userId = cookies().get("arx_own_id")?.value;
 
   // Fetch matrix/slots by user id
   const matrix = await fetchMatrix(userId);
@@ -22,7 +22,7 @@ const MatrixPage = async () => {
         {matrix?.data?.map((slot) => (
           <div
             key={slot._id}
-            className="space-y-5 rounded-lg border border-zinc-700 bg-arx-black-4 p-4 shadow-lg md:space-y-7 md:p-5"
+            className="space-y-5 rounded-lg bg-[#220838] p-4 shadow-lg md:space-y-7 md:p-5"
           >
             {/* name and price part */}
             <div className="flex items-center justify-between gap-2">
@@ -34,26 +34,19 @@ const MatrixPage = async () => {
                   Total Users: {slot?.usersCount}
                 </p>
               </div>
-              <div className="text-lg font-medium text-arx-secondary md:text-xl">
+              <div className="text-lg font-medium text-arx-primary md:text-xl">
                 ${slot?.price}
               </div>
             </div>
 
             {/* slots part */}
-            <div className="space-y-4">
-              <div className="flex flex-wrap justify-around gap-3">
-                <div className="size-9 rounded bg-arx-primary"></div>
-                <div className="size-9 rounded bg-arx-primary"></div>
-                <div className="size-9 rounded bg-arx-primary"></div>
-              </div>
-              <div className="flex flex-wrap justify-between gap-1">
-                {slot?.subSlots?.map((item) => (
-                  <div
-                    key={item?._id}
-                    className={`size-4 rounded-sm ${item?.isPurchased ? "bg-arx-primary" : "bg-white"}`}
-                  ></div>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-3">
+              {slot?.subSlots?.map((item) => (
+                <div
+                  key={item?._id}
+                  className={`size-6 rounded-sm ${item?.isPurchased ? "bg-arx-primary" : "bg-white"}`}
+                ></div>
+              ))}
             </div>
 
             {/* recycle count part */}
