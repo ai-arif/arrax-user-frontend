@@ -72,6 +72,7 @@ const AuthProvider = ({ children }) => {
       Cookies.remove("arx_own_id");
       Cookies.remove("arx_user_id");
       setLoggedInUser(null);
+      setOtherUser(null);
       router.push("/");
     } catch (error) {
       console.log(error);

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import AutomaticLoginForm from "./AutomaticLoginForm";
 import RegisterForm from "./RegisterForm";
 
-const LoginRegisterComp = () => {
+const LoginRegisterComp = ({ referredBy }) => {
   const [walletAddress, setWalletAddress] = useState("");
 
   return (
@@ -21,7 +21,7 @@ const LoginRegisterComp = () => {
         <div className="mb-3 md:mb-5">
           <WalletConnect setWalletAddress={setWalletAddress} />
         </div>
-        <RegisterForm walletAddress={walletAddress} />
+        <RegisterForm walletAddress={walletAddress} referredBy={referredBy} />
       </div>
 
       {/* Login part */}

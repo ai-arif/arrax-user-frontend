@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { LuLoader2 } from "react-icons/lu";
 
-const RegisterForm = ({ walletAddress }) => {
+const RegisterForm = ({ walletAddress, referredBy }) => {
   const { fetchUser } = useContext(AuthContext);
   const router = useRouter();
 
@@ -60,6 +60,8 @@ const RegisterForm = ({ walletAddress }) => {
           {...register("referredBy", {
             required: "Inviter ID is required",
           })}
+          defaultValue={referredBy}
+          // value={referredBy}
           id="inviter-id"
           type="text"
           placeholder="Enter Inviter ID"

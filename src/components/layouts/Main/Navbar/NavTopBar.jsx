@@ -42,7 +42,9 @@ const NavTopBar = () => {
             <Logo className="mx-auto pb-2" />
 
             {/* connect wallet button */}
-            <WalletConnect setWalletAddress={setWalletAddress} />
+            <div onClick={() => setOpen(false)}>
+              <WalletConnect setWalletAddress={setWalletAddress} />
+            </div>
 
             {/* register or dashboard button based on logged in user */}
             <Button onClick={() => setOpen(false)} asChild>
