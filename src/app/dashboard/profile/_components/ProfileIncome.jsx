@@ -7,7 +7,7 @@ const ProfileIncome = ({ income }) => {
       <h2 className="mb-3 text-base text-zinc-200 md:mb-4 md:text-lg">
         Profit
       </h2>
-      <div className="space-y-2.5 rounded-lg border-2 border-purple-600 p-4 shadow-md shadow-purple-600 md:space-y-3.5 md:p-5">
+      <div className="space-y-2.5 rounded-lg border border-purple-600 p-4 shadow-md shadow-purple-600 md:space-y-3.5 md:p-5">
         <div className="flex items-center justify-between gap-2.5">
           <h3 className="text-lg font-semibold md:text-xl">
             Total profit:{" "}

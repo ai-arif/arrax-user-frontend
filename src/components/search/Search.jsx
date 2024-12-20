@@ -56,13 +56,7 @@ const Search = ({ className }) => {
         className="rounded-l-none"
         size="sm"
       >
-        {isSubmitting ? (
-          "Searching.."
-        ) : (
-          <>
-            Search <LuSearch />
-          </>
-        )}
+        <span className="hidden lg:block">Search</span> <LuSearch />
       </Button>
     </form>
   );
