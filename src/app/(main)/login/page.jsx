@@ -1,12 +1,6 @@
-import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import React from "react";
-import { FaWallet } from "react-icons/fa6";
-import AutomaticLoginForm from "./_components/AutomaticLoginForm";
-import RegisterForm from "./_components/RegisterForm";
-// import { WalletConnect } from "@/components/walletconnect/WalletConnect";
-import { WalletConnect } from "@/components/walletconnect/WalletConnect";
-import AuthButtons from "./_components/AuthButtons";
+import LoginRegisterComp from "./_components/LoginRegisterComp";
 
 export const metadata = {
   title: "Login - Arrax Space",
@@ -17,23 +11,7 @@ const LoginPage = () => {
   return (
     <div className="flex min-h-[90vh] items-center justify-between bg-arx-black-5">
       <Container>
-        <div className="mx-auto flex w-full flex-col rounded-lg border border-zinc-700 md:flex-row">
-          {/* Registration Section */}
-          <div className="w-full border-b border-zinc-700 p-6 md:w-1/2 md:border-r md:p-9">
-            <h2 className="text-custom-style mb-4 text-lg font-semibold md:mb-5 md:text-2xl md:font-bold">
-              Get Started with Arrax Space
-            </h2>
-            <p className="mb-4 text-xs md:mb-5 md:text-sm">
-              Please check the inviter&apos;s ID before registering.
-            </p>
-            <AuthButtons />
-          </div>
-
-          {/* Login Section */}
-          <div className="w-full p-6 md:w-1/2 md:p-9">
-            <AutomaticLoginForm />
-          </div>
-        </div>
+        <LoginRegisterComp />
       </Container>
     </div>
   );

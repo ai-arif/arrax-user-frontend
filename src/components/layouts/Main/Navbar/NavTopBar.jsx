@@ -16,6 +16,7 @@ import { useContext, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const NavTopBar = () => {
+  const [walletAddress, setWalletAddress] = useState("");
   const [open, setOpen] = useState(false);
   const { loggedInUser } = useContext(AuthContext);
 
@@ -41,12 +42,12 @@ const NavTopBar = () => {
             <Logo className="mx-auto pb-2" />
 
             {/* connect wallet button */}
-            <WalletConnect />
+            <WalletConnect setWalletAddress={setWalletAddress} />
 
             {/* register or dashboard button based on logged in user */}
             <Button onClick={() => setOpen(false)} asChild>
               {loggedInUser ? (
-                <Link href="/dashboard">Profile</Link>
+                <Link href="/dashboard/profile">Profile</Link>
               ) : (
                 <Link href="/login">Register</Link>
               )}

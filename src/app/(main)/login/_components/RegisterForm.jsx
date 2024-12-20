@@ -6,23 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AuthContext } from "@/contexts/AuthProvider";
 import axiosInstance from "@/utils/axiosInstance";
-import { zodResolver } from "@hookform/resolvers/zod";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { LuLoader2 } from "react-icons/lu";
-import { z } from "zod";
 
-// register schema
-export const registerSchema = z.object({
-  referredBy: z.string().trim().min(1, "Inviter ID is required"),
-  // walletAddress: z.string().trim().min(1, "Wallet address is required"),
-  fullName: z.string().trim().min(1, "Full name is required"),
-});
-
-const RegisterForm = () => {
+const RegisterForm = ({ walletAddress }) => {
   const { fetchUser } = useContext(AuthContext);
   const router = useRouter();
 
@@ -31,16 +22,19 @@ const RegisterForm = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm({
-    resolver: zodResolver(registerSchema),
-  });
+  } = useForm();
 
   const onSubmit = async (data) => {
+    if (!walletAddress) return toast.error("Please connect wallet");
+
     try {
-      const response = await axiosInstance.post("/users/connect-wallet", data);
+      const response = await axiosInstance.post("/users/connect-wallet", {
+        ...data,
+        walletAddress,
+      });
       if (response?.data?.success) {
         Cookies.set("arx_auth_token", response.data?.data?.token);
-        Cookies.set("arx_user_id", response.data?.data?.user?.userId);
+        Cookies.set("arx_own_id", response.data?.data?.user?.userId);
         reset();
         await fetchUser();
         router.push("/dashboard");
@@ -63,31 +57,21 @@ const RegisterForm = () => {
           Inviter ID
         </Label>
         <Input
-          {...register("referredBy")}
+          {...register("referredBy", {
+            required: "Inviter ID is required",
+          })}
           id="inviter-id"
           type="text"
           placeholder="Enter Inviter ID"
         />
         <ErrorMessage>{errors.referredBy?.message}</ErrorMessage>
       </div>
-      {/* <div>
-        <Label htmlFor="wallet-address" className="sr-only">
-          Wallet Address
-        </Label>
-        <Input
-          {...register("walletAddress")}
-          id="wallet-address"
-          type="text"
-          placeholder="Enter Wallet Address"
-        />
-        <ErrorMessage>{errors.walletAddress?.message}</ErrorMessage>
-      </div> */}
       <div>
         <Label htmlFor="full-name" className="sr-only">
           Full Name
         </Label>
         <Input
-          {...register("fullName")}
+          {...register("fullName", { required: "Full name is required" })}
           id="full-name"
           type="text"
           placeholder="Enter Full Name"

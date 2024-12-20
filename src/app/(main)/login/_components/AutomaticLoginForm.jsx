@@ -10,22 +10,27 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { LuLoader2 } from "react-icons/lu";
 
-const AutomaticLoginForm = () => {
+const AutomaticLoginForm = ({ walletAddress }) => {
   const { fetchUser } = useContext(AuthContext);
   const router = useRouter();
 
   const {
-    register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async () => {
+    if (!walletAddress) return toast.error("Please connect wallet");
+
     try {
-      const response = await axiosInstance.get(`/users/user/${data.userId}`);
+      const response = await axiosInstance.post("/users/connect-wallet", {
+        walletAddress,
+      });
+
       if (response?.data?.success) {
-        Cookies.set("arx_user_id", response.data?.data?.userId);
+        Cookies.set("arx_auth_token", response.data?.data?.token);
+        Cookies.set("arx_own_id", response.data?.data?.user?.userId);
         reset();
         await fetchUser();
         router.push("/dashboard");
@@ -51,18 +56,7 @@ const AutomaticLoginForm = () => {
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="">
-        <div>
-          {/* <Label htmlFor="user-id" className="sr-only">
-          Enter User ID
-        </Label> */}
-          {/* <Input
-          {...register("userId")}
-          id="user-id"
-          type="text"
-          placeholder="Enter User ID"
-        /> */}
-          {/* <ErrorMessage>{errors.userId?.message}</ErrorMessage> */}
-        </div>
+        <div></div>
         <Button disabled={isSubmitting} type="submit" className="w-full">
           {isSubmitting ? (
             <>

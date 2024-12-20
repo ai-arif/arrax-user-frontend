@@ -1,9 +1,9 @@
 "use client";
 
-import { WagmiProvider, createConfig, http } from "wagmi";
-import { bsc, bscTestnet } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
+import { WagmiProvider, createConfig, http } from "wagmi";
+import { bsc, bscTestnet } from "wagmi/chains";
 
 const config = createConfig(
   getDefaultConfig({
@@ -32,7 +32,7 @@ const config = createConfig(
 const queryClient = new QueryClient();
 
 export const Web3Provider = ({ children }) => {
-  console.log({ children });
+  // console.log({ children });
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
