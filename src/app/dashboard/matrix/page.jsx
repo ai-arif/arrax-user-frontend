@@ -1,4 +1,5 @@
 import { fetchMatrix } from "@/api/matrix";
+import { Button } from "@/components/ui/button";
 import { cookies } from "next/headers";
 import React, { Suspense } from "react";
 import { FaRotate, FaUsers } from "react-icons/fa6";
@@ -11,18 +12,18 @@ export const metadata = {
 
 const MatrixPage = async () => {
   // Get the token from the cookies
-  const userId = cookies().get("arx_own_id")?.value;
+  const ownId = cookies().get("arx_own_id")?.value;
 
   // Fetch matrix/slots by user id
-  const matrix = await fetchMatrix(userId);
+  const matrix = await fetchMatrix(ownId);
 
   return (
     <Suspense fallback={<MatrixSkeleton />}>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
         {matrix?.data?.map((slot) => (
           <div
             key={slot._id}
-            className="space-y-5 rounded-lg bg-[#220838] p-4 shadow-lg md:space-y-7 md:p-5"
+            className="space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-[#231525] to-[#241d25] p-4 shadow-md shadow-purple-600 md:space-y-7 md:p-5"
           >
             {/* name and price part */}
             <div className="flex items-center justify-between gap-2">
@@ -39,25 +40,58 @@ const MatrixPage = async () => {
               </div>
             </div>
 
-            {/* slots part */}
-            <div className="flex flex-wrap gap-3">
-              {slot?.subSlots?.map((item) => (
-                <div
-                  key={item?._id}
-                  className={`size-6 rounded-sm ${item?.isPurchased ? "bg-arx-primary" : "bg-white"}`}
-                ></div>
-              ))}
-            </div>
+            {slot?.isActive ? (
+              <>
+                {/* Slots: Active */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex justify-around gap-3">
+                    {slot?.subSlots?.slice(0, 3).map((item) => (
+                      <div
+                        key={item?._id}
+                        className={`size-6 rounded-sm ${
+                          item?.isPurchased ? "bg-arx-primary" : "bg-white"
+                        }`}
+                      ></div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap justify-between gap-2">
+                    {slot?.subSlots?.slice(3).map((item) => (
+                      <div
+                        key={item?._id}
+                        className={`size-6 rounded-sm ${
+                          item?.isPurchased ? "bg-arx-primary" : "bg-white"
+                        }`}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
 
-            {/* recycle count part */}
-            <div className="flex items-center gap-5">
-              <div className="flex items-center gap-1">
-                <FaUsers /> <span>{slot?.recycleUserCount}</span>
+                {/* Recycle Count */}
+                <div className="flex items-center gap-5">
+                  <div className="flex items-center gap-1">
+                    <FaUsers />{" "}
+                    <span className="text-arx-primary">
+                      {slot?.recycleUserCount}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <FaRotate />{" "}
+                    <span className="text-arx-primary">
+                      {slot?.recycleCount}
+                    </span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center">
+                <Button
+                  variant="secondary"
+                  className="rounded-full bg-arx-secondary uppercase"
+                >
+                  Upgrade
+                </Button>
               </div>
-              <div className="flex items-center gap-1">
-                <FaRotate /> <span>{slot?.recycleCount}</span>
-              </div>
-            </div>
+            )}
           </div>
         ))}
       </div>
@@ -66,3 +100,9 @@ const MatrixPage = async () => {
 };
 
 export default MatrixPage;
+{
+  /* recycle count part */
+}
+{
+  /* slots part */
+}

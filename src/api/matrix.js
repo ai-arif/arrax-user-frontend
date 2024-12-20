@@ -1,7 +1,7 @@
-export const fetchMatrix = async (userId) => {
+export const fetchMatrix = async (ownId) => {
   try {
     const response = await fetch(
-      `${process.env.API_URL}/users/user/${userId}/slot`,
+      `${process.env.API_URL}/users/user/${ownId}/slot`,
       {
         cache: "no-cache",
       },
