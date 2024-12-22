@@ -5,9 +5,6 @@ import { FaArrowUp } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 
 const HomeStats = () => {
-  const totalUsers = 123;
-  const totalIncome = 4567;
-
   return (
     <Container>
       <SectionTitle
@@ -19,10 +16,10 @@ const HomeStats = () => {
         <div className="space-y-2 rounded border border-arx-secondary p-5 md:rounded-lg md:p-6">
           <div className="flex items-center justify-center gap-3 md:gap-4">
             <h4 className="flex items-center gap-2 text-xl font-semibold md:text-3xl md:font-bold">
-              <FaUsers /> {totalUsers}
+              <FaUsers /> 00
             </h4>
             <p className="flex items-center gap-0.5 text-xs font-medium text-green-500 md:text-sm">
-              <FaArrowUp /> 12
+              <FaArrowUp /> 00
             </p>
           </div>
           <p className="mb-2 text-base font-medium text-zinc-300 md:text-lg md:font-semibold">
@@ -33,10 +30,10 @@ const HomeStats = () => {
         <div className="space-y-2 rounded border border-arx-secondary p-5 md:rounded-lg md:p-6">
           <div className="flex items-center justify-center gap-3 md:gap-4">
             <h4 className="text-xl font-semibold md:text-3xl md:font-bold">
-              $ {totalIncome}
+              $ 00
             </h4>
             <p className="flex items-center gap-0.5 text-xs font-medium text-green-500 md:text-sm">
-              <FaArrowUp /> 210
+              <FaArrowUp /> 00
             </p>
           </div>
           <p className="mb-2 text-base font-medium text-zinc-300 md:text-lg md:font-semibold">

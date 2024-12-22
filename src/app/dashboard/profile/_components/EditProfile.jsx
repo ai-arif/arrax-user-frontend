@@ -43,7 +43,6 @@ const EditProfile = ({ fullName, image }) => {
         "/users/update-picture",
         formData,
       );
-      console.log(response);
       if (response?.data?.success) {
         toast.success(response.data.message);
         await fetchUser();
