@@ -100,9 +100,3 @@ const MatrixPage = async () => {
 };
 
 export default MatrixPage;
-{
-  /* recycle count part */
-}
-{
-  /* slots part */
-}
