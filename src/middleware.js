@@ -9,7 +9,6 @@ export async function middleware(request) {
 
   // Redirect to login if user is not authenticated and accessing a protected route
   if (!authToken && isDashboardRoute) {
-    console.log("inside login");
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
@@ -18,8 +17,7 @@ export async function middleware(request) {
 
   // Redirect authenticated users away from public routes
   if (isPublicRoute && authToken) {
-    console.log("inside dashboard");
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   // If all checks pass, proceed with the request
