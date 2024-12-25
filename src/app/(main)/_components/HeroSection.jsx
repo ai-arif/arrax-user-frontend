@@ -1,10 +1,8 @@
-import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { SiBinance } from "react-icons/si";
 import assets from "../../../../public/images";
+import HeroAuthButtons from "./HeroAuthButtons";
 
 const HeroSection = () => {
   return (
@@ -19,19 +17,8 @@ const HeroSection = () => {
             Unlock a world of financial freedom with the power of blockchain
             technology. Join a global!
           </p>
-          <div className="flex justify-center gap-3 md:gap-4 md:pt-3 lg:justify-start">
-            <Button size="lg" className="rounded-full" asChild>
-              <Link href="/login">Login</Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full"
-              asChild
-            >
-              <Link href="/login">Register</Link>
-            </Button>
-          </div>
+          {/* auth buttons */}
+          <HeroAuthButtons />
           <div className="pt-3">
             <div className="flex w-full justify-center gap-3 rounded-md border border-arx-secondary px-5 py-2 text-center md:px-8 md:py-5 lg:w-[80%]">
               {/* <div className="flex size-8 items-center justify-center rounded-full bg-gradient-to-r from-arx-primary to-arx-secondary">
