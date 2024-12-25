@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/components/ui/Loader";
 import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
 import ArraxPrograms from "./ArraxPrograms";
@@ -13,7 +14,7 @@ const DashboardOverview = () => {
   const { loggedInUser, otherUser, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <p className="py-10 text-center text-2xl font-medium">Loading...</p>;
+    return <Loader />;
   }
 
   return (

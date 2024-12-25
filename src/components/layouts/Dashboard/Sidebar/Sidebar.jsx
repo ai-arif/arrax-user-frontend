@@ -94,7 +94,7 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
             ))}
             <li
               onClick={handleLogout}
-              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:rounded-md hover:bg-zinc-800 hover:text-white"
+              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:rounded-md hover:bg-zinc-800"
             >
               <CgLogOut className="text-lg md:text-xl" /> Logout
             </li>

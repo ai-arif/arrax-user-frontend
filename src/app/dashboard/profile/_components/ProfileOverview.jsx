@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/components/ui/Loader";
 import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
 import ProfileHeader from "./ProfileHeader";
@@ -10,7 +11,7 @@ const ProfileOverview = () => {
   const { loggedInUser, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <p className="py-10 text-center text-2xl font-medium">Loading...</p>;
+    return <Loader />;
   }
 
   return (
