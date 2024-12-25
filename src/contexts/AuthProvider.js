@@ -65,8 +65,14 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  // Automatically fetch user
+  useEffect(() => {
+    fetchUser();
+    fetchOtherUser();
+  }, []);
+
   //  Clear cookies and log out the user.
-  const handleLogout = () => {
+  const handleLogout = async () => {
     try {
       Cookies.remove("arx_auth_token");
       Cookies.remove("arx_own_id");
@@ -78,12 +84,6 @@ const AuthProvider = ({ children }) => {
       console.log(error);
     }
   };
-
-  // Automatically fetch user
-  useEffect(() => {
-    fetchUser();
-    fetchOtherUser();
-  }, []);
 
   const authInfo = {
     loading,
