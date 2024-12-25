@@ -22,7 +22,7 @@ const NotFound = () => {
           changed or is temporarily unavailable.
         </p>
         <Button size="lg" className="" asChild>
-          <Link href="/">Go To Home</Link>
+          <Link href="/">Go to Home</Link>
         </Button>
       </div>
     </div>
