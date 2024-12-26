@@ -8,38 +8,32 @@ export const dashboardMenuConfig = [
     icon: <BsGridFill />,
     label: "Dashboard",
     path: "/dashboard",
-    enabled: true,
   },
   {
     icon: <FaRegUser />,
     label: "Profile",
     path: "/dashboard/profile",
-    enabled: true,
   },
   {
     icon: <TbUsersGroup className="text-lg md:text-xl" />,
     label: "Generation",
     path: "/dashboard/generation",
-    enabled: true,
   },
   {
     icon: <VscPreview />,
     label: "Review ID",
     path: "/dashboard/review-id",
-    enabled: true,
   },
-  {
-    icon: <TbReportMoney className="text-lg md:text-xl" />,
-    label: "Salary",
-    path: "#",
-    enabled: false,
-  },
-  {
-    icon: <FaHeadset />,
-    label: "Support",
-    path: "#",
-    enabled: false,
-  },
+  // {
+  //   icon: <TbReportMoney className="text-lg md:text-xl" />,
+  //   label: "Salary",
+  //   path: "#",
+  // },
+  // {
+  //   icon: <FaHeadset />,
+  //   label: "Support",
+  //   path: "#",
+  // },
   // {
   //   icon: <BsTable />,
   //   label: "AX Ultra Matrix",
