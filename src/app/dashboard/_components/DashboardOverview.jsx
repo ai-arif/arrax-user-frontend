@@ -17,33 +17,31 @@ const DashboardOverview = () => {
     return <Loader />;
   }
 
+  // Merge user data prioritizing otherUser
+  const user = otherUser || loggedInUser;
+
   return (
     <>
       {/* Profile info section */}
       <DashboardProfileHeader
-        image={otherUser?.image}
-        fullName={otherUser?.fullName || loggedInUser?.fullName}
-        userId={otherUser?.userId || loggedInUser?.userId}
-        referredBy={otherUser?.referredBy || loggedInUser?.referredBy}
-        walletAddress={otherUser?.walletAddress || loggedInUser?.walletAddress}
-        joiningDate={otherUser?.createdAt || loggedInUser?.createdAt}
-        referLink={`${process.env.FRONTEND_URL}/login?ref=${otherUser?.userId || loggedInUser?.userId}`}
+        image={user?.image}
+        fullName={user?.fullName}
+        userId={user?.userId}
+        referredBy={user?.referredBy}
+        walletAddress={user?.walletAddress}
+        joiningDate={user?.createdAt}
+        referLink={`${process.env.FRONTEND_URL}/login?ref=${user?.userId}`}
       />
 
       {/* Income Section */}
-      <DashboardProfileIncome
-        income={otherUser?.income || loggedInUser?.income}
-      />
+      <DashboardProfileIncome income={user?.income} />
 
       {/* Stats Section */}
       <DashboardProfileStats
-        totalTeam={otherUser?.totalTeam || loggedInUser?.totalTeam}
-        activeTeam={otherUser?.activeTeam || loggedInUser?.activeTeam}
+        totalTeam={user?.totalTeam}
+        activeTeam={user?.activeTeam}
         // TODO: checking
-        directReferrals={
-          otherUser?.directReferrals?.length ||
-          loggedInUser?.directReferrals?.length
-        }
+        directReferrals={user?.directReferrals?.length}
       />
 
       {/* <TeamStats /> */}
