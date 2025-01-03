@@ -19,7 +19,7 @@ import toast from "react-hot-toast";
 import { FiEdit } from "react-icons/fi";
 import { LuLoader2 } from "react-icons/lu";
 
-const EditProfile = ({ fullName, image }) => {
+const EditProfile = ({ fullName }) => {
   const { fetchUser } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
@@ -28,7 +28,7 @@ const EditProfile = ({ fullName, image }) => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
-    values: { fullName, image },
+    values: { fullName },
   });
 
   const onSubmit = async (userData) => {
@@ -40,7 +40,7 @@ const EditProfile = ({ fullName, image }) => {
       }
 
       const response = await axiosInstance.post(
-        "/users/update-picture",
+        "/users/update-profile",
         formData,
       );
       if (response?.data?.success) {
