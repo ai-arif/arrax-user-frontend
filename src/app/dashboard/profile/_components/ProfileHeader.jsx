@@ -51,7 +51,7 @@ const ProfileHeader = ({
         </div>
         {/* Profile edit modal */}
         <div className="self-start md:self-center">
-          <EditProfile fullName={fullName} image={image} />
+          <EditProfile fullName={fullName} />
         </div>
       </div>
 

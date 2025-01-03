@@ -4,6 +4,7 @@ import { AuthContext } from "@/contexts/AuthProvider";
 import { cn } from "@/lib/utils";
 import axiosInstance from "@/utils/axiosInstance";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -13,6 +14,7 @@ import { Input } from "../ui/input";
 
 const Search = ({ className }) => {
   const { fetchOtherUser } = useContext(AuthContext);
+  const router = useRouter();
 
   const {
     register,
@@ -29,6 +31,7 @@ const Search = ({ className }) => {
         Cookies.set("arx_user_id", response.data?.data?.userId);
         reset();
         await fetchOtherUser();
+        router.push("/dashboard");
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
