@@ -7,16 +7,11 @@ const MatrixSkeleton = () => {
       {[...Array(6)].map((_, index) => (
         <div
           key={index}
-          className="space-y-5 rounded-lg border border-zinc-700 bg-arx-black-4 p-4 shadow-lg md:space-y-7 md:p-5"
+          className="space-y-5 rounded-lg border border-zinc-700 bg-arx-black-4 p-4 shadow-lg md:space-y-6 md:p-5"
         >
           <div className="flex items-center justify-between gap-2">
-            <div className="space-y-2">
-              <Skeleton className="h-6 w-20 rounded-none" />
-              <Skeleton className="h-3 w-20 rounded-none" />
-            </div>
-            <div>
-              <Skeleton className="h-5 w-12 rounded-none" />
-            </div>
+            <Skeleton className="h-6 w-20 rounded-none" />
+            <Skeleton className="h-5 w-12 rounded-none" />
           </div>
 
           <div className="space-y-4">

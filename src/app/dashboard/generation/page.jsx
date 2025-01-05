@@ -1,15 +1,5 @@
-import { fetchGenerations } from "@/api/generation";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { cookies } from "next/headers";
-import React, { Suspense } from "react";
-import GenerationSkeleton from "./_components/GenerationSkeleton";
+import React from "react";
+import Generation from "./_components/Generation";
 
 export const metadata = {
   title: "Generation - Arrax Space",
@@ -17,47 +7,10 @@ export const metadata = {
 };
 
 const GenerationPage = async () => {
-  // Get the token from the cookies
-  const userId = cookies().get("arx_own_id")?.value;
-
-  // Fetch generations by user id
-  const generations = await fetchGenerations(userId);
-
   return (
-    <Suspense fallback={<GenerationSkeleton />}>
-      <div>
-        <h2 className="mb-3 text-lg font-semibold md:mb-4 md:text-xl">
-          Generation
-        </h2>
-        <Table className="rounded-lg bg-arx-black-4 shadow-lg">
-          <TableHeader>
-            <TableRow className="hover:bg-transparent">
-              <TableHead className="text-center text-zinc-300">Level</TableHead>
-              <TableHead className="text-center text-zinc-300">Total</TableHead>
-              <TableHead className="text-center text-zinc-300">
-                Active
-              </TableHead>
-              <TableHead className="text-center text-zinc-300">
-                Inactive
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {generations?.levels?.map((level, index) => (
-              <TableRow
-                key={index}
-                className="text-center hover:bg-transparent"
-              >
-                <TableCell>{level?.level}</TableCell>
-                <TableCell>{level?.total || 20}</TableCell>
-                <TableCell>{level?.active || 20}</TableCell>
-                <TableCell>{level?.inactive || 20}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </Suspense>
+    <>
+      <Generation />
+    </>
   );
 };
 

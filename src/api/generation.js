@@ -1,20 +1,17 @@
-export const fetchGenerations = async (userId) => {
+import axiosInstance from "@/utils/axiosInstance";
+import Cookies from "js-cookie";
+
+export const fetchGenerations = async () => {
+  const ownId = Cookies.get("arx_own_id");
   try {
-    const response = await fetch(
-      `${process.env.API_URL}/users/user/${userId}/generations`,
-      {
-        cache: "no-cache",
-      },
+    const response = await axiosInstance.get(
+      `/users/user/${ownId}/generations`,
     );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch generations");
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    console.error("Error fetching generations:", err);
-    throw new Error("Failed to fetch generations");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching generations:", error);
+    throw new Error(
+      error?.response?.data?.message || "Failed to fetch generations",
+    );
   }
 };

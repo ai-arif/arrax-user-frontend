@@ -1,20 +1,15 @@
-export const fetchMatrix = async (ownId) => {
+import axiosInstance from "@/utils/axiosInstance";
+import Cookies from "js-cookie";
+
+export const fetchMatrix = async () => {
+  const ownId = Cookies.get("arx_own_id");
   try {
-    const response = await fetch(
-      `${process.env.API_URL}/users/user/${ownId}/slot`,
-      {
-        cache: "no-cache",
-      },
+    const response = await axiosInstance.get(`/users/user/${ownId}/slot`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching generations:", error);
+    throw new Error(
+      error?.response?.data?.message || "Failed to fetch generations",
     );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch matrix");
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    console.error("Error fetching matrix:", err);
-    throw new Error("Failed to fetch matrix");
   }
 };
