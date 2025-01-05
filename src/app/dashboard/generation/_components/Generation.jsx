@@ -14,11 +14,7 @@ import React from "react";
 import GenerationSkeleton from "./GenerationSkeleton";
 
 const Generation = () => {
-  const {
-    data: generations = { levels: [] },
-    isLoading,
-    isError,
-  } = useGenerations();
+  const { data: generations = {}, isLoading, isError } = useGenerations();
 
   if (isLoading) return <GenerationSkeleton />;
 
