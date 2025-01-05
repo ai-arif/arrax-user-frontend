@@ -1,5 +1,3 @@
-"use client";
-
 import { fetchGenerations } from "@/api/generation";
 import { useQuery } from "@tanstack/react-query";
 
