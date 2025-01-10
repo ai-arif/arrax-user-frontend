@@ -11,10 +11,12 @@ import React from "react";
 const TransactionHistory = () => {
   return (
     <div>
-      <h2 className="pb-4 text-lg font-semibold md:pb-5 md:text-xl">
+      {/* Title */}
+      <h2 className="pb-3 text-lg font-semibold md:pb-4 md:text-xl">
         Transaction History
       </h2>
 
+      {/* Table */}
       <Table className="rounded-lg bg-arx-black-4 shadow-lg">
         <TableHeader>
           <TableRow className="hover:bg-transparent">
