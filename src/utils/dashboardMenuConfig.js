@@ -16,7 +16,7 @@ export const dashboardMenuConfig = [
     path: "/dashboard/profile",
   },
   {
-    icon: <LiaUsersCogSolid />,
+    icon: <LiaUsersCogSolid className="text-base md:text-lg" />,
     label: "Manage Users",
     path: "/dashboard/manage-users",
   },
