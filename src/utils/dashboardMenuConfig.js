@@ -1,5 +1,6 @@
 import { BsGridFill, BsTable } from "react-icons/bs";
 import { FaHeadset, FaRegUser } from "react-icons/fa";
+import { LiaUsersCogSolid } from "react-icons/lia";
 import { TbReportMoney, TbUsersGroup } from "react-icons/tb";
 import { VscPreview } from "react-icons/vsc";
 
@@ -13,6 +14,11 @@ export const dashboardMenuConfig = [
     icon: <FaRegUser />,
     label: "Profile",
     path: "/dashboard/profile",
+  },
+  {
+    icon: <LiaUsersCogSolid />,
+    label: "Manage Users",
+    path: "/dashboard/manage-users",
   },
   {
     icon: <TbUsersGroup className="text-lg md:text-xl" />,
