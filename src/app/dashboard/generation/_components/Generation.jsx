@@ -41,9 +41,9 @@ const Generation = () => {
           {generations?.levels?.map((level, index) => (
             <TableRow key={index} className="text-center hover:bg-transparent">
               <TableCell>{level?.level}</TableCell>
-              <TableCell>{level?.total || 20}</TableCell>
-              <TableCell>{level?.active || 20}</TableCell>
-              <TableCell>{level?.inactive || 20}</TableCell>
+              <TableCell>{level?.total}</TableCell>
+              <TableCell>{level?.active}</TableCell>
+              <TableCell>{level?.inactive}</TableCell>
             </TableRow>
           ))}
         </TableBody>
