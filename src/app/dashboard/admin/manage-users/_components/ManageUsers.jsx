@@ -87,7 +87,7 @@ const ManageUsers = () => {
               <TableCell>{formatAddress(user.walletAddress)}</TableCell>
               <TableCell>
                 <Button variant="secondary" size="xs" asChild>
-                  <Link href={`/dashboard/admin/manage-users/${user._id}`}>
+                  <Link href={`/dashboard/admin/manage-users/${user.userId}`}>
                     View
                   </Link>
                 </Button>
