@@ -20,7 +20,7 @@ export const dashboardMenuConfig = [
   {
     icon: <LiaUsersCogSolid className="text-base md:text-lg" />,
     label: "Manage Users",
-    path: "/dashboard/manage-users",
+    path: "/dashboard/admin/manage-users",
     role: ["admin"],
   },
   {

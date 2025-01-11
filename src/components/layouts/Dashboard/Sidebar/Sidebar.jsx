@@ -14,7 +14,7 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
   // Filter menu items based on the user's role
   // TODO: removed after testing > || "user"
   const filteredMenuConfig = dashboardMenuConfig?.filter((menuItem) =>
-    menuItem?.role?.includes(loggedInUser?.role || "user"),
+    menuItem?.role?.includes(loggedInUser?.role || "admin"),
   );
 
   // Close sidebar on click outside
