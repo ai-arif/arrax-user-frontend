@@ -1,7 +1,12 @@
+import { jwtDecode } from "jwt-decode";
 import { NextResponse } from "next/server";
 
 export async function middleware(request) {
   const authToken = request.cookies.get("arx_auth_token")?.value;
+  if (authToken) {
+    const decode = jwtDecode(authToken);
+    // console.log(decode);
+  }
   const { pathname } = request.nextUrl;
 
   // Check if the requested path is a dashboard route
