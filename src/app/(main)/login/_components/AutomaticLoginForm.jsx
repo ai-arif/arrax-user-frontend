@@ -21,6 +21,7 @@ const AutomaticLoginForm = ({ walletAddress }) => {
   } = useForm();
 
   const onSubmit = async () => {
+    
     if (!walletAddress) return toast.error("Please connect wallet");
 
     try {
