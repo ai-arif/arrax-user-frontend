@@ -1,5 +1,5 @@
 import React from "react";
-import Matrix from "./_components/Matrix";
+import MatrixSlots from "./_components/MatrixSlots";
 
 export const metadata = {
   title: "Matrix - Arrax Space",
@@ -9,7 +9,7 @@ export const metadata = {
 const MatrixPage = async () => {
   return (
     <>
-      <Matrix />
+      <MatrixSlots />
     </>
   );
 };
