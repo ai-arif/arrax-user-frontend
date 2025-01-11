@@ -8,8 +8,14 @@ import SidebarFooter from "./SidebarFooter";
 import SidebarItem from "./SidebarItem";
 
 const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
-  const { handleLogout } = useContext(AuthContext);
+  const { loggedInUser, handleLogout } = useContext(AuthContext);
   const sidebar = useRef(null);
+
+  // Filter menu items based on the user's role
+  // TODO: removed after testing > || "user"
+  const filteredMenuConfig = dashboardMenuConfig?.filter((menuItem) =>
+    menuItem?.role?.includes(loggedInUser?.role || "user"),
+  );
 
   // Close sidebar on click outside
   useEffect(() => {
@@ -85,7 +91,7 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
         {/* SIDEBAR MENU */}
         <nav className="px-4 lg:px-5">
           <ul className="flex flex-col gap-2.5">
-            {dashboardMenuConfig?.map((menuItem, idx) => (
+            {filteredMenuConfig?.map((menuItem, idx) => (
               <SidebarItem
                 key={idx}
                 menuItem={menuItem}
