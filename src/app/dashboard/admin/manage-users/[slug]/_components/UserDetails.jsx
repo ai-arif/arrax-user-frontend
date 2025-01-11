@@ -5,6 +5,7 @@ import React from "react";
 import ProfitStats from "./ProfitStats";
 import PurchasedSlots from "./PurchasedSlots";
 import PurchaseInformation from "./PurchaseInformation";
+import TeamStats from "./TeamStats";
 import TransactionHistory from "./TransactionHistory";
 
 const UserDetails = ({ slug }) => {
@@ -15,6 +16,13 @@ const UserDetails = ({ slug }) => {
     <div>
       {/* Profit stats */}
       <ProfitStats income={data?.user?.income} />
+
+      {/* Team Status */}
+      <TeamStats
+        totalPartners={data?.user?.totalPartners}
+        totalTeam={data?.user?.totalTeam}
+        activeTeam={data?.user?.activeTeam}
+      />
 
       {/* Purchase information */}
       <PurchaseInformation />
