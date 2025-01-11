@@ -1,7 +1,7 @@
-import { BsGridFill, BsTable } from "react-icons/bs";
-import { FaHeadset, FaRegUser } from "react-icons/fa";
+import { BsGridFill } from "react-icons/bs";
+import { FaRegUser } from "react-icons/fa";
 import { LiaUsersCogSolid } from "react-icons/lia";
-import { TbReportMoney, TbUsersGroup } from "react-icons/tb";
+import { TbUsersGroup } from "react-icons/tb";
 import { VscPreview } from "react-icons/vsc";
 
 export const dashboardMenuConfig = [
@@ -9,26 +9,31 @@ export const dashboardMenuConfig = [
     icon: <BsGridFill />,
     label: "Dashboard",
     path: "/dashboard",
+    role: ["user", "admin"],
   },
   {
     icon: <FaRegUser />,
     label: "Profile",
     path: "/dashboard/profile",
+    role: ["user", "admin"],
   },
   {
     icon: <LiaUsersCogSolid className="text-base md:text-lg" />,
     label: "Manage Users",
-    path: "/dashboard/manage-users",
+    path: "/dashboard/admin/manage-users",
+    role: ["admin"],
   },
   {
     icon: <TbUsersGroup className="text-lg md:text-xl" />,
     label: "Generation",
     path: "/dashboard/generation",
+    role: ["user", "admin"],
   },
   {
     icon: <VscPreview />,
     label: "Review ID",
     path: "/dashboard/review-id",
+    role: ["user", "admin"],
   },
   // {
   //   icon: <TbReportMoney className="text-lg md:text-xl" />,
@@ -44,19 +49,16 @@ export const dashboardMenuConfig = [
   //   icon: <BsTable />,
   //   label: "AX Ultra Matrix",
   //   path: "/dashboard/matrix",
-  //   enabled: true,
   // },
   // {
   //   icon: <FaUsers />,
   //   label: "Team",
   //   path: "#",
-  //   enabled: true,
   //   children: [
   //     {
   //       icon: <LuUsers />,
   //       label: "Partners",
   //       path: "/dashboard/team/partners",
-  //       enabled: true,
   //     },
   //   ],
   // },
