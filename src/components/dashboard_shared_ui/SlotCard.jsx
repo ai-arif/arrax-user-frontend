@@ -31,7 +31,7 @@ const SlotCard = ({ slot }) => {
         </p>
       </div>
 
-      {!slot?.isActive ? (
+      {slot?.isActive ? (
         <>
           {/* Slots: Active */}
           <div className="flex flex-col gap-3">
