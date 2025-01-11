@@ -1,13 +1,14 @@
 import React from "react";
 import { HiMiniArrowUp } from "react-icons/hi2";
 
-const ProfitStats = ({ income }) => {
+const ProfitStats = ({ sectionTitle, income }) => {
   return (
     <div className="dashboard-bottom-spacing">
       {/* Title */}
-      <h2 className="pb-3 text-lg font-semibold text-zinc-200 md:pb-4 md:text-xl">
+      {/* <h2 className="pb-3 text-lg font-semibold text-zinc-200 md:pb-4 md:text-xl">
         Profit Stats
-      </h2>
+      </h2> */}
+      {sectionTitle}
 
       {/* Information */}
       <div className="space-y-2.5 rounded-lg border border-purple-600 p-4 shadow-md shadow-purple-600 md:space-y-3.5 md:p-5">

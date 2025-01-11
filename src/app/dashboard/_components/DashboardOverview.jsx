@@ -1,14 +1,13 @@
 "use client";
 
+import ProfitStats from "@/components/dashboard_shared_ui/ProfitStats";
+import TeamStats from "@/components/dashboard_shared_ui/TeamStats";
 import Loader from "@/components/ui/Loader";
 import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
 import ArraxPrograms from "./ArraxPrograms";
 import DashboardProfileHeader from "./DashboardProfileHeader";
-import DashboardProfileIncome from "./DashboardProfileIncome";
-import DashboardProfileStats from "./DashboardProfileStats";
 import HexagonTrophy from "./HexagonTrophy";
-import TeamStats from "./TeamStats";
 
 const DashboardOverview = () => {
   const { loggedInUser, otherUser, loading } = useContext(AuthContext);
@@ -33,15 +32,21 @@ const DashboardOverview = () => {
         referLink={`${process.env.FRONTEND_URL}/login?ref=${user?.userId}`}
       />
 
-      {/* Income Section */}
-      <DashboardProfileIncome income={user?.income} />
+      {/* Profit stats section */}
+      <ProfitStats
+        sectionTitle={
+          <h2 className="mb-3 text-base text-zinc-200 md:mb-4 md:text-lg">
+            Profit
+          </h2>
+        }
+        income={user?.income}
+      />
 
-      {/* Stats Section */}
-      <DashboardProfileStats
+      {/* Team Stats Section */}
+      <TeamStats
+        totalPartners={user?.totalPartners}
         totalTeam={user?.totalTeam}
         activeTeam={user?.activeTeam}
-        // TODO: checking
-        directReferrals={user?.directReferrals?.length}
       />
 
       {/* <TeamStats /> */}

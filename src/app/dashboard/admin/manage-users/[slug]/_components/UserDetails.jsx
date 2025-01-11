@@ -1,10 +1,10 @@
 "use client";
 
+import ProfitStats from "@/components/dashboard_shared_ui/ProfitStats";
+import TeamStats from "@/components/dashboard_shared_ui/TeamStats";
 import { useUserDetails } from "@/hooks/admin/useAllUsers";
 import React from "react";
-import ProfitStats from "./ProfitStats";
 import PurchasedSlots from "./PurchasedSlots";
-import TeamStats from "./TeamStats";
 import TransactionHistory from "./TransactionHistory";
 import UserBasicInfo from "./UserBasicInfo";
 
@@ -24,7 +24,14 @@ const UserDetails = ({ slug }) => {
       />
 
       {/* Profit stats */}
-      <ProfitStats income={data?.user?.income} />
+      <ProfitStats
+        sectionTitle={
+          <h2 className="pb-3 text-lg font-semibold text-zinc-200 md:pb-4 md:text-xl">
+            Profit Stats
+          </h2>
+        }
+        income={data?.user?.income}
+      />
 
       {/* Team Status */}
       <TeamStats
