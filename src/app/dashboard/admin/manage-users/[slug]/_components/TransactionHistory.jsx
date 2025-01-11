@@ -12,7 +12,7 @@ const TransactionHistory = () => {
   return (
     <div>
       {/* Title */}
-      <h2 className="pb-3 text-lg font-semibold md:pb-4 md:text-xl">
+      <h2 className="pb-3 text-lg font-semibold text-zinc-200 md:pb-4 md:text-xl">
         Transaction History
       </h2>
 
