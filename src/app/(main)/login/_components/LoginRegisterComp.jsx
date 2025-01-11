@@ -1,9 +1,9 @@
 "use client";
-
-import { WalletConnect } from "@/components/walletconnect/WalletConnect";
 import React, { useState } from "react";
 import AutomaticLoginForm from "./AutomaticLoginForm";
 import RegisterForm from "./RegisterForm";
+import ConnectButton from "@/components/ui/connectButton";
+import { WalletConnect } from "@/components/walletconnect/WalletConnect";
 
 const LoginRegisterComp = ({ referredBy }) => {
   const [walletAddress, setWalletAddress] = useState("");
@@ -20,6 +20,7 @@ const LoginRegisterComp = ({ referredBy }) => {
         </p>
         <div className="mb-3 md:mb-5">
           <WalletConnect setWalletAddress={setWalletAddress} />
+          {/* <ConnectButton /> */}
         </div>
         <RegisterForm walletAddress={walletAddress} referredBy={referredBy} />
       </div>
