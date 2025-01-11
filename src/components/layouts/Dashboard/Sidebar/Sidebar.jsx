@@ -11,11 +11,22 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
   const { loggedInUser, handleLogout } = useContext(AuthContext);
   const sidebar = useRef(null);
 
-  // Filter menu items based on the user's role
-  // TODO: removed after testing > || "user"
+  // Normalize roles to ensure consistent structure
+  const normalizedRoles = Array.isArray(loggedInUser?.roles)
+    ? loggedInUser?.roles
+    : [loggedInUser?.roles];
+
+  // Filter menu items based on the normalized roles
   const filteredMenuConfig = dashboardMenuConfig?.filter((menuItem) =>
-    menuItem?.role?.includes(loggedInUser?.role || "admin"),
+    menuItem?.roles?.some((role) => normalizedRoles?.includes(role)),
   );
+
+  // console.log(loggedInUser);
+
+  // // Filter menu items based on the user's role
+  // const filteredMenuConfig = dashboardMenuConfig?.filter((menuItem) =>
+  //   menuItem?.role?.includes(loggedInUser?.roles),
+  // );
 
   // Close sidebar on click outside
   useEffect(() => {
