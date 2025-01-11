@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import AutomaticLoginForm from "./AutomaticLoginForm";
 import RegisterForm from "./RegisterForm";
-import ConnectButton from "@/components/ui/connectButton";
 import { WalletConnect } from "@/components/walletconnect/WalletConnect";
 
 const LoginRegisterComp = ({ referredBy }) => {
