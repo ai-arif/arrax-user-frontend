@@ -92,7 +92,7 @@ const ManageUsers = () => {
             <TableCell>{formatAddress("asdagsfdgsaasdasdfasf")}</TableCell>
             <TableCell>
               <Button variant="secondary" size="xs" asChild>
-                <Link href={`/dashboard/manage-users/${1}`}>View</Link>
+                <Link href={`/dashboard/admin/manage-users/${1}`}>View</Link>
               </Button>
             </TableCell>
           </TableRow>
