@@ -1,4 +1,4 @@
-import Search from "@/components/search/Search";
+import UserSearch from "@/components/search/UserSearch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/components/ui/Logo";
 import { AuthContext } from "@/contexts/AuthProvider";
@@ -16,7 +16,7 @@ const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
         </div>
         {/* Search for large screen */}
         <div className="hidden flex-grow lg:block">
-          <Search className="w-[40%]" />
+          <UserSearch className="w-[40%]" />
         </div>
 
         {/* Hamburger button only for small screen */}
