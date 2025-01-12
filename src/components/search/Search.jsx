@@ -17,7 +17,6 @@ const Search = ({ handleSearch, className, inputClassName }) => {
           "rounded-r-none bg-arx-black-5 placeholder:text-zinc-400",
           inputClassName,
         )}
-        required
       />
       <Button className="rounded-l-none" type="submit">
         Search

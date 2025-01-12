@@ -1,11 +1,11 @@
 "use client";
 
+import ProfitStats from "@/components/dashboard_shared_ui/ProfitStats";
+import TeamStats from "@/components/dashboard_shared_ui/TeamStats";
 import Loader from "@/components/ui/Loader";
 import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
 import ProfileHeader from "./ProfileHeader";
-import ProfileIncome from "./ProfileIncome";
-import ProfileStats from "./ProfileStats";
 
 const ProfileOverview = () => {
   const { loggedInUser, loading } = useContext(AuthContext);
@@ -27,15 +27,21 @@ const ProfileOverview = () => {
         referLink={`${process.env.FRONTEND_URL}/login?ref=${loggedInUser?.userId}`}
       />
 
-      {/* Income Section */}
-      <ProfileIncome income={loggedInUser?.income} />
+      {/* Profit stats section */}
+      <ProfitStats
+        sectionTitle={
+          <h2 className="mb-3 text-base text-zinc-200 md:mb-4 md:text-lg">
+            Profit
+          </h2>
+        }
+        income={loggedInUser?.income}
+      />
 
-      {/* Stats Section */}
-      <ProfileStats
+      {/* Team Stats Section */}
+      <TeamStats
+        totalPartners={loggedInUser?.totalPartners}
         totalTeam={loggedInUser?.totalTeam}
         activeTeam={loggedInUser?.activeTeam}
-        // TODO: checking
-        directReferrals={loggedInUser?.directReferrals?.length}
       />
     </>
   );

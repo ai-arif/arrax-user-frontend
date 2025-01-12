@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useAllUsers } from "@/hooks/admin/useAllUsers";
 import { formatAddress } from "@/utils/format-address";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -19,6 +20,16 @@ const ManageUsers = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
+
+  const {
+    data = {},
+    isLoading,
+    isError,
+  } = useAllUsers({
+    currentPage,
+    limit: itemsPerPage,
+    search,
+  });
 
   // Function to handle search
   const handleSearch = (e) => {
@@ -32,17 +43,6 @@ const ManageUsers = () => {
     setCurrentPage(selectedPage?.selected + 1);
   };
 
-  // useEffect(() => {
-  //   let query = {
-  //     currentPage,
-  //     limit: itemsPerPage,
-  //     search,
-  //   };
-
-  //   fetchUsers(query)
-
-  // }, [ search, currentPage, itemsPerPage]);
-
   return (
     <div>
       {/* Header & search part */}
@@ -50,7 +50,7 @@ const ManageUsers = () => {
         <div className="rounded-lg bg-arx-black-4 p-4 shadow-lg md:p-6">
           <div className="flex flex-col-reverse items-center justify-between gap-4 md:flex-row md:items-center">
             <Search handleSearch={handleSearch} />
-            <h2 className="text-lg font-semibold md:text-xl">All Users</h2>
+            <h2 className="text-xl font-semibold md:text-2xl">All Users</h2>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ const ManageUsers = () => {
               Name
             </TableHead>
             <TableHead className="text-nowrap text-center text-zinc-300">
-              ID
+              User ID
             </TableHead>
             <TableHead className="text-nowrap text-center text-zinc-300">
               Wallet Address
@@ -74,47 +74,33 @@ const ManageUsers = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow className="text-center hover:bg-transparent">
-            <TableCell>{1}</TableCell>
-            <TableCell>{"Atikur Rahman"}</TableCell>
-            <TableCell>{7}</TableCell>
-            <TableCell>{formatAddress("asdagsfdgsaasdasdfasf")}</TableCell>
-            <TableCell>
-              <Button variant="secondary" size="xs" asChild>
-                <Link href={`/dashboard/admin/manage-users/${1}`}>View</Link>
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow className="text-center hover:bg-transparent">
-            <TableCell>{2}</TableCell>
-            <TableCell>{"Atikur Rahman"}</TableCell>
-            <TableCell>{7}</TableCell>
-            <TableCell>{formatAddress("asdagsfdgsaasdasdfasf")}</TableCell>
-            <TableCell>
-              <Button variant="secondary" size="xs" asChild>
-                <Link href={`/dashboard/admin/manage-users/${1}`}>View</Link>
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow className="text-center hover:bg-transparent">
-            <TableCell>{3}</TableCell>
-            <TableCell>{"Atikur Rahman"}</TableCell>
-            <TableCell>{7}</TableCell>
-            <TableCell>{formatAddress("asdagsfdgsaasdasdfasf")}</TableCell>
-            <TableCell>
-              <Button variant="secondary" size="xs" asChild>
-                <Link href={`/dashboard/admin/manage-users/${1}`}>View</Link>
-              </Button>
-            </TableCell>
-          </TableRow>
+          {data?.users?.map((user, index) => (
+            <TableRow
+              key={user._id}
+              className="text-center hover:bg-transparent"
+            >
+              <TableCell>
+                {(currentPage - 1) * itemsPerPage + index + 1}
+              </TableCell>
+              <TableCell>{user.fullName}</TableCell>
+              <TableCell>{user.userId}</TableCell>
+              <TableCell>{formatAddress(user.walletAddress)}</TableCell>
+              <TableCell>
+                <Button variant="secondary" size="xs" asChild>
+                  <Link href={`/dashboard/admin/manage-users/${user.userId}`}>
+                    View
+                  </Link>
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
 
       {/* Pagination part */}
       <Pagination
         currentPage={currentPage}
-        // totalPages={users?.totalPages}
-        totalPages={5}
+        totalPages={data?.totalPages}
         handlePageChange={handlePageChange}
       />
     </div>

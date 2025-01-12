@@ -6,13 +6,13 @@ const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
     <div className="mt-5">
       <ReactPaginate
         className="flex flex-wrap items-center justify-center gap-3 pb-5 text-center text-sm font-semibold text-slate-300"
-        activeClassName="bg-indigo-600 text-white border border-indigo-600"
-        previousClassName={`px-3 py-1.5 rounded border ${currentPage === 1 ? "cursor-not-allowed opacity-50" : "hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"}`}
-        nextClassName={`rounded border ${currentPage === totalPages ? "cursor-not-allowed opacity-50" : "hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"}`}
+        activeClassName="bg-purple-600 text-white border border-purple-600"
+        previousClassName={`px-3 py-1.5 rounded border ${currentPage === 1 ? "cursor-not-allowed opacity-50" : "hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all"}`}
+        nextClassName={`rounded border ${currentPage === totalPages ? "cursor-not-allowed opacity-50" : "hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all"}`}
         disabledClassName="cursor-not-allowed opacity-50"
         pageClassName="border rounded "
-        pageLinkClassName="block px-3 py-1.5 hover:bg-indigo-600 hover:border-indigo-600 hover:text-white hover:border-indigo-600 transition-all text-center w-full"
-        nextLinkClassName="block px-3 py-1.5 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all text-center w-full"
+        pageLinkClassName="block px-3 py-1.5 hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:border-purple-600 transition-all text-center w-full"
+        nextLinkClassName="block px-3 py-1.5 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all text-center w-full"
         breakClassName="px-2 py-1"
         breakLabel="..."
         nextLabel=">"
