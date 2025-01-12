@@ -3,6 +3,9 @@
 import Pagination from "@/components/pagination/Pagination";
 import Search from "@/components/search/Search";
 import { Button } from "@/components/ui/button";
+import EmptyUI from "@/components/ui/EmptyUI";
+import FailedUI from "@/components/ui/FailedUI";
+import Loader from "@/components/ui/Loader";
 import {
   Table,
   TableBody,
@@ -43,6 +46,10 @@ const ManageUsers = () => {
     setCurrentPage(selectedPage?.selected + 1);
   };
 
+  // if (isLoading) return <Loader />;
+
+  if (isError) return <FailedUI />;
+
   return (
     <div>
       {/* Header & search part */}
@@ -54,55 +61,67 @@ const ManageUsers = () => {
           </div>
         </div>
       </div>
-      {/* Table part */}
-      <Table className="rounded-lg bg-arx-black-4 shadow-lg">
-        <TableHeader>
-          <TableRow className="hover:bg-transparent">
-            <TableHead className="text-nowrap text-center text-zinc-300">
-              S.N
-            </TableHead>
-            <TableHead className="text-nowrap text-center text-zinc-300">
-              Name
-            </TableHead>
-            <TableHead className="text-nowrap text-center text-zinc-300">
-              User ID
-            </TableHead>
-            <TableHead className="text-nowrap text-center text-zinc-300">
-              Wallet Address
-            </TableHead>
-            <TableHead className="text-center text-zinc-300">Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data?.users?.map((user, index) => (
-            <TableRow
-              key={user._id}
-              className="text-center hover:bg-transparent"
-            >
-              <TableCell>
-                {(currentPage - 1) * itemsPerPage + index + 1}
-              </TableCell>
-              <TableCell>{user.fullName}</TableCell>
-              <TableCell>{user.userId}</TableCell>
-              <TableCell>{formatAddress(user.walletAddress)}</TableCell>
-              <TableCell>
-                <Button variant="secondary" size="xs" asChild>
-                  <Link href={`/dashboard/admin/manage-users/${user.userId}`}>
-                    View
-                  </Link>
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
 
-      {/* Pagination part */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={data?.totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {/* Empty message */}
+      {data?.users?.length === 0 ? (
+        <EmptyUI message="No users found." />
+      ) : (
+        <>
+          {/* Table part */}
+          <Table className="rounded-lg bg-arx-black-4 shadow-lg">
+            <TableHeader>
+              <TableRow className="hover:bg-transparent">
+                <TableHead className="text-nowrap text-center text-zinc-300">
+                  S.N
+                </TableHead>
+                <TableHead className="text-nowrap text-center text-zinc-300">
+                  Name
+                </TableHead>
+                <TableHead className="text-nowrap text-center text-zinc-300">
+                  User ID
+                </TableHead>
+                <TableHead className="text-nowrap text-center text-zinc-300">
+                  Wallet Address
+                </TableHead>
+                <TableHead className="text-center text-zinc-300">
+                  Actions
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data?.users?.map((user, index) => (
+                <TableRow
+                  key={user._id}
+                  className="text-center hover:bg-transparent"
+                >
+                  <TableCell>
+                    {(currentPage - 1) * itemsPerPage + index + 1}
+                  </TableCell>
+                  <TableCell>{user.fullName}</TableCell>
+                  <TableCell>{user.userId}</TableCell>
+                  <TableCell>{formatAddress(user.walletAddress)}</TableCell>
+                  <TableCell>
+                    <Button variant="secondary" size="xs" asChild>
+                      <Link
+                        href={`/dashboard/admin/manage-users/${user.userId}`}
+                      >
+                        View
+                      </Link>
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+
+          {/* Pagination part */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={data?.totalPages}
+            handlePageChange={handlePageChange}
+          />
+        </>
+      )}
     </div>
   );
 };
