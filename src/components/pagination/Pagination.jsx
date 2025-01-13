@@ -6,7 +6,7 @@ const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
   return (
     <div className="mt-5">
       <ReactPaginate
-        className="flex flex-wrap items-center justify-center gap-3 pb-5 text-sm font-semibold text-zinc-300"
+        className="flex flex-wrap items-center justify-center gap-3 pt-2.5 text-sm font-semibold text-zinc-300 md:pt-4"
         activeLinkClassName={cn(
           "bg-purple-600 text-white border-purple-600",
           "hover:!bg-purple-600",

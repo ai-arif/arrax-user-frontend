@@ -13,10 +13,7 @@ const Search = ({ handleSearch, className, inputClassName }) => {
         name="search"
         type="search"
         placeholder="Search..."
-        className={cn(
-          "rounded-r-none bg-arx-black-5 placeholder:text-zinc-400",
-          inputClassName,
-        )}
+        className={cn("rounded-r-none", inputClassName)}
       />
       <Button className="rounded-l-none" type="submit">
         Search

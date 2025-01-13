@@ -54,9 +54,9 @@ const ManageUsers = () => {
     <div>
       {/* Header & search part */}
       <div className="dashboard-bottom-spacing">
-        <div className="rounded-lg bg-arx-black-4 p-4 shadow-lg md:p-6">
+        <div className="rounded-lg border border-purple-600 bg-gradient-to-r from-[#231525] to-[#241d25] p-4 shadow-md shadow-purple-600 md:p-6">
           <div className="flex flex-col-reverse items-center justify-between gap-4 md:flex-row md:items-center">
-            <Search handleSearch={handleSearch} />
+            <Search handleSearch={handleSearch} inputClassName="" />
             <h2 className="text-xl font-semibold md:text-2xl">All Users</h2>
           </div>
         </div>
@@ -68,9 +68,9 @@ const ManageUsers = () => {
       ) : (
         <>
           {/* Table part */}
-          <Table className="rounded-lg bg-arx-black-4 shadow-lg">
+          <Table className="rounded-lg bg-gradient-to-r from-[#231525] to-[#241d25] shadow-md shadow-purple-600">
             <TableHeader>
-              <TableRow className="hover:bg-transparent">
+              <TableRow className="border-purple-600 hover:bg-transparent">
                 <TableHead className="text-nowrap text-center text-zinc-300">
                   S.N
                 </TableHead>
@@ -92,7 +92,7 @@ const ManageUsers = () => {
               {data?.users?.map((user, index) => (
                 <TableRow
                   key={user._id}
-                  className="text-center hover:bg-transparent"
+                  className="border-purple-600 text-center hover:bg-transparent"
                 >
                   <TableCell>
                     {(currentPage - 1) * itemsPerPage + index + 1}
@@ -101,7 +101,12 @@ const ManageUsers = () => {
                   <TableCell>{user.userId}</TableCell>
                   <TableCell>{formatAddress(user.walletAddress)}</TableCell>
                   <TableCell>
-                    <Button variant="secondary" size="xs" asChild>
+                    <Button
+                      variant="secondary"
+                      size="xs"
+                      className="bg-purple-600"
+                      asChild
+                    >
                       <Link
                         href={`/dashboard/admin/manage-users/${user.userId}`}
                       >
