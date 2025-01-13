@@ -75,3 +75,4 @@ const AutomaticLoginForm = ({ walletAddress }) => {
 };
 
 export default AutomaticLoginForm;
+

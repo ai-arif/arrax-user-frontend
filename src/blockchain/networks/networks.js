@@ -12,4 +12,5 @@ export const getNetwork = (chainId) => {
     return networks[11155111];
   }
   return networks[chainId];
+  
 };

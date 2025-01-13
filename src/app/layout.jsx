@@ -1,4 +1,4 @@
-import { Web3Provider } from "@/components/walletconnect/web3provider";
+import { Web3Provider } from "@/components/walletconnect/Web3Provider";
 import AuthProvider from "@/contexts/AuthProvider";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
