@@ -56,7 +56,7 @@ const ManageUsers = () => {
       <div className="dashboard-bottom-spacing">
         <div className="rounded-lg border border-purple-600 bg-gradient-to-r from-[#231525] to-[#241d25] p-4 shadow-md shadow-purple-600 md:p-6">
           <div className="flex flex-col-reverse items-center justify-between gap-4 md:flex-row md:items-center">
-            <Search handleSearch={handleSearch} inputClassName="" />
+            <Search handleSearch={handleSearch} />
             <h2 className="text-xl font-semibold md:text-2xl">All Users</h2>
           </div>
         </div>
