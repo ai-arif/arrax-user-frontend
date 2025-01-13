@@ -56,7 +56,7 @@ const SlotCard = ({ slot }) => {
         <div className="flex flex-col items-center justify-center">
           <Button
             variant="secondary"
-            className="rounded-full bg-arx-secondary uppercase"
+            className="rounded-full bg-arx-primary uppercase"
           >
             Upgrade
           </Button>
