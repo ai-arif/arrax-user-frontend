@@ -50,7 +50,7 @@ const UserSearch = ({ className }) => {
         {...register("userId")}
         type="search"
         placeholder="Enter User ID"
-        className="h-8 rounded-r-none"
+        className="h-8 rounded-r-none bg-gray-800 placeholder:text-gray-400"
         required
       />
       <Button
