@@ -1,7 +1,7 @@
 import { BsGridFill } from "react-icons/bs";
-import { FaRegUser } from "react-icons/fa";
+import { FaHeadset, FaRegUser } from "react-icons/fa";
 import { LiaUsersCogSolid } from "react-icons/lia";
-import { TbUsersGroup } from "react-icons/tb";
+import { TbReportMoney, TbUsersGroup } from "react-icons/tb";
 import { VscPreview } from "react-icons/vsc";
 
 export const dashboardMenuConfig = [
@@ -10,41 +10,50 @@ export const dashboardMenuConfig = [
     label: "Dashboard",
     path: "/dashboard",
     roles: ["user", "admin"],
+    enabled: true,
   },
   {
     icon: <FaRegUser />,
     label: "Profile",
     path: "/dashboard/profile",
     roles: ["user", "admin"],
+    enabled: true,
   },
   {
     icon: <LiaUsersCogSolid className="text-base md:text-lg" />,
     label: "Manage Users",
     path: "/dashboard/admin/manage-users",
     roles: ["admin"],
+    enabled: true,
   },
   {
     icon: <TbUsersGroup className="text-lg md:text-xl" />,
     label: "Generation",
     path: "/dashboard/generation",
     roles: ["user", "admin"],
+    enabled: true,
   },
   {
     icon: <VscPreview />,
     label: "Review ID",
     path: "/dashboard/review-id",
     roles: ["user", "admin"],
+    enabled: true,
   },
-  // {
-  //   icon: <TbReportMoney className="text-lg md:text-xl" />,
-  //   label: "Salary",
-  //   path: "#",
-  // },
-  // {
-  //   icon: <FaHeadset />,
-  //   label: "Support",
-  //   path: "#",
-  // },
+  {
+    icon: <TbReportMoney className="text-lg md:text-xl" />,
+    label: "Salary",
+    path: "#",
+    roles: ["user", "admin"],
+    enabled: false,
+  },
+  {
+    icon: <FaHeadset />,
+    label: "Support",
+    path: "#",
+    roles: ["user", "admin"],
+    enabled: false,
+  },
   // {
   //   icon: <BsTable />,
   //   label: "AX Ultra Matrix",

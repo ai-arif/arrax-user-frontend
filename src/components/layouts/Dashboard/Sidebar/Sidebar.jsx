@@ -21,13 +21,6 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
     menuItem?.roles?.some((role) => normalizedRoles?.includes(role)),
   );
 
-  // console.log(loggedInUser);
-
-  // // Filter menu items based on the user's role
-  // const filteredMenuConfig = dashboardMenuConfig?.filter((menuItem) =>
-  //   menuItem?.role?.includes(loggedInUser?.roles),
-  // );
-
   // Close sidebar on click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
