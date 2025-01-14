@@ -1,7 +1,7 @@
 import { BsGridFill } from "react-icons/bs";
 import { FaHeadset, FaRegUser } from "react-icons/fa";
 import { LiaUsersCogSolid } from "react-icons/lia";
-import { TbReportMoney, TbUsersGroup } from "react-icons/tb";
+import { TbReportMoney, TbSettings, TbUsersGroup } from "react-icons/tb";
 import { VscPreview } from "react-icons/vsc";
 
 export const dashboardMenuConfig = [
@@ -53,6 +53,13 @@ export const dashboardMenuConfig = [
     path: "#",
     roles: ["user", "admin"],
     enabled: false,
+  },
+  {
+    icon: <TbSettings className="text-lg md:text-xl" />,
+    label: "Settings",
+    path: "/dashboard/settings",
+    roles: ["admin"],
+    enabled: true,
   },
   // {
   //   icon: <BsTable />,

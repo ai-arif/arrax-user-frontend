@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
-import { programs } from "../../../../public/data/arraxProgram";
+import { programs } from "../../../public/data/arraxProgram";
 
 const ArraxPrograms = () => {
   return (
@@ -13,7 +13,7 @@ const ArraxPrograms = () => {
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
         {/* cards */}
-        {programs.map((program) => (
+        {programs?.map((program) => (
           <div key={program.id} className="flex h-full flex-col">
             <p className="pb-2 text-lg font-semibold md:pb-3 md:text-xl">
               {program.programName}
