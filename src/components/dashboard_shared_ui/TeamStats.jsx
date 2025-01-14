@@ -9,8 +9,8 @@ const TeamStats = ({ sectionTitle, totalPartners, totalTeam, activeTeam }) => {
       {sectionTitle}
 
       {/* Information */}
-      <div className="grid grid-cols-3 gap-3 text-gray-300 md:gap-6">
-        <div className="space-y-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 p-3 text-center shadow-lg shadow-purple-600 md:space-y-2.5 md:p-5">
+      <div className="grid grid-cols-3 gap-3 text-gray-200 md:gap-6">
+        <div className="space-y-1.5 whitespace-nowrap rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-3 text-center shadow-lg shadow-purple-600 md:space-y-2.5 md:p-5">
           <h6 className="flex items-center justify-center gap-1 whitespace-nowrap text-base font-semibold md:text-lg">
             <FaUserFriends /> Partner
           </h6>
@@ -18,13 +18,13 @@ const TeamStats = ({ sectionTitle, totalPartners, totalTeam, activeTeam }) => {
             {totalPartners}
           </p>
           {/* TODO: Add dynamic data */}
-          <div className="flex items-center justify-center text-xs text-teal-400 md:text-sm">
+          <div className="flex items-center justify-center text-xs font-medium text-teal-400 md:text-sm">
             <HiMiniArrowUp />
             <span>{0}</span>
           </div>
         </div>
 
-        <div className="space-y-1.5 whitespace-nowrap rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 p-3 text-center shadow-xl shadow-purple-500 md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 whitespace-nowrap rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-3 text-center shadow-lg shadow-purple-600 md:space-y-2.5 md:p-5">
           <h6 className="flex items-center justify-center gap-1 text-base font-semibold md:text-lg">
             <FaUsers /> Team
           </h6>
@@ -32,13 +32,13 @@ const TeamStats = ({ sectionTitle, totalPartners, totalTeam, activeTeam }) => {
             {totalTeam}
           </p>
           {/* TODO: Add dynamic data */}
-          <div className="flex items-center justify-center text-xs text-teal-400 md:text-sm">
+          <div className="flex items-center justify-center text-xs font-medium text-teal-400 md:text-sm">
             <HiMiniArrowUp />
             <span>{0}</span>
           </div>
         </div>
 
-        <div className="space-y-1.5 whitespace-nowrap rounded-lg bg-gradient-to-r from-violet-700 to-purple-700 p-3 text-center shadow-xl shadow-purple-600 md:space-y-2.5 md:p-5">
+        <div className="space-y-1.5 whitespace-nowrap rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-3 text-center shadow-lg shadow-purple-600 md:space-y-2.5 md:p-5">
           <h6 className="flex items-center justify-center gap-1 text-base font-semibold md:text-lg">
             <FaUserShield /> Active
           </h6>
@@ -46,7 +46,7 @@ const TeamStats = ({ sectionTitle, totalPartners, totalTeam, activeTeam }) => {
             {activeTeam}
           </p>
           {/* TODO: Add dynamic data */}
-          <div className="flex items-center justify-center text-xs text-teal-400 md:text-sm">
+          <div className="font- flex items-center justify-center text-xs font-medium text-teal-400 md:text-sm">
             <HiMiniArrowUp />
             <span>{0}</span>
           </div>

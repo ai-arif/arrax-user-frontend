@@ -19,14 +19,14 @@ export const SubSlots = ({ subSlots, start, end }) => {
 // Slot Card Component
 const SlotCard = ({ slot }) => {
   return (
-    <div className="space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-[#231525] to-[#241d25] p-4 shadow-md shadow-purple-600 md:space-y-7 md:p-5">
+    <div className="space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:space-y-7 md:p-5">
       {/* name and price part */}
       <div className="flex items-center justify-between gap-2">
-        <h5 className="text-xl font-semibold md:text-2xl">
+        <h5 className="text-xl font-semibold text-gray-200 md:text-2xl">
           Slot {slot?.slotNumber}
         </h5>
 
-        <p className="text-lg font-medium text-arx-primary md:text-xl">
+        <p className="text-lg font-medium text-orange-400 md:text-xl">
           ${slot?.price}
         </p>
       </div>
@@ -43,11 +43,11 @@ const SlotCard = ({ slot }) => {
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-1">
               <FaUsers />
-              <span className="text-arx-primary">{slot?.recycleUserCount}</span>
+              <span>{slot?.recycleUserCount}</span>
             </div>
             <div className="flex items-center gap-1">
               <FaRotate />
-              <span className="text-arx-primary">{slot?.recycleCount}</span>
+              <span>{slot?.recycleCount}</span>
             </div>
           </div>
         </>
