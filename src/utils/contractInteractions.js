@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
-import registrationABI from '../ABI/registration.json';
-import tokenABI from '../ABI/token.json';
+import registrationABI from '../../ABI/registration.json';
+import tokenABI from '../../ABI/token.json';
 
 const registrationContractAddress = process.env.NEXT_PUBLIC_REGISTRATION_CONTRACT_ADDRESS;
 const tokenContractAddress = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS;
@@ -45,10 +45,12 @@ export const getUserInfo = async (signer, userAddress) => {
   }
 };
 
-export const getUserByReferrerId = async (signer, referrerId) => {
+export const getUserByReferrerId = async (signer , referrerId) => {
   try {
-    const registrationContract = getRegistrationContract(signer);
-    return await registrationContract.getUserByReferrerId(referrerId);
+    const registrationContract = getUserByReferrerId(signer  ,referrerId);
+    const data = await registrationContract.getUserByReferrerId(referrerId)
+    console.log(data)
+    return data
   } catch (error) {
     console.error('Error in getUserByReferrerId:', error);
     throw error;
