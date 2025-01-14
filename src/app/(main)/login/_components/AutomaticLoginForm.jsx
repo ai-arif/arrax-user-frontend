@@ -52,22 +52,22 @@ const AutomaticLoginForm = ({ walletAddress }) => {
      
   /// check backend data for login 
     try {
-      // const response = await axiosInstance.post("/users/connect-wallet", {
-      //   walletAddress,
-      // });
+      const response = await axiosInstance.post("/users/connect-wallet", {
+        walletAddress,
+      });
 
     
 
-      // if (response?.data?.success) {
-      //   Cookies.set("arx_auth_token", response.data?.data?.token);
-      //   Cookies.set("arx_own_id", response.data?.data?.user?.userId);
-      //   reset();
-      //   await fetchUser();
-      //   router.push("/dashboard");
-      //   toast.success(response.data.message);
-      // } else {
-      //   toast.error(response.data.message);
-      // }
+      if (response?.data?.success) {
+        Cookies.set("arx_auth_token", response.data?.data?.token);
+        Cookies.set("arx_own_id", response.data?.data?.user?.userId);
+        reset();
+        await fetchUser();
+        router.push("/dashboard");
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
     } catch (error) {
       console.log(error);
       toast.error(
