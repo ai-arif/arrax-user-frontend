@@ -21,7 +21,6 @@ const AutomaticLoginForm = ({ walletAddress }) => {
   } = useForm();
 
   const onSubmit = async () => {
-    
     if (!walletAddress) return toast.error("Please connect wallet");
 
     try {
@@ -65,7 +64,7 @@ const AutomaticLoginForm = ({ walletAddress }) => {
               <span className="text-base">Please Wait</span>
             </>
           ) : (
-            "Automatic Login"
+            "Login"
           )}
         </Button>
       </form>
