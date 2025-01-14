@@ -1,165 +1,3 @@
-// "use client";
-
-
-// import { Button } from "@/components/ui/button";
-// import ErrorMessage from "@/components/ui/ErrorMessage";
-// import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
-// import { AuthContext } from "@/contexts/AuthProvider";
-// import axiosInstance from "@/utils/axiosInstance";
-// import { useRegistration } from "@/hooks/useRegistration";
-// import Cookies from "js-cookie";
-// import { useRouter } from "next/navigation";
-// import React, { useContext, useState } from "react";
-// import { useForm } from "react-hook-form";
-// import toast from "react-hot-toast";
-// import { LuLoader2 } from "react-icons/lu";
-
-// const RegisterForm = ({ walletAddress, referredBy }) => {
-//   const { fetchUser } = useContext(AuthContext);
-//   const { registerUser, getUserInfo } = useRegistration();
-//   const router = useRouter();
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const {
-//     register,
-//     handleSubmit,
-//     reset,
-//     formState: { errors, isSubmitting },
-//   } = useForm();
-
-//   const onSubmit = async (data) => {
-//     if (!walletAddress) return toast.error("Please connect wallet");
-
-//     setIsLoading(true);
-//     try {
-//       // Get referrer info
-//       const referrerInfo = await getUserInfo(data.referredBy);
-      
-//       // Register on blockchain
-//       const { success, txHash } = await registerUser(
-//         referrerInfo.userId,
-//         referrerInfo.referrerAddress,
-//         data.fullName
-//       );
-
-//       if (success) {
-//         // Backend confirmation
-//         const backendConfirmation = await axiosInstance.post("/users/confirm-registration", {
-//           txHash,
-//           walletAddress,
-//           fullName: data.fullName,
-//           referredBy: data.referredBy,
-//         });
-
-//         if (backendConfirmation.data.success) {
-//           // Login user
-//           const response = await axiosInstance.post("/users/connect-wallet", {
-//             walletAddress,
-//           });
-
-//           if (response?.data?.success) {
-//             Cookies.set("arx_auth_token", response.data?.data?.token);
-//             Cookies.set("arx_own_id", response.data?.data?.user?.userId);
-//             reset();
-//             await fetchUser();
-//             router.push("/dashboard");
-//             toast.success("Registration successful!");
-//           }
-//         }
-//       }
-//     } catch (error) {
-//       console.error(error);
-//       toast.error(error?.message || "Registration failed");
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 md:space-y-5">
-//       <div>
-//         <Label htmlFor="inviter-id" className="sr-only">
-//           Inviter ID
-//         </Label>
-//         <Input
-//           {...register("referredBy", {
-//             required: "Inviter ID is required",
-//           })}
-//           defaultValue={referredBy}
-//           id="inviter-id"
-//           type="text"
-//           placeholder="Enter Inviter ID"
-//         />
-//         <ErrorMessage>{errors.referredBy?.message}</ErrorMessage>
-//       </div>
-//       <div>
-//         <Label htmlFor="full-name" className="sr-only">
-//           Full Name
-//         </Label>
-//         <Input
-//           {...register("fullName", { required: "Full name is required" })}
-//           id="full-name"
-//           type="text"
-//           placeholder="Enter Full Name"
-//         />
-//         <ErrorMessage>{errors.fullName?.message}</ErrorMessage>
-//       </div>
-//       <Button disabled={isLoading || isSubmitting} type="submit" className="w-full">
-//         {isLoading || isSubmitting ? (
-//           <>
-//             <LuLoader2 className="mr-1 inline animate-spin-fast text-lg" />
-//             <span className="text-base">Please Wait</span>
-//           </>
-//         ) : (
-//           "Register"
-//         )}
-//       </Button>
-//     </form>
-//   );
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 "use client";
@@ -216,10 +54,10 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
       const contract =new ethers.Contract(registrationContractAddress, registrationABI, signer);
 
       
-      const isUserExists = await contract.getUserInfo(walletAddress);
-      if(isUserExists){
-        throw new Error("User Already Exists")
-      }
+      // const isUserExists = await contract.getUserInfo(walletAddress);
+      // if(isUserExists){
+      //   throw new Error("User Already Exists")
+      // }
    
 
       // check if the walletAddress already has a user account 
@@ -247,11 +85,12 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
 
       const tx = await contract.registerUser(
         referredBy, referrerInfo[0], fullName.toString(),
-        { gasLimit: gasEstimate.mul(40) } 
+        { gasLimit: gasEstimate.mul(3) } 
       );
 
       const receipt = await tx.wait();
       console.log("Transaction Receipt:", receipt);
+      toast.success("Register Successfull");
 
   //     if(receipt){
 
@@ -270,8 +109,8 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
 
    
 
-      if (backendConfirmation.data.success) {
-        console.log("if backend confirmation is done")
+      // if (backendConfirmation.data.success) {
+      //   console.log("if backend confirmation is done")
         // backend data store
 
 
@@ -292,9 +131,9 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
         // } else {
         //   toast.error(response.data.message);
         // }
-      } else {
-        toast.error("Backend confirmation failed.");
-      }
+      // } else {
+      //   toast.error("Backend confirmation failed.");
+      // }
     } catch (error) {
       console.error("Error during registration:", error);
       // toast.error(
