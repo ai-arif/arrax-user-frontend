@@ -57,7 +57,7 @@ export const dashboardMenuConfig = [
   {
     icon: <TbSettings className="text-lg md:text-xl" />,
     label: "Settings",
-    path: "/dashboard/settings",
+    path: "/dashboard/admin/settings",
     roles: ["admin"],
     enabled: true,
   },

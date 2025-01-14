@@ -78,7 +78,7 @@
     @apply block rounded-full border-2 border-slate-600 p-2.5 text-xl transition-colors hover:border-arx-primary hover:text-arx-primary;
   }
   .dashboard-social-link-style {
-    @apply block rounded-full border border-zinc-700 bg-zinc-800 p-2.5 text-lg transition-colors hover:bg-zinc-700;
+    @apply block rounded-full border border-slate-600 p-2.5 text-lg transition-colors hover:border-arx-primary hover:text-arx-primary;
   }
 }
 

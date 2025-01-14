@@ -5,7 +5,7 @@ import { SlEnvolope, SlSocialYoutube } from "react-icons/sl";
 
 const SidebarFooter = () => {
   return (
-    <div className="absolute bottom-4 w-full px-4 sm:bottom-6 lg:bottom-7.5 lg:px-5 2xl:bottom-10">
+    <div className="absolute bottom-0 w-full bg-black px-4 py-2.5 lg:px-5 lg:py-3">
       <ul className="flex flex-wrap justify-center gap-4 md:gap-3">
         <li>
           <Link

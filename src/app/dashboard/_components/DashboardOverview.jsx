@@ -35,7 +35,7 @@ const DashboardOverview = () => {
       {/* Profit stats section */}
       <ProfitStats
         sectionTitle={
-          <h2 className="mb-3 text-base text-slate-300 md:mb-4 md:text-lg">
+          <h2 className="mb-3 text-base text-gray-200 md:mb-4 md:text-lg">
             Profit
           </h2>
         }
@@ -45,7 +45,7 @@ const DashboardOverview = () => {
       {/* Team Stats Section */}
       <TeamStats
         sectionTitle={
-          <h2 className="mb-3 text-base text-slate-300 md:mb-4 md:text-lg">
+          <h2 className="mb-3 text-base text-gray-200 md:mb-4 md:text-lg">
             Team & Partners Stats
           </h2>
         }
