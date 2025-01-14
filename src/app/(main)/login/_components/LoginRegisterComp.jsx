@@ -19,7 +19,6 @@ const LoginRegisterComp = ({ referredBy }) => {
         </p>
         <div className="mb-3 md:mb-5">
           <WalletConnect setWalletAddress={setWalletAddress} />
-          {/* <ConnectButton /> */}
         </div>
         <RegisterForm walletAddress={walletAddress} referredBy={referredBy} />
       </div>
@@ -33,3 +32,4 @@ const LoginRegisterComp = ({ referredBy }) => {
 };
 
 export default LoginRegisterComp;
+
