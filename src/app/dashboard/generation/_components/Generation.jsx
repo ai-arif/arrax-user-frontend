@@ -23,18 +23,18 @@ const Generation = () => {
   return (
     <div>
       {/* Header & search part */}
-      <h2 className="mb-3 text-lg font-semibold md:mb-4 md:text-xl">
+      <h2 className="mb-3 text-lg font-semibold text-gray-100 md:mb-4 md:text-xl">
         Generation
       </h2>
 
       {/* Table part */}
-      <Table className="rounded-lg bg-gradient-to-r from-[#231525] to-[#241d25] shadow-md shadow-purple-600">
+      <Table className="rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 shadow-lg shadow-purple-600">
         <TableHeader>
-          <TableRow className="border-purple-600 hover:bg-transparent">
-            <TableHead className="text-center text-zinc-300">Level</TableHead>
-            <TableHead className="text-center text-zinc-300">Total</TableHead>
-            <TableHead className="text-center text-zinc-300">Active</TableHead>
-            <TableHead className="text-center text-zinc-300">
+          <TableRow className="border-gray-500 hover:bg-transparent">
+            <TableHead className="text-center text-gray-300">Level</TableHead>
+            <TableHead className="text-center text-gray-300">Total</TableHead>
+            <TableHead className="text-center text-gray-300">Active</TableHead>
+            <TableHead className="text-center text-gray-300">
               Inactive
             </TableHead>
           </TableRow>
@@ -43,7 +43,7 @@ const Generation = () => {
           {generations?.levels?.map((level, index) => (
             <TableRow
               key={index}
-              className="border-purple-600 text-center hover:bg-transparent"
+              className="border-gray-500 text-center hover:bg-transparent"
             >
               <TableCell>{level?.level}</TableCell>
               <TableCell>{level?.total}</TableCell>

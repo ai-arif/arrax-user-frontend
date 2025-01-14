@@ -7,7 +7,7 @@ import { programs } from "../../../public/data/arraxProgram";
 const ArraxPrograms = () => {
   return (
     <div>
-      <h2 className="mb-3 text-base text-zinc-200 md:mb-4 md:text-lg">
+      <h2 className="mb-3 text-base text-gray-200 md:mb-4 md:text-lg">
         Arrax Program
       </h2>
 
