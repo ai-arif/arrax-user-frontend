@@ -20,7 +20,7 @@ const HeroSection = () => {
           {/* auth buttons */}
           <HeroAuthButtons />
           <div className="pt-3">
-            <div className="flex w-full justify-center gap-3 rounded-md border border-arx-secondary px-5 py-2 text-center md:px-8 md:py-5 lg:w-[80%]">
+            <div className="flex w-full justify-center gap-3 rounded-md border border-purple-600 px-5 py-2 text-center md:px-8 md:py-5 lg:w-[80%]">
               {/* <div className="flex size-8 items-center justify-center rounded-full bg-gradient-to-r from-arx-primary to-arx-secondary">
                 <SiBinance />
               </div> */}

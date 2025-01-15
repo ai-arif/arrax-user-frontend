@@ -13,7 +13,7 @@ const HomeStats = () => {
       />
       <div className="grid grid-cols-1 gap-4 text-center md:grid-cols-2 md:gap-8">
         {/* Total Users */}
-        <div className="space-y-2 rounded border border-arx-secondary p-5 md:rounded-lg md:p-6">
+        <div className="space-y-2 rounded border border-purple-600 p-5 md:rounded-lg md:p-6">
           <div className="flex items-center justify-center gap-3 md:gap-4">
             <h4 className="flex items-center gap-2 text-xl font-semibold md:text-3xl md:font-bold">
               <FaUsers /> 00
@@ -27,7 +27,7 @@ const HomeStats = () => {
           </p>
         </div>
         {/* Total Income */}
-        <div className="space-y-2 rounded border border-arx-secondary p-5 md:rounded-lg md:p-6">
+        <div className="space-y-2 rounded border border-purple-600 p-5 md:rounded-lg md:p-6">
           <div className="flex items-center justify-center gap-3 md:gap-4">
             <h4 className="text-xl font-semibold md:text-3xl md:font-bold">
               $ 00
