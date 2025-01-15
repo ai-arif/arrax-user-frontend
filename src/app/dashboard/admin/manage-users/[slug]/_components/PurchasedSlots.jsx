@@ -11,8 +11,8 @@ const PurchasedSlots = ({ slots }) => {
 
       {/* Slots cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
-        {slots?.map((slot) => (
-          <SlotCard key={slot._id} slot={slot} />
+        {slots?.map((slot, index) => (
+          <SlotCard key={slot._id} slot={slot} index={index} />
         ))}
       </div>
     </div>
