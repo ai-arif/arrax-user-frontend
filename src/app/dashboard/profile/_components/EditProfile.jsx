@@ -61,8 +61,8 @@ const EditProfile = ({ fullName }) => {
     <div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <button className="rounded-[3px] bg-gradient-to-r from-arx-primary to-arx-secondary px-1.5 py-1 transition-colors hover:from-arx-secondary hover:to-arx-primary">
-            <FiEdit className="text-base md:text-xl" />
+          <button className="rounded-sm bg-arx-secondary px-2 py-1 transition-colors">
+            <FiEdit className="text-base md:text-lg" />
           </button>
         </DialogTrigger>
         <DialogContent className="max-w-[85%] sm:max-w-[425px]">

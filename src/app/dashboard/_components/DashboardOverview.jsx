@@ -1,12 +1,12 @@
 "use client";
 
 import ArraxPrograms from "@/components/dashboard_shared_ui/ArraxPrograms";
+import ProfileHeader from "@/components/dashboard_shared_ui/ProfileHeader";
 import ProfitStats from "@/components/dashboard_shared_ui/ProfitStats";
 import TeamStats from "@/components/dashboard_shared_ui/TeamStats";
 import Loader from "@/components/ui/Loader";
 import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
-import DashboardProfileHeader from "./DashboardProfileHeader";
 import HexagonTrophy from "./HexagonTrophy";
 
 const DashboardOverview = () => {
@@ -22,7 +22,7 @@ const DashboardOverview = () => {
   return (
     <>
       {/* Profile info section */}
-      <DashboardProfileHeader
+      <ProfileHeader
         image={user?.image}
         fullName={user?.fullName}
         userId={user?.userId}
@@ -30,6 +30,7 @@ const DashboardOverview = () => {
         walletAddress={user?.walletAddress}
         joiningDate={user?.createdAt}
         referLink={`${process.env.FRONTEND_URL}/login?ref=${user?.userId}`}
+        isOwner={false}
       />
 
       {/* Profit stats section */}

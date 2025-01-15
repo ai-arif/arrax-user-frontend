@@ -1,12 +1,12 @@
 "use client";
 
 import ArraxPrograms from "@/components/dashboard_shared_ui/ArraxPrograms";
+import ProfileHeader from "@/components/dashboard_shared_ui/ProfileHeader";
 import ProfitStats from "@/components/dashboard_shared_ui/ProfitStats";
 import TeamStats from "@/components/dashboard_shared_ui/TeamStats";
 import Loader from "@/components/ui/Loader";
 import { AuthContext } from "@/contexts/AuthProvider";
 import React, { useContext } from "react";
-import ProfileHeader from "./ProfileHeader";
 
 const ProfileOverview = () => {
   const { loggedInUser, loading } = useContext(AuthContext);
@@ -17,7 +17,7 @@ const ProfileOverview = () => {
 
   return (
     <>
-      {/* Profile info section */}
+      {/* Profile info section edit profile only for owner */}
       <ProfileHeader
         image={loggedInUser?.image}
         fullName={loggedInUser?.fullName}
@@ -26,6 +26,7 @@ const ProfileOverview = () => {
         walletAddress={loggedInUser?.walletAddress}
         joiningDate={loggedInUser?.createdAt}
         referLink={`${process.env.FRONTEND_URL}/login?ref=${loggedInUser?.userId}`}
+        isOwner={true}
       />
 
       {/* Profit stats section */}
