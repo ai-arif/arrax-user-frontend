@@ -46,7 +46,7 @@ const Generation = () => {
               className="border-gray-500 text-center hover:bg-transparent"
             >
               <TableCell>{level?.level}</TableCell>
-              <TableCell>{level?.total}</TableCell>
+              <TableCell>{level?.count}</TableCell>
               <TableCell>{level?.active}</TableCell>
               <TableCell>{level?.inactive}</TableCell>
             </TableRow>
