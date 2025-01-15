@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }) {
   const trigger = useRef(null);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-arx-black-5">
+    <div className="flex h-screen overflow-hidden">
       {/* Dashboard Sidebar */}
       <Sidebar
         trigger={trigger}

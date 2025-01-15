@@ -26,7 +26,7 @@ const UserDetails = ({ slug }) => {
       {/* Profit stats */}
       <ProfitStats
         sectionTitle={
-          <h2 className="pb-3 text-lg font-semibold text-zinc-200 md:pb-4 md:text-xl">
+          <h2 className="pb-3 text-lg font-semibold text-gray-200 md:pb-4 md:text-xl">
             Profit Stats
           </h2>
         }
@@ -35,6 +35,11 @@ const UserDetails = ({ slug }) => {
 
       {/* Team Status */}
       <TeamStats
+        sectionTitle={
+          <h2 className="pb-3 text-lg font-semibold text-gray-200 md:pb-4 md:text-xl">
+            Team & Partners Stats
+          </h2>
+        }
         totalPartners={data?.user?.totalPartners}
         totalTeam={data?.user?.totalTeam}
         activeTeam={data?.user?.activeTeam}

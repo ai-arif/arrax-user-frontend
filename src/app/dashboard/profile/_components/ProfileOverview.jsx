@@ -1,5 +1,6 @@
 "use client";
 
+import ArraxPrograms from "@/components/dashboard_shared_ui/ArraxPrograms";
 import ProfitStats from "@/components/dashboard_shared_ui/ProfitStats";
 import TeamStats from "@/components/dashboard_shared_ui/TeamStats";
 import Loader from "@/components/ui/Loader";
@@ -30,7 +31,7 @@ const ProfileOverview = () => {
       {/* Profit stats section */}
       <ProfitStats
         sectionTitle={
-          <h2 className="mb-3 text-base text-zinc-200 md:mb-4 md:text-lg">
+          <h2 className="mb-3 text-base text-gray-200 md:mb-4 md:text-lg">
             Profit
           </h2>
         }
@@ -39,10 +40,18 @@ const ProfileOverview = () => {
 
       {/* Team Stats Section */}
       <TeamStats
+        sectionTitle={
+          <h2 className="mb-3 text-base text-gray-200 md:mb-4 md:text-lg">
+            Team & Partners Stats
+          </h2>
+        }
         totalPartners={loggedInUser?.totalPartners}
         totalTeam={loggedInUser?.totalTeam}
         activeTeam={loggedInUser?.activeTeam}
       />
+
+      {/* Arrax Programs */}
+      <ArraxPrograms />
     </>
   );
 };

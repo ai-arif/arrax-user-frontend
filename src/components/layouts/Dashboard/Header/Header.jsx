@@ -8,7 +8,7 @@ const Header = ({ trigger, sidebarOpen, setSidebarOpen }) => {
   const { loggedInUser } = useContext(AuthContext);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-zinc-700 bg-arx-black-5 drop-shadow-sm">
+    <header className="sticky top-0 z-30 border-b border-gray-800 bg-black drop-shadow-sm">
       <div className="flex w-full items-center justify-between px-4 py-2 sm:px-6 lg:px-7.5 lg:py-3 2xl:p-10">
         {/* logo only for small screen */}
         <div className="block lg:hidden">

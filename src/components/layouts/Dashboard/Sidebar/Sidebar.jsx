@@ -21,13 +21,6 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
     menuItem?.roles?.some((role) => normalizedRoles?.includes(role)),
   );
 
-  // console.log(loggedInUser);
-
-  // // Filter menu items based on the user's role
-  // const filteredMenuConfig = dashboardMenuConfig?.filter((menuItem) =>
-  //   menuItem?.role?.includes(loggedInUser?.roles),
-  // );
-
   // Close sidebar on click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -61,7 +54,7 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-50 flex h-screen w-[60%] flex-col overflow-y-hidden border-r border-zinc-700 bg-arx-black-5 duration-300 ease-linear sm:w-64 lg:static lg:translate-x-0 2xl:w-72 ${
+      className={`absolute left-0 top-0 z-50 flex h-screen w-[60%] flex-col overflow-y-hidden border-r border-gray-800 bg-black duration-300 ease-linear sm:w-64 lg:static lg:translate-x-0 2xl:w-72 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -111,7 +104,7 @@ const Sidebar = ({ trigger, sidebarOpen, setSidebarOpen }) => {
             ))}
             <li
               onClick={handleLogout}
-              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-zinc-400 transition-all duration-75 hover:rounded-md hover:bg-zinc-800"
+              className="flex cursor-pointer items-center gap-2.5 px-4 py-2 font-semibold text-gray-400 transition-all duration-75 hover:rounded-md hover:bg-purple-600 hover:text-white"
             >
               <CgLogOut className="text-lg md:text-xl" /> Logout
             </li>

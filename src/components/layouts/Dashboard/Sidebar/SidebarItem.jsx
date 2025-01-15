@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import { HiOutlineNoSymbol } from "react-icons/hi2";
 import SidebarDropdown from "./SidebarDropdown";
 
 const SidebarItem = ({ menuItem, setSidebarOpen }) => {
@@ -29,10 +30,11 @@ const SidebarItem = ({ menuItem, setSidebarOpen }) => {
       <Link
         href={menuItem.path}
         onClick={handleClick}
-        className={`${isItemActive ? "rounded-md bg-zinc-800 text-white" : "text-zinc-400 hover:rounded-md hover:bg-zinc-800"} group relative flex items-center gap-2.5 px-4 py-2 font-semibold transition-all duration-75`}
+        className={`${isItemActive ? "rounded-md bg-purple-600 text-white" : "text-gray-400 hover:rounded-md hover:bg-purple-500 hover:text-white"} group relative flex items-center gap-2.5 px-4 py-2 font-semibold transition-all duration-75`}
       >
         {menuItem.icon}
         {menuItem.label}
+        {!menuItem.enabled && <HiOutlineNoSymbol className="text-red-700" />}
         {menuItem.children && (
           <svg
             className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${groupOpen && "rotate-180"}`}
