@@ -6429,7 +6429,7 @@ valtio@1.11.2:
     proxy-compare "2.5.1"
     use-sync-external-store "1.2.0"
 
-viem@^2.1.1, viem@^2.22.6, viem@2.x:
+viem@^2.1.1, viem@2.x:
   version "2.22.7"
   resolved "https://registry.npmjs.org/viem/-/viem-2.22.7.tgz"
   integrity sha512-heNQKOqpgAhdvu5xBAgWCqNVDkC6FfQyQ63+JVSUomOzmnbHAO1FKf4/JRe/s1McU1F4HkgjytOunQS9mbBD2g==

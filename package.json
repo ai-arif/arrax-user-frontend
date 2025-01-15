@@ -40,7 +40,6 @@
     "swiper": "^11.1.15",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "viem": "^2.22.6",
     "wagmi": "^2.14.7"
   },
   "devDependencies": {

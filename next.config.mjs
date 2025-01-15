@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compilerOptions: {
-    jsx: "react-jsx", // or "react" for older React versions
-    moduleResolution: "node",
-    baseUrl: "./",
-    paths: {
-      "@/*": ["src/*"],
-    },
-    allowSyntheticDefaultImports: true,
-    esModuleInterop: true,
-  },
+  // compilerOptions: {
+  //   jsx: "react-jsx",
+  //   moduleResolution: "node",
+  //   baseUrl: "./",
+  //   paths: {
+  //     "@/*": ["src/*"],
+  //   },
+  //   allowSyntheticDefaultImports: true,
+  //   esModuleInterop: true,
+  // },
   env: {
     API_URL: "http://localhost:5000/api",
     // API_URL: "https://arrax-backend.mainulhasan05.xyz/api",
