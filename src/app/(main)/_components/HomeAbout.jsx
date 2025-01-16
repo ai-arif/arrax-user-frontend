@@ -40,7 +40,7 @@ const HomeAbout = () => {
             return (
               <SwiperSlide key={content.id}>
                 {/* Card */}
-                <div className="h-[300px] space-y-4 rounded-xl border border-arx-secondary p-8 text-center sm:h-[330px] md:h-[360px] md:space-y-5 lg:h-[420px]">
+                <div className="h-[300px] space-y-4 rounded-xl border border-purple-600 p-8 text-center sm:h-[330px] md:h-[360px] md:space-y-5 lg:h-[420px]">
                   <div className="inline-block text-6xl text-[#974edd]">
                     {content.icon}
                   </div>
