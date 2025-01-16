@@ -1,6 +1,7 @@
 import React from "react";
 import HeroSection from "./_components/HeroSection";
 import HomeAbout from "./_components/HomeAbout";
+import HomeCountdown from "./_components/HomeCountdown";
 import HomeFaq from "./_components/HomeFaq";
 import HomeIncome from "./_components/HomeIncome";
 import HomeStats from "./_components/HomeStats";
@@ -14,6 +15,7 @@ const HomePage = () => {
   return (
     <>
       <HeroSection />
+      <HomeCountdown />
       <HomeAbout />
       <HomeStats />
       <HomeIncome />
