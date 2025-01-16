@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { ethers } from "ethers";
 import React from "react";
 import { FaRotate, FaUsers } from "react-icons/fa6";
-
+import matrixABI from "../../../ABI/matrix.json"
+import tokenABI from "../../../ABI/token.json"
+const matrixContract = process.env.NEXT_PUBLIC_MATRIX_SLOT_CONTRACT_ADDRESS;
+const tokenContractAddress = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS
 // SubSlots Component
 export const SubSlots = ({ subSlots, start, end }) => {
   return (
@@ -18,6 +22,60 @@ export const SubSlots = ({ subSlots, start, end }) => {
 
 // Slot Card Component
 const SlotCard = ({ slot }) => {
+  const purchase = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+
+      const walletAddress = await signer.getAddress();
+      const contract = new ethers.Contract(
+        matrixContract,
+        matrixABI,
+        signer,
+      );
+
+     
+      const approvalAmount = ethers.utils.parseEther(
+        "10000000000000000000000000000000000000",
+      );
+
+      const tokenContract = new ethers.Contract(
+        tokenContractAddress,
+        tokenABI,
+        signer,
+      );
+      const tokenApprove = await tokenContract.approve(
+        matrixContract,
+        approvalAmount,
+      );
+      const approveSigner = await tokenContract.approve(
+        walletAddress,
+        approvalAmount,
+      );
+      const bscFees = new ethers.utils.parseEther("0.003")
+      const currentSlot = await contract.currentActiveSlot(walletAddress)
+      console.log("********************",currentSlot ,  matrixContract
+      )
+      console.log(bscFees._hex)
+      const purchase = await contract.purchaseSlot(1, {
+        value : bscFees._hex
+      })
+      let newSlot = currentSlot + 1
+      // if(currentSlot == 0){
+      //   console.log(currentSlot)
+      //   const purchase = await contract.purchaseSlot(2)
+      //   await purchase.wait()
+      // }else {
+      //   const purchase = await contract.purchaseSlot(newSlot)
+      //   await purchase.wait()
+      // }
+    
+      console.log("purchase ", purchase)
+     
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
   return (
     <div className="space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:space-y-7 md:p-5">
       {/* name and price part */}
@@ -57,6 +115,7 @@ const SlotCard = ({ slot }) => {
           <Button
             variant="secondary"
             className="rounded-full bg-arx-primary uppercase"
+            onClick={purchase}
           >
             Upgrade
           </Button>
