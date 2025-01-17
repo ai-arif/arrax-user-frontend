@@ -122,6 +122,19 @@
 				"internalType": "address",
 				"name": "previousOwner",
 				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
 			},
 			{
 				"indexed": true,
@@ -211,6 +224,30 @@
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "getTotalReferralCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "directReferrals",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalReferrals",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
