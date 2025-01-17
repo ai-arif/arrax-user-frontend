@@ -4,7 +4,7 @@ import React from "react";
 import { FaRotate, FaUsers } from "react-icons/fa6";
 import matrixABI from "../../../ABI/matrix.json"
 import tokenABI from "../../../ABI/token.json"
-const matrixContract = process.env.NEXT_PUBLIC_MATRIX_SLOT_CONTRACT_ADDRESS;
+const matrixContract = process.env.ARRAX_SLOT_CONTRACT_ADDRESS;
 const tokenContractAddress = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS
 // SubSlots Component
 export const SubSlots = ({ subSlots, start, end }) => {

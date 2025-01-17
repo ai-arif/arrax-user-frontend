@@ -3,7 +3,17 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_motherID",
+				"name": "initialOwner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_tokenAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_feeCollector",
 				"type": "address"
 			}
 		],
@@ -11,28 +21,184 @@
 		"type": "constructor"
 	},
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
 				"internalType": "address",
 				"name": "user",
 				"type": "address"
-			},
+			}
+		],
+		"name": "AlreadyRegistered",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "CannotReferSelf",
+		"type": "error"
+	},
+	{
+		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": false,
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "required",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "actual",
 				"type": "uint256"
 			}
 		],
-		"name": "DirectBonus",
+		"name": "InsufficientAllowance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "required",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "actual",
+				"type": "uint256"
+			}
+		],
+		"name": "InsufficientBalance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"name": "InvalidAddress",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "providedFee",
+				"type": "uint256"
+			}
+		],
+		"name": "InvalidFee",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "referrerId",
+				"type": "uint256"
+			}
+		],
+		"name": "InvalidReferrer",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "reason",
+				"type": "string"
+			}
+		],
+		"name": "InvalidUsername",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			}
+		],
+		"name": "MaxReferralsReached",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "OwnableInvalidOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "OwnableUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "OwnerNotRegistered",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "SafeERC20FailedOperation",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "userId",
+				"type": "uint256"
+			}
+		],
+		"name": "UserNotFound",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			}
+		],
+		"name": "UsernameAlreadyTaken",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "newFeeAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "FeeAmountUpdated",
 		"type": "event"
 	},
 	{
@@ -41,29 +207,11 @@
 			{
 				"indexed": true,
 				"internalType": "address",
-				"name": "user",
+				"name": "newFeeCollector",
 				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint40",
-				"name": "level",
-				"type": "uint40"
 			}
 		],
-		"name": "LevelBonus",
+		"name": "FeeCollectorUpdated",
 		"type": "event"
 	},
 	{
@@ -72,23 +220,30 @@
 			{
 				"indexed": true,
 				"internalType": "address",
-				"name": "user",
+				"name": "previousOwner",
 				"type": "address"
 			},
 			{
 				"indexed": true,
-				"internalType": "uint40",
-				"name": "level",
-				"type": "uint40"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
 			}
 		],
-		"name": "RecycleBonus",
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Paused",
 		"type": "event"
 	},
 	{
@@ -97,23 +252,24 @@
 			{
 				"indexed": true,
 				"internalType": "address",
-				"name": "user",
+				"name": "newToken",
 				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint40",
-				"name": "level",
-				"type": "uint40"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
 			}
 		],
-		"name": "SalaryClaimed",
+		"name": "PaymentTokenUpdated",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "Unpaused",
 		"type": "event"
 	},
 	{
@@ -122,173 +278,83 @@
 			{
 				"indexed": true,
 				"internalType": "address",
-				"name": "user",
+				"name": "userAddress",
 				"type": "address"
 			},
 			{
 				"indexed": true,
-				"internalType": "uint40",
-				"name": "level",
-				"type": "uint40"
+				"internalType": "uint256",
+				"name": "userId",
+				"type": "uint256"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "price",
+				"name": "registrationTime",
 				"type": "uint256"
-			}
-		],
-		"name": "SlotPurchased",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
+			},
 			{
 				"indexed": true,
 				"internalType": "address",
-				"name": "user",
+				"name": "referrerAddress",
 				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint40",
-				"name": "level",
-				"type": "uint40"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint40",
-				"name": "recycleCount",
-				"type": "uint40"
 			}
 		],
-		"name": "SlotRecycled",
+		"name": "UserRegistered",
 		"type": "event"
 	},
 	{
 		"inputs": [],
-		"name": "bnbFee",
+		"name": "feeCollector",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
 				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_referrerId",
 				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "currentActiveSlot",
+		"name": "getUserByReferrerId",
 		"outputs": [
 			{
-				"internalType": "uint40",
-				"name": "",
-				"type": "uint40"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "depositToken",
-		"outputs": [
-			{
-				"internalType": "contract BEP20",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
-				"name": "",
+				"name": "userAddress",
 				"type": "address"
-			},
-			{
-				"internalType": "uint40",
-				"name": "",
-				"type": "uint40"
 			},
 			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "userId",
 				"type": "uint256"
-			}
-		],
-		"name": "directReferrals",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
 			},
 			{
-				"internalType": "uint40",
-				"name": "slotLevel",
-				"type": "uint40"
-			}
-		],
-		"name": "getSlotInfo",
-		"outputs": [
-			{
-				"internalType": "uint40",
-				"name": "id",
-				"type": "uint40"
-			},
-			{
-				"internalType": "uint40",
-				"name": "position",
-				"type": "uint40"
-			},
-			{
-				"internalType": "uint40",
-				"name": "recycleCount",
-				"type": "uint40"
+				"internalType": "uint256",
+				"name": "registrationTime",
+				"type": "uint256"
 			},
 			{
 				"internalType": "bool",
-				"name": "isActive",
+				"name": "isRegistered",
 				"type": "bool"
 			},
 			{
-				"internalType": "address[]",
-				"name": "upperSlots",
-				"type": "address[]"
-			},
-			{
-				"internalType": "address[]",
-				"name": "lowerSlots",
-				"type": "address[]"
-			},
-			{
 				"internalType": "uint256",
-				"name": "earnings",
+				"name": "referralCount",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -297,56 +363,47 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "user",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "_userId",
+				"type": "uint256"
 			}
 		],
-		"name": "getUserIncome",
+		"name": "getUserByUserId",
 		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "directIncome",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "levelIncome",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "recycleIncome",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "salaryIncome",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
-				"name": "",
+				"name": "userAddress",
 				"type": "address"
 			},
 			{
-				"internalType": "uint40",
-				"name": "",
-				"type": "uint40"
-			}
-		],
-		"name": "hasClaimedSalary",
-		"outputs": [
+				"internalType": "uint256",
+				"name": "referrerId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "referrerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "registrationTime",
+				"type": "uint256"
+			},
 			{
 				"internalType": "bool",
-				"name": "",
+				"name": "isRegistered",
 				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "referralCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -356,31 +413,46 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "",
+				"name": "userAddress",
 				"type": "address"
 			}
 		],
-		"name": "incomes",
+		"name": "getUserInfo",
 		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "direct",
+				"name": "userId",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "level",
+				"name": "referrerId",
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
-				"name": "recycleBonus",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "referrerAddress",
+				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "salary",
+				"name": "registrationTime",
 				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "isRegistered",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "referralCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -390,23 +462,16 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "frst",
+				"name": "userAddress",
 				"type": "address"
 			}
 		],
-		"name": "init",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "motherID",
+		"name": "getUserReferrals",
 		"outputs": [
 			{
-				"internalType": "address",
+				"internalType": "address[]",
 				"name": "",
-				"type": "address"
+				"type": "address[]"
 			}
 		],
 		"stateMutability": "view",
@@ -426,29 +491,132 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint40",
-				"name": "slotLevel",
-				"type": "uint40"
-			}
-		],
-		"name": "purchaseSlot",
+		"inputs": [],
+		"name": "pauseContract",
 		"outputs": [],
-		"stateMutability": "payable",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "registration",
+		"name": "paused",
 		"outputs": [
 			{
-				"internalType": "contract RegistrationInterface",
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "paymentToken",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
 				"name": "",
 				"type": "address"
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "registerOwner",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "referrerId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "referrerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			}
+		],
+		"name": "registerUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "registrationFee",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalUsers",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "unpauseContract",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_newFeeCollector",
+				"type": "address"
+			}
+		],
+		"name": "updateFeeCollector",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -459,212 +627,9 @@
 				"type": "uint256"
 			}
 		],
-		"name": "setBnbFee",
+		"name": "updateRegistrationFee",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_token",
-				"type": "address"
-			}
-		],
-		"name": "setDepositToken",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_newMotherID",
-				"type": "address"
-			}
-		],
-		"name": "setMotherID",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_reg",
-				"type": "address"
-			}
-		],
-		"name": "setRegistration",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint40",
-				"name": "",
-				"type": "uint40"
-			}
-		],
-		"name": "slotCount",
-		"outputs": [
-			{
-				"internalType": "uint40",
-				"name": "",
-				"type": "uint40"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "slotPrices",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint40",
-				"name": "",
-				"type": "uint40"
-			}
-		],
-		"name": "totalSlotSalary",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint40",
-				"name": "slotLevel",
-				"type": "uint40"
-			}
-		],
-		"name": "upgrade",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "usr",
-				"type": "address"
-			},
-			{
-				"internalType": "uint40",
-				"name": "slotLevel",
-				"type": "uint40"
-			}
-		],
-		"name": "upgradeDirect",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint40",
-				"name": "",
-				"type": "uint40"
-			}
-		],
-		"name": "userSlots",
-		"outputs": [
-			{
-				"internalType": "uint40",
-				"name": "id",
-				"type": "uint40"
-			},
-			{
-				"internalType": "uint40",
-				"name": "currentPosition",
-				"type": "uint40"
-			},
-			{
-				"internalType": "uint40",
-				"name": "recycleCount",
-				"type": "uint40"
-			},
-			{
-				"internalType": "uint40",
-				"name": "lastActiveTime",
-				"type": "uint40"
-			},
-			{
-				"internalType": "bool",
-				"name": "isActive",
-				"type": "bool"
-			},
-			{
-				"internalType": "uint256",
-				"name": "totalEarnings",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "token",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "recipient",
-				"type": "address"
-			}
-		],
-		"name": "withdraw",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"stateMutability": "payable",
-		"type": "receive"
 	}
 ]
