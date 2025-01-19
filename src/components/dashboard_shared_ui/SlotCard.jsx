@@ -25,70 +25,128 @@ export const SubSlots = ({ subSlots, start, end }) => {
 
 // Slot Card Component
 const SlotCard = ({ slot,isActive, index,showUpgrade }) => {
-  const purchaseSlot = async (slotNumber) => {
-    alert(slotNumber)
-    return;
-    console.log("purchaseSlot", matrixProContractAddress, matrixProAbi);
-    try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const walletAddress = await signer.getAddress();
-      const contract = new ethers.Contract(
-        matrixProContractAddress,
-        matrixProAbi,
-        signer,
-      );
 
-      console.log(walletAddress);
-      const approvalAmount = ethers.utils.parseEther(
-        "10000000000000000000000000000000000000",
-      );
-    
-      const tokenContract = new ethers.Contract(
+
+  const purchaseSlot = async (level) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const walletAddress = await signer.getAddress();
+        const matrixContract = new ethers.Contract(
+          matrixProContractAddress,
+          matrixProAbi,
+          signer,
+        );
+
+    // const matrixContract = new ethers.Contract(
+    //     process.env.NEXT_PUBLIC_MATRIX_CONTRACT_ADDRESS,
+    //     matrixProAbi,
+    //     signer
+    // );
+
+    const tokenContract = new ethers.Contract(
         tokenContractAddress,
         tokenABI,
-        signer,
-      );
-      const tokenApprove = await tokenContract.approve(
-        matrixProContractAddress,
-        approvalAmount,
-      );
-      const approveSigner = await tokenContract.approve(
-        walletAddress,
-        approvalAmount,
-      );
-      console.log(
-        "Approval Result:",
-        approveSigner,
-        tokenApprove,
-        walletAddress,
-      );
+        signer
+    );
 
-      // console.log("data**************", data);
-      const bnbFee = ethers.utils.parseEther("0.003");
-      console.log("walletAddress", walletAddress, bnbFee);
-      const tx = await contract.purchaseSlot(1, {
-        value: bnbFee._hex,
-      });
-      console.log(tx);
-      const receipt = await tx.wait();
+    try {
+        // Get slot price
+        const price = await matrixContract.slotPrices(level - 1);
+        const bscFeePercentage = await matrixContract.bscFeePercentage();
+        const bscFee = price.mul(bscFeePercentage).div(10000);
+        const totalAmount = price.add(bscFee);
 
-      return {
-        success: true,
-        data: {
-          transactionHash: receipt.hash,
-          // slotLevel,
-          receipt,
-        },
-      };
+        // Approve tokens
+        const approveTx = await tokenContract.approve(
+            matrixProContractAddress,
+            totalAmount
+        );
+        await approveTx.wait();
+
+        // Purchase slot
+        const purchaseTx = await matrixContract.purchaseSlot(level);
+        const receipt = await purchaseTx.wait();
+
+        return {
+            success: true,
+            hash: receipt.transactionHash
+        };
     } catch (error) {
-      console.log(error);
-      return {
-        success: false,
-        error: `Slot purchase failed: ${error.message}`,
-      };
+      console.log(error.message )
+        return {
+            success: false,
+            error: error.message
+        };
     }
-  };
+};
+  // const purchaseSlot = async (slotNumber) => {
+  //   // alert(slotNumber)
+  //   // return;
+  //   console.log("purchaseSlot", matrixProContractAddress, matrixProAbi);
+  //   try {
+  //     const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //     const signer = provider.getSigner();
+  //     const walletAddress = await signer.getAddress();
+  //     const contract = new ethers.Contract(
+  //       matrixProContractAddress,
+  //       matrixProAbi,
+  //       signer,
+  //     );
+
+  //     console.log(walletAddress);
+  //     const approvalAmount = ethers.utils.parseEther(
+  //       "10000000000000000000000000000000000000",
+  //     );
+    
+  //     const tokenContract = new ethers.Contract(
+  //       tokenContractAddress,
+  //       tokenABI,
+  //       signer,
+  //     );
+  //     const tokenApprove = await tokenContract.approve(
+  //       matrixProContractAddress,
+  //       approvalAmount,
+  //     );
+  //     const approveSigner = await tokenContract.approve(
+  //       walletAddress,
+  //       approvalAmount,
+  //     );
+  //     console.log(
+  //       "Approval Result:",
+  //       approveSigner,
+  //       tokenApprove,
+  //       walletAddress,
+  //     );
+
+  //     // console.log("data**************", data);
+  //     // const bnbFee = ethers.utils.parseEther("0.003");
+  //     // console.log("walletAddress", walletAddress, bnbFee);
+
+  //     const allowance = await tokenContract.allowance(
+  //       walletAddress,
+  //       matrixProContractAddress,
+  //     );
+
+    
+
+  //     console.log("allowance", allowance);
+
+
+  //     if(allowance.lt(approvalAmount)){
+  //       alert("Please Approve Token First")
+  //       return;
+  //     }else {
+
+  //     }
+      
+  //   } catch (error) {
+  //     console.log(error.data);
+  //     return {
+  //       success: false,
+  //       error: `Slot purchase failed: ${error.message}`,
+  //     };
+  //   }
+  // };
 
   return (
     <div className="space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:space-y-7 md:p-5">
