@@ -235,8 +235,8 @@ const handleUpgrade = async () => {
           variant="secondary"
           className="rounded-full bg-arx-primary uppercase"
           onClick={()=>{
-            purchaseSlot(slot?.slotNumber)
-            // handleUpgrade()
+            // purchaseSlot(slot?.slotNumber)
+            handleUpgrade()
           }}
         >
           Upgrade
