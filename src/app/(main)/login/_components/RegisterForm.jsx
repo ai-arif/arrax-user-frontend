@@ -53,23 +53,11 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
       const walletAddress = await signer.getAddress();
       const contract =new ethers.Contract(registrationContractAddress, registrationABI, signer);
 
-      
-      // const isUserExists = await contract.getUserInfo(walletAddress);
-      // if(isUserExists){
-      //   throw new Error("User Already Exists")
-      // }
-   
-
-      // check if the walletAddress already has a user account 
-
       console.log(walletAddress)
       const approvalAmount = ethers.utils.parseEther("10000000000000000000000000000000000000");
       console.log("Approval Amount:",registrationContractAddress, registrationABI, signer);
       const tokenContract = new ethers.Contract(tokenContractAddress, tokenABI, signer);
       const tokenApprove = await tokenContract.approve(registrationContractAddress, approvalAmount);
-      const approveSigner = await tokenContract.approve(walletAddress, approvalAmount)
-      console.log("Approval Result:", approveSigner , tokenApprove , walletAddress );
-
       console.log("data**************",data)
       const {fullName , referredBy} = data
     

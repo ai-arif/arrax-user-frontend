@@ -37,12 +37,6 @@ const SlotCard = ({ slot,isActive, index,showUpgrade }) => {
           signer,
         );
 
-    // const matrixContract = new ethers.Contract(
-    //     process.env.NEXT_PUBLIC_MATRIX_CONTRACT_ADDRESS,
-    //     matrixProAbi,
-    //     signer
-    // );
-
     const tokenContract = new ethers.Contract(
         tokenContractAddress,
         tokenABI,
@@ -52,9 +46,8 @@ const SlotCard = ({ slot,isActive, index,showUpgrade }) => {
     try {
         // Get slot price
         const price = await matrixContract.slotPrices(level - 1);
-        const bscFeePercentage = await matrixContract.bscFeePercentage();
-        const bscFee = price.mul(bscFeePercentage).div(10000);
-        const totalAmount = price.add(bscFee);
+        const bscAmount = await matrixContract.BSC_FEE();;
+        const totalAmount = price.add(bscAmount);
 
         // Approve tokens
         const approveTx = await tokenContract.approve(
@@ -64,7 +57,9 @@ const SlotCard = ({ slot,isActive, index,showUpgrade }) => {
         await approveTx.wait();
 
         // Purchase slot
-        const purchaseTx = await matrixContract.purchaseSlot(level);
+        const purchaseTx = await matrixContract.purchaseSlot(level,{
+          value : bscAmount
+        });
         const receipt = await purchaseTx.wait();
 
         return {
@@ -78,7 +73,60 @@ const SlotCard = ({ slot,isActive, index,showUpgrade }) => {
             error: error.message
         };
     }
+
+
+    
 };
+
+const handleUpgrade = async (level) => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const walletAddress = await signer.getAddress();
+      const matrixContract = new ethers.Contract(
+        matrixProContractAddress,
+        matrixProAbi,
+        signer,
+      );
+
+  const tokenContract = new ethers.Contract(
+      tokenContractAddress,
+      tokenABI,
+      signer
+  );
+
+  try {
+      // Get slot price
+      const price = await matrixContract.slotPrices(level - 1);
+      const bscAmount = await matrixContract.BSC_FEE();
+      const bscFee = price.mul(bscFeePercentage).div(10000);
+      const totalAmount = price.add(bscFee);
+
+      // Approve tokens
+      const approveTx = await tokenContract.approve(
+          matrixProContractAddress,
+          totalAmount
+      );
+      await approveTx.wait();
+
+      // Purchase slot
+      const purchaseTx = await matrixContract.purchaseSlot(leuvel);
+      const receipt = await purchaseTx.wait();
+
+      return {
+          success: true,
+          hash: receipt.transactionHash
+      };
+  } catch (error) {
+    console.log(error.message )
+      return {
+          success: false,
+          error: error.message
+      };
+  }
+}
+
+
+
   // const purchaseSlot = async (slotNumber) => {
   //   // alert(slotNumber)
   //   // return;
