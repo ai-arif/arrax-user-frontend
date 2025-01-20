@@ -32,4 +32,3 @@ const LoginRegisterComp = ({ referredBy }) => {
 };
 
 export default LoginRegisterComp;
-

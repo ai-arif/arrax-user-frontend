@@ -10,7 +10,7 @@ import UserBasicInfo from "./UserBasicInfo";
 
 const UserDetails = ({ slug }) => {
   const { data = {}, isLoading, isError } = useUserDetails(slug);
-  // console.log(data);
+  console.log("data",data);
 
   return (
     <div>

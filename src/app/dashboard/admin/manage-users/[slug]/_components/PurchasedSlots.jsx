@@ -2,6 +2,7 @@ import SlotCard from "@/components/dashboard_shared_ui/SlotCard";
 import React from "react";
 
 const PurchasedSlots = ({ slots }) => {
+  console.log("slots", slots)
   return (
     <div className="dashboard-bottom-spacing">
       {/* Title */}
