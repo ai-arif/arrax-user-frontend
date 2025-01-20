@@ -10,8 +10,9 @@ const MatrixSlots = () => {
   const { data: matrixData = {}, isLoading, isError } = useMatrix();
   const [currentSlot, setCurrentSlot] = useState(0);
   useEffect(() => {
-    if(matrixData?.data?.success==true){
-      setCurrentSlot(matrixData?.data?.data)
+    console.log(matrixData);
+    if(matrixData?.success==true){
+      setCurrentSlot(matrixData?.data?.activeSlot)
     }
   })
   
@@ -147,7 +148,7 @@ const MatrixSlots = () => {
   return (
     <div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
-        
+        <h1>{currentSlot}</h1>
         {/* {matrixData?.data?.map((slot, index) => (
           <SlotCard key={slot._id} slot={slot} index={index} />
         ))} */}
