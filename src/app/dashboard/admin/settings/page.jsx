@@ -1,4 +1,5 @@
 import React from "react";
+import ToggleCard from "./_components/ToggleCard";
 
 export const metadata = {
   title: "Settings - Arrax Space",
@@ -7,12 +8,14 @@ export const metadata = {
 
 const SettingsPage = () => {
   return (
-    <div>
-      <p>
-        Settings page.
-        {/* Admin roles er jonne arekta option thakbe, Settings eikhane 2ta Toggle
-        Button thakbe,, akta 1. Slot purchase on/off 2. Registration on/off */}
-      </p>
+    <div className="flex min-h-[70vh] flex-col items-center justify-center">
+      {/* title */}
+      <h2 className="mb-3 text-xl font-semibold text-gray-100 md:mb-4 md:text-2xl">
+        Settings
+      </h2>
+
+      {/* toggle card */}
+      <ToggleCard />
     </div>
   );
 };
