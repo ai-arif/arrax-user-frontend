@@ -52,13 +52,12 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
       
       const walletAddress = await signer.getAddress();
       const contract =new ethers.Contract(registrationContractAddress, registrationABI, signer);
-
-      console.log(walletAddress)
+      console.log("Approval Amount:",registrationContractAddress);
+      console.log("***************",walletAddress , registrationContractAddress)
       const approvalAmount = ethers.utils.parseEther("10000000000000000000000000000000000000");
-      console.log("Approval Amount:",registrationContractAddress, registrationABI, signer);
       const tokenContract = new ethers.Contract(tokenContractAddress, tokenABI, signer);
       const tokenApprove = await tokenContract.approve(registrationContractAddress, approvalAmount);
-      console.log("data**************",data)
+      console.log("**************" , tokenApprove)
       const {fullName , referredBy} = data
     
        const referrerInfo = await contract.getUserByReferrerId(referredBy);
