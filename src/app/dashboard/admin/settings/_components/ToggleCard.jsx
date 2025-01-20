@@ -2,11 +2,50 @@
 
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axiosInstance from "@/utils/axiosInstance";
 
-const ToggleCard = () => {
+const ToggleCard = ({ settings, refetch }) => {
   const [isSlotPurchaseEnabled, setIsSlotPurchaseEnabled] = useState(false);
   const [isRegistrationEnabled, setIsRegistrationEnabled] = useState(false);
+
+  useEffect(() => {
+    if (settings) {
+      setIsRegistrationEnabled(settings.isRegistrationPaused);
+      setIsSlotPurchaseEnabled(settings.isPurchasingPaused);
+    }
+    console.log(settings)
+  }, [settings]);
+
+  const updateRegistration = async () => {
+    try {
+      const response = await axiosInstance.put("/admin/update-registration", {
+        registration: !isRegistrationEnabled,
+      });
+      if (response.status === 200) {
+        refetch();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsRegistrationEnabled(!isRegistrationEnabled);
+    }
+  };
+
+  const updatePurchasing = async () => {
+    try {
+      const response = await axiosInstance.put("/admin/update-purchasing", {
+        purchasing: !isSlotPurchaseEnabled,
+      });
+      if (response.status === 200) {
+        refetch();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSlotPurchaseEnabled(!isSlotPurchaseEnabled);
+    }
+  };
 
   return (
     <div className="mx-auto w-max min-w-fit space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-6 shadow-lg shadow-purple-600 md:space-y-6 md:p-8">
@@ -17,7 +56,7 @@ const ToggleCard = () => {
         </Label>
         <Switch
           checked={isSlotPurchaseEnabled}
-          onCheckedChange={setIsSlotPurchaseEnabled}
+          onCheckedChange={() => updatePurchasing()}
         />
       </div>
 
@@ -26,7 +65,7 @@ const ToggleCard = () => {
         <Label className="text-base font-medium md:text-lg">Registration</Label>
         <Switch
           checked={isRegistrationEnabled}
-          onCheckedChange={setIsRegistrationEnabled}
+          onCheckedChange={() => updateRegistration()}
         />
       </div>
     </div>
