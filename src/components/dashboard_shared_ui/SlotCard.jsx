@@ -57,6 +57,7 @@ const SlotCard = ({ slot,isActive, index,showUpgrade }) => {
         await approveTx.wait();
 
         // Purchase slot
+        console.log("bscAmount", bscAmount)
         const purchaseTx = await matrixContract.purchaseSlot(level,{
           value : bscAmount
         });
@@ -78,7 +79,7 @@ const SlotCard = ({ slot,isActive, index,showUpgrade }) => {
     
 };
 
-const handleUpgrade = async (level) => {
+const handleUpgrade = async () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const walletAddress = await signer.getAddress();
@@ -96,9 +97,9 @@ const handleUpgrade = async (level) => {
 
   try {
       // Get slot price
-      const price = await matrixContract.slotPrices(level - 1);
+      const price = await matrixContract.slotPrices(1);
       const bscAmount = await matrixContract.BSC_FEE();
-      const bscFee = price.mul(bscFeePercentage).div(10000);
+      const bscFee = price.mul(bscAmount).div(10000);
       const totalAmount = price.add(bscFee);
 
       // Approve tokens
@@ -109,7 +110,8 @@ const handleUpgrade = async (level) => {
       await approveTx.wait();
 
       // Purchase slot
-      const purchaseTx = await matrixContract.purchaseSlot(leuvel);
+      console.log("bscAmount", bscAmount)
+      const purchaseTx = await matrixContract.autoUpgrade({value : bscAmount});
       const receipt = await purchaseTx.wait();
 
       return {
@@ -233,7 +235,8 @@ const handleUpgrade = async (level) => {
           variant="secondary"
           className="rounded-full bg-arx-primary uppercase"
           onClick={()=>{
-            purchaseSlot(slot?.slotNumber)
+            // purchaseSlot(slot?.slotNumber)
+            handleUpgrade()
           }}
         >
           Upgrade
