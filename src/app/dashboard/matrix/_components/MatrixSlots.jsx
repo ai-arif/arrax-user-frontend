@@ -148,13 +148,13 @@ const MatrixSlots = () => {
   return (
     <div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
-        <h1>{currentSlot}</h1>
+        
         {/* {matrixData?.data?.map((slot, index) => (
           <SlotCard key={slot._id} slot={slot} index={index} />
         ))} */}
         {/* form a array of length 10, and pass currentSlot also index */}
         {[...Array(10)].map((_, index) => (
-          <SlotCard key={index} index={index} slot={slots[index]} currentSlot={currentSlot} isActive={slots[index].slotNumber<parseInt(currentSlot)} showUpgrade={(parseInt(currentSlot)) === index}/>
+          <SlotCard key={index} index={index} slot={slots[index]} currentSlot={currentSlot} isActive={slots[index].slotNumber<=parseInt(currentSlot)} showUpgrade={(parseInt(currentSlot)) === index}/>
         ))}
       </div>
     </div>
