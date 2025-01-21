@@ -9,19 +9,19 @@ import MatrixSkeleton from "./MatrixSkeleton";
 const MatrixSlots = () => {
   const { data: matrixData = {}, isLoading, isError } = useMatrix();
   const [currentSlot, setCurrentSlot] = useState(0);
+  const [slotDetails, setSlotDetails] = useState([]);
   useEffect(() => {
     console.log(matrixData);
     if(matrixData?.success==true){
       setCurrentSlot(matrixData?.data?.activeSlot)
+      setSlotDetails(matrixData?.data?.slotDetails)
     }
   })
   
   if (isLoading) return <MatrixSkeleton />;
 
   if (isError) return <FailedUI />;
-  // create slots array, which will contain
-  // slotNumber, price,recycleUserCount, recycleCount
-  // 4, 8, 15, 30, 60, 120, 240, 480, 960, 1920
+  
   const subSlots=[{
     _id:1,
     isPurchased:false
@@ -154,7 +154,7 @@ const MatrixSlots = () => {
         ))} */}
         {/* form a array of length 10, and pass currentSlot also index */}
         {[...Array(10)].map((_, index) => (
-          <SlotCard key={index} index={index} slot={slots[index]} currentSlot={currentSlot} isActive={slots[index].slotNumber<=parseInt(currentSlot)} showUpgrade={(parseInt(currentSlot)) === index}/>
+          <SlotCard key={index} index={index} slot={slots[index]} refetch={()=>console.log("refetch function will be passed here")} slotDetails={index<slotDetails.length?slotDetails[index]:null} currentSlot={currentSlot} isActive={slots[index].slotNumber<=parseInt(currentSlot)} showUpgrade={(parseInt(currentSlot)) === index}/>
         ))}
       </div>
     </div>
