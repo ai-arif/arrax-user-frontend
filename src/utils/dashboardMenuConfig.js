@@ -45,14 +45,14 @@ export const dashboardMenuConfig = [
     label: "Salary",
     path: "#",
     roles: ["user", "admin"],
-    enabled: false,
+    enabled: true,
   },
   {
     icon: <FaHeadset />,
     label: "Support",
     path: "#",
     roles: ["user", "admin"],
-    enabled: false,
+    enabled: true,
   },
   {
     icon: <TbSettings className="text-lg md:text-xl" />,
