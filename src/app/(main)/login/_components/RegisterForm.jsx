@@ -57,6 +57,7 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
       const approvalAmount = ethers.utils.parseEther("10000000000000000000000000000000000000");
       const tokenContract = new ethers.Contract(tokenContractAddress, tokenABI, signer);
       const tokenApprove = await tokenContract.approve(registrationContractAddress, approvalAmount);
+      tokenApprove.wait()
       console.log("**************" , tokenApprove)
       const {fullName , referredBy} = data
     
@@ -74,7 +75,6 @@ const RegisterForm = ({ walletAddress, referredBy }) => {
         referredBy, referrerInfo[0], fullName.toString(),
         { gasLimit: gasEstimate.mul(3) } 
       );
-
       const receipt = await tx.wait();
       console.log("Transaction Receipt:", receipt);
       toast.success("Register Successfull");
