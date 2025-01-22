@@ -7,11 +7,11 @@ import React, { useEffect, useState } from "react";
 import MatrixSkeleton from "./MatrixSkeleton";
 
 const MatrixSlots = () => {
-  const { data: matrixData = {}, isLoading, isError } = useMatrix();
+  const { data: matrixData = {}, isLoading, isError, refetch } = useMatrix();
   const [currentSlot, setCurrentSlot] = useState(0);
   const [slotDetails, setSlotDetails] = useState([]);
   useEffect(() => {
-    console.log(matrixData);
+    
     if(matrixData?.success==true){
       setCurrentSlot(matrixData?.data?.activeSlot)
       setSlotDetails(matrixData?.data?.slotDetails)
@@ -159,7 +159,7 @@ const MatrixSlots = () => {
               key={index}
               index={index}
               slot={slots[index]}
-              refetch={() => console.log("Refetch function will be passed here")}
+              refetch={refetch}
               slotDetails={details}
               currentSlot={currentSlot}
               isActive={isActive}
