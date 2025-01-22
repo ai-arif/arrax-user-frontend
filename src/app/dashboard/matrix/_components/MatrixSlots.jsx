@@ -145,20 +145,50 @@ const MatrixSlots = () => {
   ]
 
 
+  
   return (
     <div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
-        
-        {/* {matrixData?.data?.map((slot, index) => (
-          <SlotCard key={slot._id} slot={slot} index={index} />
-        ))} */}
-        {/* form a array of length 10, and pass currentSlot also index */}
-        {[...Array(10)].map((_, index) => (
-          <SlotCard key={index} index={index} slot={slots[index]} refetch={()=>console.log("refetch function will be passed here")} slotDetails={index<slotDetails.length?slotDetails[index]:null} currentSlot={currentSlot} isActive={slots[index].slotNumber<=parseInt(currentSlot)} showUpgrade={(parseInt(currentSlot)) === index}/>
-        ))}
+        {[...Array(10)].map((_, index) => {
+          const details = slotDetails?.[index] || null;
+          const isActive = slots[index]?.slotNumber <= parseInt(currentSlot, 10);
+          const showUpgrade = parseInt(currentSlot, 10) === index;
+
+          return (
+            <SlotCard
+              key={index}
+              index={index}
+              slot={slots[index]}
+              refetch={() => console.log("Refetch function will be passed here")}
+              slotDetails={details}
+              currentSlot={currentSlot}
+              isActive={isActive}
+              showUpgrade={showUpgrade}
+            />
+          );
+        })}
       </div>
     </div>
   );
 };
+
+
+
+
+//   return (
+//     <div>
+//       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
+        
+//         {/* {matrixData?.data?.map((slot, index) => (
+//           <SlotCard key={slot._id} slot={slot} index={index} />
+//         ))} */}
+//         {/* form a array of length 10, and pass currentSlot also index */}
+//         {[...Array(10)].map((_, index) => (
+//           <SlotCard key={index} index={index} slot={slots[index]} refetch={()=>console.log("refetch function will be passed here")} slotDetails={index<slotDetails.length?slotDetails[index]:null} currentSlot={currentSlot} isActive={slots[index].slotNumber<=parseInt(currentSlot)} showUpgrade={(parseInt(currentSlot)) === index}/>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
 
 export default MatrixSlots;
