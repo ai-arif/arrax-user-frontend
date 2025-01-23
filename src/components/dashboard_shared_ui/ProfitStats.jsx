@@ -45,17 +45,17 @@ const ProfitStats = ({ sectionTitle, income }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-2.5">
+        {/* <div className="flex items-center justify-between gap-2.5">
           <h3 className="text-lg font-semibold md:text-xl">
             Slot profit:{" "}
             <span className="text-white">{income?.slotIncome}$ USDT</span>
           </h3>
-          {/* TODO: Add dynamic data */}
+          
           <div className="flex items-center text-xs font-medium text-teal-400 md:text-sm">
             <HiMiniArrowUp />
             <span>0$</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

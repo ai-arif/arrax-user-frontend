@@ -42,7 +42,7 @@ export const dashboardMenuConfig = [
   },
   {
     icon: <TbReportMoney className="text-lg md:text-xl" />,
-    label: "Salary",
+    label: "Bonus",
     path: "#",
     roles: ["user", "admin"],
     enabled: true,
