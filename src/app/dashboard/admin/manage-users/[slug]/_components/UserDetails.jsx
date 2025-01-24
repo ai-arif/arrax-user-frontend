@@ -10,7 +10,7 @@ import UserBasicInfo from "./UserBasicInfo";
 
 const UserDetails = ({ slug }) => {
   const { data = {}, isLoading, isError } = useUserDetails(slug);
-  console.log("data",data);
+  
 
   return (
     <div>
@@ -49,7 +49,7 @@ const UserDetails = ({ slug }) => {
       <PurchasedSlots slots={data?.slots} />
 
       {/* Transaction history */}
-      <TransactionHistory />
+      <TransactionHistory transactions={data?.transactions} />
     </div>
   );
 };

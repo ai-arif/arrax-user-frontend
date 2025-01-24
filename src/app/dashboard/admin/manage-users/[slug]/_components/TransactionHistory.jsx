@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 
-const TransactionHistory = () => {
+const TransactionHistory = ({transactions}) => {
   return (
     <div>
       {/* Title */}
@@ -25,7 +25,10 @@ const TransactionHistory = () => {
               S.N
             </TableHead>
             <TableHead className="text-nowrap text-center text-gray-300">
-              Transaction. ID
+              From
+            </TableHead>
+            <TableHead className="text-nowrap text-center text-gray-300">
+              To
             </TableHead>
             <TableHead className="text-nowrap text-center text-gray-300">
               Status
@@ -39,36 +42,29 @@ const TransactionHistory = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow className="border-gray-600 text-center hover:bg-transparent">
-            <TableCell>{1}</TableCell>
-            <TableCell>{"dpi24875afdjsf0435999"}</TableCell>
+        {transactions?.map((transaction, index) => (
+          <TableRow
+            key={transaction._id}
+            className="border-gray-600 text-center hover:bg-transparent"
+          >
+            <TableCell>{index + 1}</TableCell>
+            
+            <TableCell>{transaction.fromId}</TableCell>
+            <TableCell>{transaction.receiverId}</TableCell>
             <TableCell>
-              <Badge>{"Paid"}</Badge>
+              {transaction?.incomeType}
+              
             </TableCell>
-            <TableCell>12-10-2025 12:19 PM</TableCell>
-            <TableCell className="text-right text-orange-400">{120}</TableCell>
-          </TableRow>
-          <TableRow className="border-gray-600 text-center hover:bg-transparent">
-            <TableCell>{2}</TableCell>
-            <TableCell>{"dpi24875afdjsf0435999"}</TableCell>
             <TableCell>
-              <Badge variant="destructive">{"Cancel"}</Badge>
+              {new Date(transaction.createdAt).toLocaleDateString()}{" "}
+              {new Date(transaction.createdAt).toLocaleTimeString()}
             </TableCell>
-            <TableCell>12-10-2025 12:19 PM</TableCell>
             <TableCell className="text-right text-orange-400">
-              {12021}
+              {Number(transaction.amount) / 1e18}
             </TableCell>
           </TableRow>
-          <TableRow className="border-gray-600 text-center hover:bg-transparent">
-            <TableCell>{3}</TableCell>
-            <TableCell>{"dpi24875afdjsf0435999"}</TableCell>
-            <TableCell>
-              <Badge>{"Paid"}</Badge>
-            </TableCell>
-            <TableCell>12-10-2025 12:19 PM</TableCell>
-            <TableCell className="text-right text-orange-400">{12}</TableCell>
-          </TableRow>
-        </TableBody>
+        ))}
+      </TableBody>
       </Table>
     </div>
   );
