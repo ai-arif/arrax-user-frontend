@@ -46,7 +46,7 @@ const UserDetails = ({ slug }) => {
       />
 
       {/* Purchased slots */}
-      <PurchasedSlots slotDetails={data?.slotDetails} />
+      <PurchasedSlots activeSlot={data?.activeSlot} slotDetails={data?.slots} />
 
       {/* Transaction history */}
       <TransactionHistory transactions={data?.transactions} />

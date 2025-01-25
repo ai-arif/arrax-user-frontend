@@ -1,128 +1,129 @@
 import SlotCard from "@/components/dashboard_shared_ui/SlotCard";
 import React from "react";
 
-const PurchasedSlots = ({  }) => {
-  const subSlots=[{
-    _id:1,
-    isPurchased:false
-  },
-  {
-    _id:2,
-    isPurchased:false
-  },
-  {
-    _id:3,
-    isPurchased:false
-  },
-  {
-    _id:4,
-    isPurchased:false
-  },
-  {
-    _id:5,
-    isPurchased:false
-  },
-  {
-    _id:6,
-    isPurchased:false
-  },
-  {
-    _id:7,
-    isPurchased:false
-  },
-  {
-    _id:8,
-    isPurchased:false
-  },
-  {
-    _id:9,
-    isPurchased:false
-  },
-  {
-    _id:10,
-    isPurchased:false
-  },
-  {
-    _id:11,
-    isPurchased:false
-  },
-  {
-    _id:12,
-    isPurchased:false
-  },
-]
+const PurchasedSlots = ({ slotDetails, activeSlot }) => {
+  const subSlots = [
+    {
+      _id: 1,
+      isPurchased: false,
+    },
+    {
+      _id: 2,
+      isPurchased: false,
+    },
+    {
+      _id: 3,
+      isPurchased: false,
+    },
+    {
+      _id: 4,
+      isPurchased: false,
+    },
+    {
+      _id: 5,
+      isPurchased: false,
+    },
+    {
+      _id: 6,
+      isPurchased: false,
+    },
+    {
+      _id: 7,
+      isPurchased: false,
+    },
+    {
+      _id: 8,
+      isPurchased: false,
+    },
+    {
+      _id: 9,
+      isPurchased: false,
+    },
+    {
+      _id: 10,
+      isPurchased: false,
+    },
+    {
+      _id: 11,
+      isPurchased: false,
+    },
+    {
+      _id: 12,
+      isPurchased: false,
+    },
+  ];
   const slots = [
     {
       slotNumber: 1,
       price: 4,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 2,
       price: 8,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 3,
       price: 15,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 4,
       price: 30,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 5,
       price: 60,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 6,
       price: 120,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 7,
       price: 240,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 8,
       price: 480,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 9,
       price: 960,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 10,
       price: 1920,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
-  ]
+  ];
 
   return (
     <div className="dashboard-bottom-spacing">
@@ -134,7 +135,15 @@ const PurchasedSlots = ({  }) => {
       {/* Slots cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
         {slots?.map((slot, index) => (
-          <SlotCard key={slot._id} slot={slot} index={index} />
+          <SlotCard
+            key={slot._id}
+            isActive={slot.slotNumber <= parseInt(activeSlot, 10)}
+            currentSlot={activeSlot}
+            slot={slot}
+            index={index}
+            slotDetails={slotDetails[index]}
+            showUpgrade={parseInt(activeSlot, 10) === index}
+          />
         ))}
       </div>
     </div>
