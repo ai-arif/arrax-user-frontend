@@ -4,46 +4,62 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import React, { useEffect, useState } from "react";
 import axiosInstance from "@/utils/axiosInstance";
+import toast from "react-hot-toast"; // Assuming you're using a toast library for notifications
 
 const ToggleCard = ({ settings, refetch }) => {
   const [isSlotPurchaseEnabled, setIsSlotPurchaseEnabled] = useState(false);
   const [isRegistrationEnabled, setIsRegistrationEnabled] = useState(false);
+  const [isUpdatingPurchase, setIsUpdatingPurchase] = useState(false);
+  const [isUpdatingRegistration, setIsUpdatingRegistration] = useState(false);
 
   useEffect(() => {
     if (settings) {
       setIsRegistrationEnabled(settings.isRegistrationPaused);
       setIsSlotPurchaseEnabled(settings.isPurchasingPaused);
     }
-    console.log(settings)
   }, [settings]);
 
   const updateRegistration = async () => {
+    if (isUpdatingRegistration) return;
+
+    setIsUpdatingRegistration(true);
     try {
       const response = await axiosInstance.put("/admin/update-registration", {
         registration: !isRegistrationEnabled,
       });
+
       if (response.status === 200) {
+        setIsRegistrationEnabled(!isRegistrationEnabled);
         refetch();
+        toast.success("Registration status updated successfully");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("Failed to update registration status");
     } finally {
-      setIsRegistrationEnabled(!isRegistrationEnabled);
+      setIsUpdatingRegistration(false);
     }
   };
 
   const updatePurchasing = async () => {
+    if (isUpdatingPurchase) return;
+
+    setIsUpdatingPurchase(true);
     try {
       const response = await axiosInstance.put("/admin/update-purchasing", {
         purchasing: !isSlotPurchaseEnabled,
       });
+
       if (response.status === 200) {
+        setIsSlotPurchaseEnabled(!isSlotPurchaseEnabled);
         refetch();
+        toast.success("Purchasing status updated successfully");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("Failed to update purchasing status");
     } finally {
-      setIsSlotPurchaseEnabled(!isSlotPurchaseEnabled);
+      setIsUpdatingPurchase(false);
     }
   };
 
@@ -56,7 +72,8 @@ const ToggleCard = ({ settings, refetch }) => {
         </Label>
         <Switch
           checked={isSlotPurchaseEnabled}
-          onCheckedChange={() => updatePurchasing()}
+          onCheckedChange={updatePurchasing}
+          disabled={isUpdatingPurchase}
         />
       </div>
 
@@ -65,7 +82,8 @@ const ToggleCard = ({ settings, refetch }) => {
         <Label className="text-base font-medium md:text-lg">Registration</Label>
         <Switch
           checked={isRegistrationEnabled}
-          onCheckedChange={() => updateRegistration()}
+          onCheckedChange={updateRegistration}
+          disabled={isUpdatingRegistration}
         />
       </div>
     </div>
