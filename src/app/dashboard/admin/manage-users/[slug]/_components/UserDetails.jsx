@@ -9,8 +9,7 @@ import TransactionHistory from "./TransactionHistory";
 import UserBasicInfo from "./UserBasicInfo";
 
 const UserDetails = ({ slug }) => {
-  const { data = {}, isLoading, isError } = useUserDetails(slug);
-  
+  const { data = {}, isLoading, isError, refetch } = useUserDetails(slug);
 
   return (
     <div>
@@ -46,7 +45,12 @@ const UserDetails = ({ slug }) => {
       />
 
       {/* Purchased slots */}
-      <PurchasedSlots activeSlot={data?.activeSlot} slotDetails={data?.slots} />
+      <PurchasedSlots
+        refetch={refetch}
+        activeSlot={data?.activeSlot}
+        slotDetails={data?.slots}
+        user={data?.user}
+      />
 
       {/* Transaction history */}
       <TransactionHistory transactions={data?.transactions} />

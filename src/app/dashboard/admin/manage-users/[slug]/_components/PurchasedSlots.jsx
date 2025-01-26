@@ -1,7 +1,7 @@
 import SlotCard from "@/components/dashboard_shared_ui/SlotCard";
 import React from "react";
 
-const PurchasedSlots = ({ slotDetails, activeSlot }) => {
+const PurchasedSlots = ({ slotDetails, activeSlot, refetch, user }) => {
   const subSlots = [
     {
       _id: 1,
@@ -136,13 +136,16 @@ const PurchasedSlots = ({ slotDetails, activeSlot }) => {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
         {slots?.map((slot, index) => (
           <SlotCard
+            adminAccess={true}
             key={slot._id}
             isActive={slot.slotNumber <= parseInt(activeSlot, 10)}
             currentSlot={activeSlot}
             slot={slot}
             index={index}
-            slotDetails={slotDetails[index]}
+            slotDetails={slotDetails?.[index]}
             showUpgrade={parseInt(activeSlot, 10) === index}
+            refetch={refetch}
+            user={user}
           />
         ))}
       </div>

@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
-import React from "react";
+import React, { useState } from "react";
 import { ethers } from "ethers";
 import { FaRotate, FaUsers } from "react-icons/fa6";
 import matrixProAbi from "../../../ABI/matrixpro.json";
 import tokenABI from "../../../ABI/token.json";
+import axiosInstance from "@/utils/axiosInstance";
 const matrixProContractAddress =
   process.env.NEXT_PUBLIC_MATRIX_CONTRACT_ADDRESS;
 const tokenContractAddress = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS;
@@ -25,13 +26,16 @@ export const SubSlots = ({ subSlots, start, end, referralCount }) => {
 
 // Slot Card Component
 const SlotCard = ({
+  adminAccess = false,
   slot,
   isActive,
   index,
   showUpgrade,
   slotDetails,
   refetch,
+  user,
 }) => {
+  const [loading, setLoading] = useState(false);
   const purchaseSlot = async (level) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -81,51 +85,22 @@ const SlotCard = ({
     }
   };
 
-  const handleUpgrade = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const walletAddress = await signer.getAddress();
-    const matrixContract = new ethers.Contract(
-      matrixProContractAddress,
-      matrixProAbi,
-      signer,
-    );
-
-    const tokenContract = new ethers.Contract(
-      tokenContractAddress,
-      tokenABI,
-      signer,
-    );
-
+  const handleUpgradeByAdmin = async () => {
     try {
-      // Get slot price
-      const price = await matrixContract.slotPrices(1);
-      const bscAmount = await matrixContract.BSC_FEE();
-      const bscFee = price.mul(bscAmount).div(10000);
-      const totalAmount = price.add(bscFee);
+      setLoading(true);
+      const res = await axiosInstance.post("/admin/upgrade-user-slot", {
+        userAddress: user?.walletAddress,
+        level: index + 1,
+      });
+      console.log(res.data);
+      setLoading(false);
 
-      // Approve tokens
-      const approveTx = await tokenContract.approve(
-        matrixProContractAddress,
-        totalAmount,
-      );
-      await approveTx.wait();
-
-      // Purchase slot
-      console.log("bscAmount", bscAmount);
-      const purchaseTx = await matrixContract.autoUpgrade({ value: bscAmount });
-      const receipt = await purchaseTx.wait();
-
-      return {
-        success: true,
-        hash: receipt.transactionHash,
-      };
+      refetch();
     } catch (error) {
-      console.log(error.message);
-      return {
-        success: false,
-        error: error.message,
-      };
+      console.log(error);
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -171,16 +146,26 @@ const SlotCard = ({
         </>
       ) : showUpgrade ? (
         <div className="flex flex-col items-center justify-center">
-          <Button
-            variant="secondary"
-            className="rounded-full bg-arx-primary uppercase"
-            onClick={() => {
-              purchaseSlot(slot?.slotNumber);
-              // handleUpgrade()
-            }}
-          >
-            Upgrade
-          </Button>
+          {adminAccess ? (
+            <Button
+              disabled={loading}
+              size="sm"
+              variant="outline"
+              onClick={() => handleUpgradeByAdmin()}
+            >
+              Upgrade
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              className="rounded-full bg-arx-primary uppercase"
+              onClick={() => {
+                purchaseSlot(slot?.slotNumber);
+              }}
+            >
+              Upgrade
+            </Button>
+          )}
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center">
