@@ -153,7 +153,11 @@ const SlotCard = ({
               variant="outline"
               onClick={() => handleUpgradeByAdmin()}
             >
-              Upgrade
+              {loading ? (
+                <span className="animate-spin">Upgrading...</span>
+              ) : (
+                "Upgrade"
+              )}
             </Button>
           ) : (
             <Button
