@@ -4,7 +4,7 @@ import React from "react";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { programs } from "../../../public/data/arraxProgram";
 
-const ArraxPrograms = () => {
+const ArraxPrograms = ({ userId }) => {
   return (
     <div>
       <h2 className="mb-3 text-base text-gray-200 md:mb-4 md:text-lg">
@@ -24,7 +24,7 @@ const ArraxPrograms = () => {
                 <p className="">{program.title}</p>
                 {program.published && (
                   <Button size="sm" variant="outline" asChild>
-                    <Link href="/dashboard/matrix">
+                    <Link href={`/dashboard/matrix/${userId}`}>
                       Preview <BsArrowUpRightCircleFill />
                     </Link>
                   </Button>

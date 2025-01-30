@@ -58,7 +58,7 @@ const DashboardOverview = () => {
       {/* <HexagonTrophy /> */}
 
       {/* Arrax Programs */}
-      <ArraxPrograms />
+      <ArraxPrograms userId={user?.userId} />
     </>
   );
 };
