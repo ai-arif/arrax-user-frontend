@@ -111,7 +111,7 @@ const SlotCard = ({
         <h5 className="text-xl font-semibold text-gray-200 md:text-2xl">
           Slot {index + 1}
         </h5>
-        <p className="text-lg font-medium text-orange-400 md:text-xl">
+        <p className="text-lg font-medium text-purple-600 md:text-xl">
           ${slot?.price}
         </p>
       </div>
