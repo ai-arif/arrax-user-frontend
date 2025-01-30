@@ -3,25 +3,23 @@ import React, { useEffect, useState } from "react";
 import ToggleCard from "./_components/ToggleCard";
 import axiosInstance from "@/utils/axiosInstance";
 
-
 const SettingsPage = () => {
   const [settings, setSettings] = useState(null);
   useEffect(() => {
     fetchSettings().then((data) => {
-      console.log(data);
       setSettings(data.data);
     });
   }, []);
 
-  const fetchSettings=async()=>{
+  const fetchSettings = async () => {
     try {
-      const {data}=await axiosInstance.get('/admin/settings')
-      console.log(data)
-      return data
+      const { data } = await axiosInstance.get("/admin/settings");
+      console.log(data);
+      return data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center">
       {/* title */}
