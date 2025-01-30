@@ -1,10 +1,8 @@
 import axiosInstance from "@/utils/axiosInstance";
-import Cookies from "js-cookie";
 
-export const fetchMatrix = async () => {
-  const ownId = Cookies.get("arx_own_id");
+export const fetchMatrix = async (userId) => {
   try {
-    const response = await axiosInstance.get(`/users/user/${ownId}/slot`);
+    const response = await axiosInstance.get(`/users/user/${userId}/slot`);
     return response.data;
   } catch (error) {
     console.error("Error fetching generations:", error);
