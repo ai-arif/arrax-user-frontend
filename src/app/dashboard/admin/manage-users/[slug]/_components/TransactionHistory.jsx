@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 
-const TransactionHistory = ({transactions}) => {
+const TransactionHistory = ({ transactions }) => {
   return (
     <div>
       {/* Title */}
@@ -18,9 +18,9 @@ const TransactionHistory = ({transactions}) => {
       </h2>
 
       {/* Table */}
-      <Table className="rounded-lg border-purple-600 bg-gradient-to-r from-purple-600 shadow-lg shadow-purple-600">
+      <Table className="rounded-lg bg-purple-600 shadow-lg shadow-purple-600">
         <TableHeader>
-          <TableRow className="border-gray-600 hover:bg-transparent">
+          <TableRow className="border-gray-500 hover:bg-transparent">
             <TableHead className="text-nowrap text-center text-gray-300">
               S.N
             </TableHead>
@@ -42,29 +42,26 @@ const TransactionHistory = ({transactions}) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-        {transactions?.map((transaction, index) => (
-          <TableRow
-            key={transaction._id}
-            className="border-gray-600 text-center hover:bg-transparent"
-          >
-            <TableCell>{index + 1}</TableCell>
-            
-            <TableCell>{transaction.fromId}</TableCell>
-            <TableCell>{transaction.receiverId}</TableCell>
-            <TableCell>
-              {transaction?.incomeType}
-              
-            </TableCell>
-            <TableCell>
-              {new Date(transaction.createdAt).toLocaleDateString()}{" "}
-              {new Date(transaction.createdAt).toLocaleTimeString()}
-            </TableCell>
-            <TableCell className="text-right text-orange-400">
-              {Number(transaction.amount) / 1e18}
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
+          {transactions?.map((transaction, index) => (
+            <TableRow
+              key={transaction._id}
+              className="border-gray-500 text-center hover:bg-transparent"
+            >
+              <TableCell>{index + 1}</TableCell>
+
+              <TableCell>{transaction.fromId}</TableCell>
+              <TableCell>{transaction.receiverId}</TableCell>
+              <TableCell>{transaction?.incomeType}</TableCell>
+              <TableCell>
+                {new Date(transaction.createdAt).toLocaleDateString()}{" "}
+                {new Date(transaction.createdAt).toLocaleTimeString()}
+              </TableCell>
+              <TableCell className="text-right text-orange-400">
+                {Number(transaction.amount) / 1e18}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
       </Table>
     </div>
   );

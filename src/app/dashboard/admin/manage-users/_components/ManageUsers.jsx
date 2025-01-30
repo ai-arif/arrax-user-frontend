@@ -54,7 +54,7 @@ const ManageUsers = () => {
     <div>
       {/* Header & search part */}
       <div className="dashboard-bottom-spacing">
-        <div className="rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:p-6">
+        <div className="rounded-lg bg-purple-600 p-4 shadow-lg shadow-purple-600 md:p-6">
           <div className="flex flex-col-reverse items-center justify-between gap-4 md:flex-row md:items-center">
             <Search handleSearch={handleSearch} />
             <h2 className="text-xl font-semibold md:text-2xl">All Users</h2>
@@ -68,9 +68,9 @@ const ManageUsers = () => {
       ) : (
         <>
           {/* Table part */}
-          <Table className="rounded-lg border-purple-600 bg-gradient-to-r from-purple-600 shadow-lg shadow-purple-600">
+          <Table className="rounded-lg bg-purple-600 shadow-lg shadow-purple-600">
             <TableHeader>
-              <TableRow className="border-gray-600 hover:bg-transparent">
+              <TableRow className="border-gray-500 hover:bg-transparent">
                 <TableHead className="text-nowrap text-center text-gray-300">
                   S.N
                 </TableHead>
@@ -92,7 +92,7 @@ const ManageUsers = () => {
               {data?.users?.map((user, index) => (
                 <TableRow
                   key={user._id}
-                  className="border-gray-600 text-center hover:bg-transparent"
+                  className="border-gray-500 text-center hover:bg-transparent"
                 >
                   <TableCell>
                     {(currentPage - 1) * itemsPerPage + index + 1}
@@ -104,7 +104,7 @@ const ManageUsers = () => {
                     <Button
                       variant="secondary"
                       size="xs"
-                      className="bg-purple-600"
+                      className="bg-arx-primary"
                       asChild
                     >
                       <Link

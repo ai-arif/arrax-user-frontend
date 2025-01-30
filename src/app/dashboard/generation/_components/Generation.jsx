@@ -28,7 +28,7 @@ const Generation = () => {
       </h2>
 
       {/* Table part */}
-      <Table className="rounded-lg border-purple-600 bg-gradient-to-r from-purple-600 shadow-lg shadow-purple-600">
+      <Table className="rounded-lg bg-purple-600 shadow-lg shadow-purple-600">
         <TableHeader>
           <TableRow className="border-gray-500 hover:bg-transparent">
             <TableHead className="text-center text-gray-300">Level</TableHead>

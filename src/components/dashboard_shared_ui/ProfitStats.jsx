@@ -8,14 +8,14 @@ const ProfitStats = ({ sectionTitle, income }) => {
       {sectionTitle}
 
       {/* Information */}
-      <div className="space-y-2.5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 text-gray-200 shadow-lg shadow-purple-600 md:space-y-3.5 md:p-5">
+      <div className="space-y-2.5 rounded-lg bg-purple-600 p-4 text-gray-200 shadow-lg shadow-purple-600 md:space-y-3.5 md:p-5">
         <div className="flex items-center justify-between gap-2.5">
           <h3 className="text-lg font-semibold md:text-xl">
             Total profit:{" "}
             <span className="text-white">{income?.total}$ USDT</span>
           </h3>
           {/* TODO: Add dynamic data */}
-          <div className="flex items-center justify-end text-xs text-teal-400 md:text-sm">
+          <div className="flex items-center justify-end text-xs font-medium text-teal-400 md:text-sm">
             <HiMiniArrowUp />
             <span>0$</span>
           </div>
@@ -27,7 +27,7 @@ const ProfitStats = ({ sectionTitle, income }) => {
             <span className="text-white">{income?.directIncome}$ USDT</span>
           </h3>
           {/* TODO: Add dynamic data */}
-          <div className="flex items-center text-xs text-teal-400 md:text-sm">
+          <div className="flex items-center text-xs font-medium text-teal-400 md:text-sm">
             <HiMiniArrowUp />
             <span>0$</span>
           </div>
@@ -39,23 +39,11 @@ const ProfitStats = ({ sectionTitle, income }) => {
             <span className="text-white">{income?.levelIncome}$ USDT</span>
           </h3>
           {/* TODO: Add dynamic data */}
-          <div className="flex items-center text-xs text-teal-400 md:text-sm">
-            <HiMiniArrowUp />
-            <span>0$</span>
-          </div>
-        </div>
-
-        {/* <div className="flex items-center justify-between gap-2.5">
-          <h3 className="text-lg font-semibold md:text-xl">
-            Slot profit:{" "}
-            <span className="text-white">{income?.slotIncome}$ USDT</span>
-          </h3>
-          
           <div className="flex items-center text-xs font-medium text-teal-400 md:text-sm">
             <HiMiniArrowUp />
             <span>0$</span>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
