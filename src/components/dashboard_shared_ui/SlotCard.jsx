@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import axiosInstance from "@/utils/axiosInstance";
 import { ethers } from "ethers";
+import React, { useState } from "react";
 import { FaRotate, FaUsers } from "react-icons/fa6";
 import matrixProAbi from "../../../ABI/matrixpro.json";
 import tokenABI from "../../../ABI/token.json";
-import axiosInstance from "@/utils/axiosInstance";
 const matrixProContractAddress =
   process.env.NEXT_PUBLIC_MATRIX_CONTRACT_ADDRESS;
 const tokenContractAddress = process.env.NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS;
@@ -105,7 +105,7 @@ const SlotCard = ({
   };
 
   return (
-    <div className="space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:space-y-7 md:p-5">
+    <div className="space-y-5 rounded-lg bg-[#141414] md:space-y-7 md:p-5">
       {/* Slot name and price */}
       <div className="flex items-center justify-between gap-2">
         <h5 className="text-xl font-semibold text-gray-200 md:text-2xl">
