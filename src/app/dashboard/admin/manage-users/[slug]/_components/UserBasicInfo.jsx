@@ -19,7 +19,7 @@ const UserBasicInfo = ({
       </h2>
 
       {/* Basic information */}
-      <div className="space-y-1.5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:space-y-2.5 md:p-5">
+      <div className="space-y-1.5 rounded-lg bg-purple-600 p-4 shadow-lg shadow-purple-600 md:space-y-2.5 md:p-5">
         <p>
           <span className="text-gray-200">Full Name:</span> {fullName}
         </p>

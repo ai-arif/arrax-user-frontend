@@ -1,11 +1,11 @@
 "use client";
 
+import { Button } from "@/components/ui/button"; // Import Button component
+import { Input } from "@/components/ui/input"; // Import Input component
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input"; // Import Input component
-import { Button } from "@/components/ui/button"; // Import Button component
-import React, { useEffect, useState } from "react";
 import axiosInstance from "@/utils/axiosInstance";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const ToggleCard = ({ settings, refetch }) => {
@@ -90,7 +90,7 @@ const ToggleCard = ({ settings, refetch }) => {
   };
 
   return (
-    <div className="mx-auto w-max min-w-fit space-y-5 rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-6 shadow-lg shadow-purple-600 md:space-y-6 md:p-8">
+    <div className="mx-auto w-max min-w-fit space-y-5 rounded-lg bg-purple-600 p-6 shadow-lg shadow-purple-600 md:space-y-6 md:p-8">
       {/* Slot Purchase Toggle */}
       <div className="flex items-center justify-between gap-5 md:gap-10">
         <Label className="text-base font-medium md:text-lg">
@@ -125,7 +125,8 @@ const ToggleCard = ({ settings, refetch }) => {
         <Button
           onClick={updateFees}
           disabled={isUpdatingFees}
-          className="mt-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700"
+          variant="secondary"
+          className="bg-arx-primary"
         >
           {isUpdatingFees ? "Updating..." : "Update Fees"}
         </Button>

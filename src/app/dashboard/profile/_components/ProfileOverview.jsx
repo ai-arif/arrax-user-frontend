@@ -52,7 +52,7 @@ const ProfileOverview = () => {
       />
 
       {/* Arrax Programs */}
-      <ArraxPrograms />
+      <ArraxPrograms userId={loggedInUser?.userId} />
     </>
   );
 };

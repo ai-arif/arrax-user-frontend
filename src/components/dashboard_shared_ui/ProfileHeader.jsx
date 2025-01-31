@@ -20,7 +20,7 @@ const ProfileHeader = ({
 }) => {
   return (
     <div className="dashboard-bottom-spacing">
-      <div className="dashboard-bottom-spacing rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:p-5">
+      <div>
         <div className="flex items-center gap-3.5 md:flex-col md:gap-5">
           {/* profile info part */}
           <div>

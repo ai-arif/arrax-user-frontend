@@ -6,152 +6,156 @@ import { useMatrix } from "@/hooks/useMatrix";
 import React, { useEffect, useState } from "react";
 import MatrixSkeleton from "./MatrixSkeleton";
 
-const MatrixSlots = () => {
-  const { data: matrixData = {}, isLoading, isError, refetch } = useMatrix();
+const MatrixSlots = ({ userId }) => {
+  const {
+    data: matrixData = {},
+    isLoading,
+    isError,
+    refetch,
+  } = useMatrix(userId);
   const [currentSlot, setCurrentSlot] = useState(0);
   const [slotDetails, setSlotDetails] = useState([]);
   useEffect(() => {
-    
-    if(matrixData?.success==true){
-      setCurrentSlot(matrixData?.data?.activeSlot)
-      setSlotDetails(matrixData?.data?.slotDetails)
+    if (matrixData?.success == true) {
+      setCurrentSlot(matrixData?.data?.activeSlot);
+      setSlotDetails(matrixData?.data?.slotDetails);
     }
-  })
-  
+  });
+
   if (isLoading) return <MatrixSkeleton />;
 
   if (isError) return <FailedUI />;
-  
-  const subSlots=[{
-    _id:1,
-    isPurchased:false
-  },
-  {
-    _id:2,
-    isPurchased:false
-  },
-  {
-    _id:3,
-    isPurchased:false
-  },
-  {
-    _id:4,
-    isPurchased:false
-  },
-  {
-    _id:5,
-    isPurchased:false
-  },
-  {
-    _id:6,
-    isPurchased:false
-  },
-  {
-    _id:7,
-    isPurchased:false
-  },
-  {
-    _id:8,
-    isPurchased:false
-  },
-  {
-    _id:9,
-    isPurchased:false
-  },
-  {
-    _id:10,
-    isPurchased:false
-  },
-  {
-    _id:11,
-    isPurchased:false
-  },
-  {
-    _id:12,
-    isPurchased:false
-  },
-]
+
+  const subSlots = [
+    {
+      _id: 1,
+      isPurchased: false,
+    },
+    {
+      _id: 2,
+      isPurchased: false,
+    },
+    {
+      _id: 3,
+      isPurchased: false,
+    },
+    {
+      _id: 4,
+      isPurchased: false,
+    },
+    {
+      _id: 5,
+      isPurchased: false,
+    },
+    {
+      _id: 6,
+      isPurchased: false,
+    },
+    {
+      _id: 7,
+      isPurchased: false,
+    },
+    {
+      _id: 8,
+      isPurchased: false,
+    },
+    {
+      _id: 9,
+      isPurchased: false,
+    },
+    {
+      _id: 10,
+      isPurchased: false,
+    },
+    {
+      _id: 11,
+      isPurchased: false,
+    },
+    {
+      _id: 12,
+      isPurchased: false,
+    },
+  ];
   const slots = [
     {
       slotNumber: 1,
       price: 4,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 2,
       price: 8,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 3,
       price: 15,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 4,
       price: 30,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 5,
       price: 60,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 6,
       price: 120,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 7,
       price: 240,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 8,
       price: 480,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 9,
       price: 960,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
     {
       slotNumber: 10,
       price: 1920,
       recycleUserCount: 0,
       recycleCount: 0,
-      subSlots
+      subSlots,
     },
-  ]
+  ];
 
-
-  
   return (
     <div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
         {[...Array(10)].map((_, index) => {
           const details = slotDetails?.[index] || null;
-          const isActive = slots[index]?.slotNumber <= parseInt(currentSlot, 10);
+          const isActive =
+            slots[index]?.slotNumber <= parseInt(currentSlot, 10);
           const showUpgrade = parseInt(currentSlot, 10) === index;
 
           return (
@@ -172,13 +176,10 @@ const MatrixSlots = () => {
   );
 };
 
-
-
-
 //   return (
 //     <div>
 //       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
-        
+
 //         {/* {matrixData?.data?.map((slot, index) => (
 //           <SlotCard key={slot._id} slot={slot} index={index} />
 //         ))} */}

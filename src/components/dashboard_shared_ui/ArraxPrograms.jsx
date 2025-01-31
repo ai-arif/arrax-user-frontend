@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
-import { BsArrowUpRightCircleFill } from "react-icons/bs";
+import { FaArrowRight } from "react-icons/fa6";
 import { programs } from "../../../public/data/arraxProgram";
 
-const ArraxPrograms = () => {
+const ArraxPrograms = ({ userId }) => {
   return (
     <div>
       <h2 className="mb-3 text-base text-gray-200 md:mb-4 md:text-lg">
@@ -18,32 +18,35 @@ const ArraxPrograms = () => {
             <p className="pb-2 text-lg font-semibold md:pb-3 md:text-xl">
               {program.programName}
             </p>
-            <div className="flex h-full flex-col rounded-lg border border-purple-600 bg-gradient-to-r from-purple-600 p-4 shadow-lg shadow-purple-600 md:p-5">
-              {/* title & button */}
-              <div className="flex items-center justify-between gap-2 pb-4 md:pb-5">
-                <p className="">{program.title}</p>
-                {program.published && (
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href="/dashboard/matrix">
-                      Preview <BsArrowUpRightCircleFill />
-                    </Link>
-                  </Button>
-                )}
-              </div>
+            <div className="flex h-full flex-col rounded-lg bg-[#141414] p-4 md:p-5">
+              {/* title */}
+              <p>{program.title}</p>
               {/* slots box */}
               {program.published ? (
-                <div className="grid grid-cols-5 justify-items-center gap-5 md:gap-6">
+                <div className="flex flex-wrap gap-3 py-5 md:gap-5 md:py-6">
                   {[...Array(program.slots)].map((_, boxIndex) => (
                     <div
                       key={boxIndex}
-                      className="size-6 rounded-sm bg-white"
+                      className="size-8 rounded-sm bg-purple-600"
                     ></div>
                   ))}
                 </div>
               ) : (
-                <div className="flex items-center justify-center text-gray-200">
+                <div className="flex h-full items-center justify-center text-gray-200">
                   Coming soon.
                 </div>
+              )}
+              {/* button */}
+              {program.published && (
+                <Button
+                  variant="secondary"
+                  className="rounded-full bg-purple-600"
+                  asChild
+                >
+                  <Link href={`/dashboard/matrix/${userId}`}>
+                    Preview <FaArrowRight />
+                  </Link>
+                </Button>
               )}
             </div>
           </div>
