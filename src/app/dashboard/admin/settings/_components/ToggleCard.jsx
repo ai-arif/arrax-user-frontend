@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"; // Import Input component
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import axiosInstance from "@/utils/axiosInstance";
+import { ethers , parseEther } from "ethers";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -73,8 +74,10 @@ const ToggleCard = ({ settings, refetch }) => {
 
     setIsUpdatingFees(true);
     try {
+
+      console.log("fees " ,ethers.utils.parseEther(fees))
       const response = await axiosInstance.put("/admin/update-fees", {
-        fees: fees, // Send updated fees
+        fees: ethers.utils.parseEther(fees)._hex.toString(), // Send updated fees
       });
 
       if (response.status === 200) {
